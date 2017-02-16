@@ -1,7 +1,7 @@
 # Mobile App Project
 
 Project for mobile application development (CS4084). <br />
-Project idea: Bus Eireann App - Real Time Bus Tracking Application<br />
+Project idea: BattleShips<br />
 
 Team Members:
 - John Rey Juele
