@@ -14,10 +14,10 @@ public class WiFiDirectBroadcastReceiver extends BroadcastReceiver {
 
     private WifiP2pManager mManager;
     private WifiP2pManager.Channel mChannel;
-    private MyWiFiActivity mActivity;
+    private MainActivity mActivity;
 
     public WiFiDirectBroadcastReceiver(WifiP2pManager manager, WifiP2pManager.Channel channel,
-                                       MyWifiActivity activity) {
+                                       MainActivity activity) {
         super();
         this.mManager = manager;
         this.mChannel = channel;
@@ -33,7 +33,8 @@ public class WiFiDirectBroadcastReceiver extends BroadcastReceiver {
             int state = intent.getIntExtra(WifiP2pManager.EXTRA_WIFI_STATE, -1);
             if (state == WifiP2pManager.WIFI_P2P_STATE_ENABLED) {
                 // Wifi P2P is enabled
-                
+                mActivity.setWifiText(1);
+
             } else {
                 // Wi-Fi P2P is not enabled
             }
