@@ -15,4 +15,22 @@
         android:layout_height="wrap_content"
         android:text="@string/wifi_identification"
         android:id="@+id/wifi_indicator"/>
+
+    <Button
+        android:text="@string/button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/wifi_indicator"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="30dp"
+        android:id="@+id/button" />
+
+    <TextView
+        android:text="Peer Name Should Be Here"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/button"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="87dp"
+        android:id="@+id/peer_name" />
 </RelativeLayout>

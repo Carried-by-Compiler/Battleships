@@ -1,4 +1,5 @@
 <resources>
     <string name="app_name">Battleships</string>
     <string name="wifi_identification">Waiting for wifi</string>
+    <string name="button">Initiate Peer Discovery</string>
 </resources>
