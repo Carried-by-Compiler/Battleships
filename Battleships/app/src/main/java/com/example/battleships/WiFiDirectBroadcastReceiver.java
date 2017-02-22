@@ -37,6 +37,7 @@ public class WiFiDirectBroadcastReceiver extends BroadcastReceiver {
 
             } else {
                 // Wi-Fi P2P is not enabled
+                mActivity.setWifiText(0);
             }
         } else if (WifiP2pManager.WIFI_P2P_PEERS_CHANGED_ACTION.equals(action)) {
             // Call WifiP2pManager.requestPeers() to get a list of current peers
