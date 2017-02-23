@@ -22,20 +22,9 @@ public class WiFiDirectBroadcastReceiver extends BroadcastReceiver {
     private WifiP2pManager mManager;
     private WifiP2pManager.Channel mChannel;
     private MainActivity mActivity;
-    private WifiP2pManager.PeerListListener peerListListener = new WifiP2pManager.PeerListListener() {
-        @Override
-        public void onPeersAvailable(WifiP2pDeviceList peerList) {
-            Collection<WifiP2pDevice> refreshedPeers = peerList.getDeviceList();
-            if (!refreshedPeers.equals(peers)) {
-                peers.clear();
-                peers.addAll(refreshedPeers);
+    private WifiP2pManager.PeerListListener peerListListener;
 
-                mActivity.displayPeer(peers.get(0));
-            }
-        }
-    };
-
-    private List<WifiP2pDevice> peers = new ArrayList<WifiP2pDevice>();
+    private ArrayList<WifiP2pDevice> peers = new ArrayList<WifiP2pDevice>();
 
     public WiFiDirectBroadcastReceiver(WifiP2pManager manager, WifiP2pManager.Channel channel,
                                        MainActivity activity) {
@@ -43,6 +32,19 @@ public class WiFiDirectBroadcastReceiver extends BroadcastReceiver {
         this.mManager = manager;
         this.mChannel = channel;
         this.mActivity = activity;
+
+        peerListListener = new WifiP2pManager.PeerListListener() {
+            @Override
+            public void onPeersAvailable(WifiP2pDeviceList peerList) {
+                Collection<WifiP2pDevice> refreshedPeers = peerList.getDeviceList();
+                if (!refreshedPeers.equals(peers)) {
+                    peers.clear();
+                    peers.addAll(refreshedPeers);
+
+                    mActivity.displayPeers(peers);
+                }
+            }
+        };
     }
 
     @Override

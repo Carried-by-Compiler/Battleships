@@ -3,27 +3,53 @@ package com.example.battleships;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.IntentFilter;
+import android.net.wifi.WpsInfo;
+import android.net.wifi.p2p.WifiP2pConfig;
 import android.net.wifi.p2p.WifiP2pDevice;
 import android.net.wifi.p2p.WifiP2pManager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
-public class MainActivity extends AppCompatActivity {
+import java.util.ArrayList;
+import java.util.Collection;
+
+public class MainActivity extends AppCompatActivity  {
 
     private WifiP2pManager mManager;
     private WifiP2pManager.Channel mChannel;
     private BroadcastReceiver mReceiver;
     private final IntentFilter intentFilter = new IntentFilter();
+    private ArrayAdapter<String> adapter;
+    private ArrayList<WifiP2pDevice> deviceList;
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        adapter = new ArrayAdapter<String>(this, R.layout.devices, R.id.deviceView);
+        for (int i = 0; i < 10; i++) {
+            adapter.add(String.valueOf(i));
+        }
+        ListView list = (ListView)findViewById(R.id.peer_list);
+        list.setAdapter(adapter);
+
+        list.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                Log.d("Path", "onItemClick() entered");
+                connect(position);
+            }
+        });
 
         Button b = (Button)findViewById(R.id.button);
         b.setOnClickListener(new View.OnClickListener() {
@@ -81,12 +107,50 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
-    public void displayPeer(WifiP2pDevice device) {
-        TextView v = (TextView)findViewById(R.id.peer_name);
-        v.setText(device.deviceName);
+    public void displayPeers(ArrayList<WifiP2pDevice> peers) {
+        /*TextView v = (TextView)findViewById(R.id.peer_name);
+        v.setText(device.deviceName);*/
+        deviceList = peers;
+        adapter.clear();
+        for (int i = 0; i < peers.size(); i++) {
+            adapter.add(peers.get(i).deviceName);
+        }
+        adapter.notifyDataSetChanged();
     }
 
     public void peerFound() {
         Toast.makeText(this, "Peer found", Toast.LENGTH_SHORT).show();
+    }
+
+    public void displayConnectionFailure() {
+        Toast.makeText(this, "Connect failed xD. Retry.",
+                Toast.LENGTH_SHORT).show();
+    }
+
+    public void displayConnectionSuccess() {
+        Toast.makeText(this, "Connect success!. Retry.",
+                Toast.LENGTH_SHORT).show();
+    }
+
+    private void connect(int position) {
+        WifiP2pDevice device = deviceList.get(position);
+        WifiP2pConfig config = new WifiP2pConfig();
+        config.deviceAddress = device.deviceAddress;
+        config.wps.setup = WpsInfo.PBC;
+        Log.d("Path", "connect() called");
+        mManager.connect(mChannel, config, new WifiP2pManager.ActionListener() {
+
+            @Override
+            public void onSuccess() {
+                // WiFiDirectBroadcastReceiver will notify us. Ignore for now.
+                Toast.makeText(MainActivity.this, "Connection Successful", Toast.LENGTH_SHORT).show();
+            }
+
+            @Override
+            public void onFailure(int reason) {
+                Toast.makeText(MainActivity.this, "Connect failed. Retry.",
+                        Toast.LENGTH_SHORT).show();
+            }
+        });
     }
 }
