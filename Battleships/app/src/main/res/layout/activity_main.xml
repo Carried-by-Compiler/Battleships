@@ -10,26 +10,54 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context="com.example.battleships.MainActivity">
 
-    <TextView
+    <ListView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/peer_list"
+        android:layout_marginTop="250dp">
+
+    </ListView>
+
+    <EditText
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/wifi_identification"
-        android:id="@+id/wifi_indicator"/>
+        android:id="@+id/Message"
+        android:hint="@string/message_box_hint"
+        android:inputType="textNoSuggestions"/>
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/send_message"
+        android:text="@string/send_button"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/message_display"
+        android:text="Message will appear here xD"
+        android:textSize="20dp"
+        android:layout_below="@+id/send_message"
+        android:layout_alignParentStart="true"
+        android:layout_marginTop="34dp" />
 
     <Button
         android:text="@string/button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/wifi_indicator"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="30dp"
-        android:id="@+id/button" />
+        android:layout_marginTop="85dp"
+        android:id="@+id/button"
+        android:layout_below="@+id/message_display"
+        android:layout_alignParentEnd="true" />
 
-    <ListView
-        android:layout_width="match_parent"
+    <Button
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/peer_list"
-        android:layout_marginTop="120dp">
-
-    </ListView>
+        android:id="@+id/start_server"
+        android:text="Turn On Server"
+        android:layout_alignBaseline="@+id/button"
+        android:layout_alignBottom="@+id/button"
+        android:layout_alignParentStart="true" />
 </RelativeLayout>

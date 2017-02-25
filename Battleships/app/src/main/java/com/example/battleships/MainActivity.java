@@ -6,6 +6,7 @@ import android.content.IntentFilter;
 import android.net.wifi.WpsInfo;
 import android.net.wifi.p2p.WifiP2pConfig;
 import android.net.wifi.p2p.WifiP2pDevice;
+import android.net.wifi.p2p.WifiP2pInfo;
 import android.net.wifi.p2p.WifiP2pManager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -14,6 +15,7 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -21,7 +23,7 @@ import android.widget.Toast;
 import java.util.ArrayList;
 import java.util.Collection;
 
-public class MainActivity extends AppCompatActivity  {
+public class MainActivity extends AppCompatActivity implements WifiP2pManager.ConnectionInfoListener {
 
     private WifiP2pManager mManager;
     private WifiP2pManager.Channel mChannel;
@@ -29,6 +31,7 @@ public class MainActivity extends AppCompatActivity  {
     private final IntentFilter intentFilter = new IntentFilter();
     private ArrayAdapter<String> adapter;
     private ArrayList<WifiP2pDevice> deviceList;
+    private WifiP2pInfo i;
 
 
     @Override
@@ -56,6 +59,36 @@ public class MainActivity extends AppCompatActivity  {
             @Override
             public void onClick(View v) {
                 startPeerDiscovery();
+            }
+        });
+
+        Button send = (Button)findViewById(R.id.send_message);
+        send.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Log.d("NETWORK", "Send button pressed");
+                EditText m = (EditText)findViewById(R.id.Message);
+                Log.d("NETWORK", "Edit Text reference taken/Client starting");
+                Client client = new Client(MainActivity.this, String.valueOf(m.getText()), i);
+                Log.d("NETWORK", "Sending should start now xD");
+                client.execute();
+                /*TextView messageView = (TextView)findViewById(R.id.message_display);*/
+                /*Server server = new Server(MainActivity.this, messageView);*/
+                Toast.makeText(MainActivity.this, "Sent", Toast.LENGTH_SHORT).show();
+                m.setText("");
+            }
+        });
+
+        Button start = (Button)findViewById(R.id.start_server);
+        start.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Toast.makeText(MainActivity.this, "Server Turned ON", Toast.LENGTH_SHORT).show();
+                if (i.groupFormed && i.isGroupOwner) {
+                    new Server(MainActivity.this).execute();
+                    Log.d("NETWORK", "Server has turned on");
+                }
+                Log.d("NETWORK", "Server switched on");
             }
         });
 
@@ -96,20 +129,7 @@ public class MainActivity extends AppCompatActivity  {
         });
     }
 
-    public void setWifiText(int indicator) {
-        TextView v = (TextView)findViewById(R.id.wifi_indicator);
-
-        if (indicator == 1) { // wifi is on
-            v.setText("Wifi is turned on");
-        }
-        else {
-            v.setText("Wifi is turned off");
-        }
-    }
-
     public void displayPeers(ArrayList<WifiP2pDevice> peers) {
-        /*TextView v = (TextView)findViewById(R.id.peer_name);
-        v.setText(device.deviceName);*/
         deviceList = peers;
         adapter.clear();
         for (int i = 0; i < peers.size(); i++) {
@@ -136,6 +156,8 @@ public class MainActivity extends AppCompatActivity  {
         WifiP2pDevice device = deviceList.get(position);
         WifiP2pConfig config = new WifiP2pConfig();
         config.deviceAddress = device.deviceAddress;
+        // TODO figure out how to switch group owners.
+        Log.d("Identification", "Owner intent value: " + config.groupOwnerIntent);
         config.wps.setup = WpsInfo.PBC;
         Log.d("Path", "connect() called");
         mManager.connect(mChannel, config, new WifiP2pManager.ActionListener() {
@@ -144,6 +166,7 @@ public class MainActivity extends AppCompatActivity  {
             public void onSuccess() {
                 // WiFiDirectBroadcastReceiver will notify us. Ignore for now.
                 Toast.makeText(MainActivity.this, "Connection Successful", Toast.LENGTH_SHORT).show();
+
             }
 
             @Override
@@ -152,5 +175,32 @@ public class MainActivity extends AppCompatActivity  {
                         Toast.LENGTH_SHORT).show();
             }
         });
+    }
+
+    public void setWifiText(boolean indicator) {
+        TextView view = (TextView)findViewById(R.id.message_display);
+
+        if (indicator) {
+            view.setText("Wifi is on");
+        } else {
+            view.setText("Wifi is off");
+        }
+    }
+
+    public void setText(String m) {
+        TextView v = (TextView)findViewById(R.id.message_display);
+        v.setText(m);
+    }
+
+    @Override
+    public void onConnectionInfoAvailable(WifiP2pInfo info) {
+
+        this.i = info;
+        Log.d("NETWORK", "Connection INFO available" + i.groupOwnerAddress.getHostAddress());
+
+        if (i.groupFormed && i.isGroupOwner) {
+            new Server(MainActivity.this).execute();
+            Log.d("NETWORK", "Server has turned on");
+        }
     }
 }
