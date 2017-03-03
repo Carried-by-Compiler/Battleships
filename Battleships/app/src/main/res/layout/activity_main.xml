@@ -10,8 +10,72 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context="com.example.battleships.MainActivity">
 
-    <TextView
+    <ListView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/peer_list"
+        android:layout_marginTop="250dp">
+
+    </ListView>
+
+    <EditText
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Hello World!" />
+        android:id="@+id/Message"
+        android:hint="@string/message_box_hint"
+        android:inputType="textNoSuggestions"/>
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/send_message"
+        android:text="@string/send_button"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true" />
+
+    <TextView
+        android:layout_width="50dp"
+        android:layout_height="wrap_content"
+        android:id="@+id/go_indicator"
+        android:text="sadasdasdasdsadasd"
+        android:textSize="10sp"
+        android:layout_marginTop="27dp"
+        android:layout_below="@+id/send_message"
+        android:layout_alignParentEnd="true" />
+
+    <Button
+        android:text="@string/button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/button"
+        android:layout_marginTop="38dp"
+        android:layout_below="@+id/go_indicator"
+        android:layout_alignParentEnd="true" />
+
+    <TextView
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:id="@+id/message_display"
+        android:text="Message will appear here xD"
+        android:textSize="20dp"
+        android:layout_alignBaseline="@+id/go_indicator"
+        android:layout_alignBottom="@+id/go_indicator"
+        android:layout_alignParentStart="true" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/start_server"
+        android:text="Turn On Server"
+        android:layout_alignBaseline="@+id/button"
+        android:layout_alignBottom="@+id/button"
+        android:layout_alignParentStart="true" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/connect_to_server"
+        android:text="Connect To Server"
+        android:layout_below="@+id/button"
+        android:layout_alignParentEnd="true" />
 </RelativeLayout>
