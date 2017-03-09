@@ -7,7 +7,6 @@ import android.net.NetworkInfo;
 import android.net.wifi.p2p.WifiP2pDevice;
 import android.net.wifi.p2p.WifiP2pDeviceList;
 import android.net.wifi.p2p.WifiP2pManager;
-import android.util.Log;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -66,6 +65,7 @@ public class WiFiDirectBroadcastReceiver extends BroadcastReceiver {
             }
         } else if (WifiP2pManager.WIFI_P2P_PEERS_CHANGED_ACTION.equals(action)) {
             // Call WifiP2pManager.requestPeers() to get a list of current peers
+            mActivity.peerFound();
             if (mManager != null) {
                 mManager.requestPeers(mChannel, peerListListener);
             }
@@ -74,17 +74,6 @@ public class WiFiDirectBroadcastReceiver extends BroadcastReceiver {
             NetworkInfo networkInfo = (NetworkInfo)intent.getParcelableExtra(WifiP2pManager.EXTRA_NETWORK_INFO);
             // If the 2 devices are connected, request for connection info. This is crucial for setting up sockets.
             if (networkInfo.isConnected()) {
-                mManager.createGroup(mChannel, new WifiP2pManager.ActionListener() {
-                    @Override
-                    public void onSuccess() {
-                        Log.d("CONNECTION", "Group created");
-                    }
-
-                    @Override
-                    public void onFailure(int reason) {
-
-                    }
-                });
                 mManager.requestConnectionInfo(mChannel, mActivity);
             }
 
