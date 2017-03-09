@@ -66,21 +66,12 @@ public class MainActivity extends AppCompatActivity implements WifiP2pManager.Co
         send.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                Log.d("NETWORK", "Send button pressed");
                 EditText m = (EditText)findViewById(R.id.Message);
-                // If the group owner pressed the send button
-                if (i.groupFormed && i.isGroupOwner) {
-                    EditText e = (EditText)findViewById(R.id.Message);
-                    Log.d("NETWORK", "Server switched on");
-                    new Server(MainActivity.this).execute(true, String.valueOf(e.getText()));
-                } else {
-                    Log.d("NETWORK", "Send button pressed");
-
-                    Log.d("NETWORK", "Edit Text reference taken/Client starting");
-                    Client client = new Client(MainActivity.this,  i);
-                    Log.d("NETWORK", "Sending should start now xD");
-                    client.execute(true, String.valueOf(m.getText()));
-                }
-
+                Log.d("NETWORK", "Edit Text reference taken/Client starting");
+                Client client = new Client(MainActivity.this, String.valueOf(m.getText()), i);
+                Log.d("NETWORK", "Sending should start now xD");
+                client.execute();
                 /*TextView messageView = (TextView)findViewById(R.id.message_display);*/
                 /*Server server = new Server(MainActivity.this, messageView);*/
                 Toast.makeText(MainActivity.this, "Sent", Toast.LENGTH_SHORT).show();
@@ -88,35 +79,16 @@ public class MainActivity extends AppCompatActivity implements WifiP2pManager.Co
             }
         });
 
-        // Button to turn on the server when the server wishes to receive a message from the client
         Button start = (Button)findViewById(R.id.start_server);
         start.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Toast.makeText(MainActivity.this, "Server Turned ON", Toast.LENGTH_SHORT).show();
                 if (i.groupFormed && i.isGroupOwner) {
-                    TextView go_indicator = (TextView)findViewById(R.id.go_indicator);
-                    go_indicator.setText("You are group owner/server");
-                    new Server(MainActivity.this).execute(false, "");
+                    new Server(MainActivity.this).execute();
                     Log.d("NETWORK", "Server has turned on");
-
-                } else {
-                    TextView go_indicator = (TextView)findViewById(R.id.go_indicator);
-                    go_indicator.setText("You are the client");
                 }
-            }
-        });
-
-        // Button is used to connect to the server when the server wants to send a message to the client
-        Button c = (Button)findViewById(R.id.connect_to_server);
-        c.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Log.d("NETWORK", "Connect to server button pressed");
-                if (i.groupFormed && !i.isGroupOwner) {
-                    Log.d("NETWORK", "Run thread (Client)");
-                    new Client(MainActivity.this, i).execute(false, "");
-                }
+                Log.d("NETWORK", "Server switched on");
             }
         });
 
@@ -164,6 +136,10 @@ public class MainActivity extends AppCompatActivity implements WifiP2pManager.Co
             adapter.add(peers.get(i).deviceName);
         }
         adapter.notifyDataSetChanged();
+    }
+
+    public void peerFound() {
+        Toast.makeText(this, "Peer found", Toast.LENGTH_SHORT).show();
     }
 
     public void displayConnectionFailure() {
@@ -221,15 +197,10 @@ public class MainActivity extends AppCompatActivity implements WifiP2pManager.Co
 
         this.i = info;
         Log.d("NETWORK", "Connection INFO available" + i.groupOwnerAddress.getHostAddress());
+
         if (i.groupFormed && i.isGroupOwner) {
-            TextView go_indicator = (TextView)findViewById(R.id.go_indicator);
-            go_indicator.setText("You are group owner/server");
-        }
-        /*if (i.groupFormed && i.isGroupOwner) {
-            TextView go_indicator = (TextView)findViewById(R.id.go_indicator);
-            go_indicator.setText("You are group owner/server");
             new Server(MainActivity.this).execute();
             Log.d("NETWORK", "Server has turned on");
-        }*/
+        }
     }
 }

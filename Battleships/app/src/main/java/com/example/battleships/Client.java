@@ -6,11 +6,9 @@ import android.net.wifi.p2p.WifiP2pInfo;
 import android.os.AsyncTask;
 import android.util.Log;
 
-import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.IOException;
 import java.io.InputStream;
-import java.io.InputStreamReader;
 import java.io.OutputStream;
 import java.io.OutputStreamWriter;
 import java.io.PrintWriter;
@@ -22,24 +20,20 @@ import java.net.Socket;
  * Created by johnr on 24/02/2017.
  */
 
-public class Client extends AsyncTask<Object, Object, String>{
+public class Client extends AsyncTask{
 
     private String messageToSend;
-    private MainActivity activity;
+    private Context context;
     private WifiP2pInfo ownerInfo;
 
-    public Client(MainActivity context, WifiP2pInfo info) {
-        this.activity = context;
+    public Client(Context context, String message, WifiP2pInfo info) {
+        messageToSend = message;
+        this.context = context;
         ownerInfo = info;
     }
 
     @Override
-    protected String doInBackground(Object[] params) {
-        String messageToSend = "";
-        String messageReceived = "";
-        boolean send = (boolean)params[0];
-        if (params[1] != null)
-            messageToSend = (String)params[1];
+    protected Object doInBackground(Object[] params) {
         Socket socket = new Socket();
 
         try {
@@ -49,41 +43,18 @@ public class Client extends AsyncTask<Object, Object, String>{
             socket.connect(new InetSocketAddress(ownerInfo.groupOwnerAddress.getHostAddress(), 8600), 10000);
             Log.d("NETWORK", "Connected with server");
 
-            if (send == true) {
-                PrintWriter pw = new PrintWriter(socket.getOutputStream(), true);
+            PrintWriter pw = new PrintWriter(socket.getOutputStream(), true);
+            Log.d("NETWORK", "Message sent");
 
+            pw.write(messageToSend);
+            pw.flush();
 
-                pw.write(messageToSend);
-                pw.flush();
-                Log.d("NETWORK", "Message sent");
-                pw.close();
-            } else {
-                Log.d("NETWORK", "Take in message");
-                BufferedReader in = new BufferedReader(new InputStreamReader(socket.getInputStream()));
-                messageReceived = in.readLine();
-                Log.d("NETWORK", "Message: " + messageReceived);
-                Log.d("NETWORK", "Message received");
-                in.close();
-            }
-
-
+            pw.close();
             socket.close();
 
         } catch (IOException exception) {
             Log.d("EXCEPTION", exception.toString());
         }
-        return messageReceived;
-    }
-
-    @Override
-    protected void onProgressUpdate(Object... values) {
-        super.onProgressUpdate(values);
-    }
-
-    @Override
-    protected void onPostExecute(String s) {
-        if (!s.isEmpty()) {
-            activity.setText(s);
-        }
+        return null;
     }
 }
