@@ -1,3 +1,6 @@
+import sun.java2d.pipe.OutlineTextRenderer;
+
+import java.beans.IntrospectionException;
 import java.util.ArrayList;
 import java.util.Scanner;
 
@@ -95,20 +98,150 @@ public class UserInterface
 		return input;
 	}
 
-	public ArrayList<String> getPoints()
+	/*
+    Obtains the points on where each boat should be placed.
+
+    returns a list of points as an arraylist
+	 */
+	public ArrayList<String> getPoints(String boatName)
+    {
+        // intializing
+        ArrayList<String> points = new ArrayList<String>();
+        String message1 = "Enter starting coordinate (E.g \"A,1\"): ";
+        String message2 = "Enter ending coordinate (E.g \"A,3\"): ";
+        String error = "Incorrect placement of ship! Please try again.";
+        String p1, p2;
+        String partsEnter[], partsEnd[];
+
+        boolean correct;
+
+        do { // continue with loop until the boat's coordinates have been obtained successfully
+
+            correct = true;
+            // takes in input
+            System.out.print(message1);
+            p1 = in.nextLine();
+
+            System.out.print(message2);
+            p2 = in.nextLine();
+
+            //validation of input
+
+            partsEnter = p1.split(","); // starting coordinate
+            partsEnd = p2.split(","); // ending coordinate
+
+            // if same column
+            if (partsEnter[0].equalsIgnoreCase(partsEnd[0]))
+            {
+                int distance = (int)partsEnd[0].charAt(0) - (int)partsEnter[0].charAt(0);
+                switch(boatName)
+                {
+                    case "Destroyer":
+                        if (distance != 2)
+                            correct = false;
+                        else
+                            points = placePointsIntoArrayList(distance, partsEnter, partsEnd);
+                        break;
+                    case "Submarine":
+                        if (distance != 3)
+                            correct = false;
+                        else
+                            points = placePointsIntoArrayList(distance, partsEnter, partsEnd);
+                        break;
+                    case "Cruiser":
+                        if (distance != 3)
+                            correct = false;
+                        else
+                            points = placePointsIntoArrayList(distance, partsEnter, partsEnd);
+                        break;
+                    case "Battleship":
+                        if (distance != 4)
+                            correct = false;
+                        else
+                            points = placePointsIntoArrayList(distance, partsEnter, partsEnd);
+                        break;
+                    case "Carrier":
+                        if (distance != 5)
+                            correct = false;
+                        else
+                            points = placePointsIntoArrayList(distance, partsEnter, partsEnd);
+                        break;
+                }
+            }
+            else if (partsEnter[1].equalsIgnoreCase(partsEnd[1]))  // if same row
+            {
+                int distance = Integer.parseInt(partsEnd[1]) - Integer.parseInt(partsEnter[1]);
+                switch(boatName)
+                {
+                    case "Destroyer":
+                        if (distance != 2)
+                            correct = false;
+                        else
+                            points = placePointsIntoArrayList(distance, partsEnter, partsEnd);
+                        break;
+                    case "Submarine":
+                        if (distance != 3)
+                            correct = false;
+                        else
+                            points = placePointsIntoArrayList(distance, partsEnter, partsEnd);
+                        break;
+                    case "Cruiser":
+                        if (distance != 3)
+                            correct = false;
+                        else
+                            points = placePointsIntoArrayList(distance, partsEnter, partsEnd);
+                        break;
+                    case "Battleship":
+                        if (distance != 4)
+                            correct = false;
+                        else
+                           points = placePointsIntoArrayList(distance, partsEnter, partsEnd);
+                        break;
+                    case "Carrier":
+                        if (distance != 5)
+                            correct = false;
+                        else
+                            points = placePointsIntoArrayList(distance, partsEnter, partsEnd);
+                        break;
+                }
+            }
+            else
+                correct = false;
+
+            if (!correct)
+                System.out.println(error + "\n");
+
+
+        } while (!correct);
+
+
+
+
+
+        return points;
+    }
+
+    private ArrayList<String> placePointsIntoArrayList(int d, String[] pS, String[] pE)
     {
         ArrayList<String> points = new ArrayList<String>();
-        String message1 = "Enter starting coordinate: ";
-        String message2 = "Enter ending coordinate: ";
-        String p1, p2;
 
-        System.out.print(message1);
-        p1 = in.nextLine();
+        if (pS[1].equals(pE[1])) // same row
+        {
+            int startingLetter = (int)pS[0].charAt(0);
+            int endingLetter = (int)pE[0].charAt(0);
 
-        System.out.print(message2);
-        p2 = in.nextLine();
-
-
+            for (int i = startingLetter; i <= endingLetter; i++)
+            {
+                points.add((char)i + "," + pS[1]);
+            }
+        }
+        else if (pS[0].equalsIgnoreCase(pE[0]))
+        {
+            for (int i = Integer.parseInt(pS[1]); i <= Integer.parseInt(pE[1]); i++)
+            {
+                points.add(pS[0] + "," + i);
+            }
+        }
 
         return points;
     }

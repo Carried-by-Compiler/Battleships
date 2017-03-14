@@ -15,4 +15,12 @@ public class Boat
     }
 
     public String getName() { return boatName; }
+
+    @Override
+    public String toString() {
+        return "Boat{" +
+                "points=" + points +
+                ", boatName='" + boatName + '\'' +
+                '}';
+    }
 }

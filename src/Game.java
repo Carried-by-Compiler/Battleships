@@ -54,15 +54,65 @@ public class Game
 	private void placeBoatsOnBoard()
 	{
 		String boatNames[] = {"Destroyer", "Submarine", "Cruiser", "Battleship", "Carrier"};
+        ArrayList<String> points = new ArrayList<String>();
 
 		for (int i = 0; i < boatNames.length; i++)
 		{
 			int index;
 
-			for (index = 0; index < 5; index++) // destroyer boats (2 spaces)(5 boats)
+			if (boatNames[i].equals("Destroyer"))
             {
-                ArrayList<String> points = new ArrayList<String>();
-                points = ui.getPoints();
+                for (index = 0; index < 5; index++) // destroyer boats (2 spaces)(5 boats)
+                {
+                    points = ui.getPoints(boatNames[i]);
+                    Boat boat = new Boat(boatNames[i], points);
+                    boats.add(boat);
+                }
+            }
+            else if (boatNames[i].equals("Submarine"))
+            {
+                for (index = 0; index < 4; index++) // submarine (3 spaces)(4 boats)
+                {
+                    points = ui.getPoints(boatNames[i]);
+                    Boat boat = new Boat(boatNames[i], points);
+                    boats.add(boat);
+                }
+            }
+            else if (boatNames[i].equals("Cruiser"))
+            {
+                for (index = 0; index < 4; index++) // cruisers (3 spaces)(3 boats)
+                {
+                    points = ui.getPoints(boatNames[i]);
+                    Boat boat = new Boat(boatNames[i], points);
+                    boats.add(boat);
+                }
+            }
+            else if (boatNames[i].equals("Cruiser"))
+            {
+                for (index = 0; index < 4; index++) // cruisers (3 spaces)(3 boats)
+                {
+                    points = ui.getPoints(boatNames[i]);
+                    Boat boat = new Boat(boatNames[i], points);
+                    boats.add(boat);
+                }
+            }
+            else if (boatNames[i].equals("Battleship"))
+            {
+                for (index = 0; index < 4; index++) // battleship (4 spaces)(2 boats)
+                {
+                    points = ui.getPoints(boatNames[i]);
+                    Boat boat = new Boat(boatNames[i], points);
+                    boats.add(boat);
+                }
+            }
+            else if (boatNames[i].equals("Carrier"))
+            {
+                for (index = 0; index < 4; index++) // carrier (4 spaces)(2 boats)
+                {
+                    points = ui.getPoints(boatNames[i]);
+                    Boat boat = new Boat(boatNames[i], points);
+                    boats.add(boat);
+                }
             }
 		}
 	}
