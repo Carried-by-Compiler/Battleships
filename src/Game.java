@@ -96,6 +96,7 @@ public class Game
                     points = ui.getPoints(boatNames[i]);
                     Boat boat = new Boat(boatNames[i], points);
                     boats.add(boat);
+                    System.out.println(boat.toString());
                 }
             }
             else if (boatNames[i].equals("Carrier"))

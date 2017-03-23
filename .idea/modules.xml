@@ -3,9 +3,9 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/Mobile-App-Project.iml" filepath="$PROJECT_DIR$/Mobile-App-Project.iml" />
-      <module fileurl="file://$PROJECT_DIR$/Battleships/app/src/androidTest/androidTest.iml" filepath="$PROJECT_DIR$/Battleships/app/src/androidTest/androidTest.iml" />
-      <module fileurl="file://$PROJECT_DIR$/Battleships/app/src/main/main.iml" filepath="$PROJECT_DIR$/Battleships/app/src/main/main.iml" />
-      <module fileurl="file://$PROJECT_DIR$/Battleships/app/src/test/test.iml" filepath="$PROJECT_DIR$/Battleships/app/src/test/test.iml" />
+      <module fileurl="file://C:\Users\c15167798\Desktop\Mobile-App-Project\Battleships\app\src\androidTest\androidTest.iml" filepath="C:\Users\c15167798\Desktop\Mobile-App-Project\Battleships\app\src\androidTest\androidTest.iml" />
+      <module fileurl="file://C:\Users\c15167798\Desktop\Mobile-App-Project\Battleships\app\src\main\main.iml" filepath="C:\Users\c15167798\Desktop\Mobile-App-Project\Battleships\app\src\main\main.iml" />
+      <module fileurl="file://C:\Users\c15167798\Desktop\Mobile-App-Project\Battleships\app\src\test\test.iml" filepath="C:\Users\c15167798\Desktop\Mobile-App-Project\Battleships\app\src\test\test.iml" />
     </modules>
   </component>
 </project>
