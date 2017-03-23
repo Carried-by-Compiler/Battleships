@@ -67,6 +67,7 @@ public class Game
                     points = ui.getPoints(boatNames[i]);
                     Boat boat = new Boat(boatNames[i], points);
                     boats.add(boat);
+                    drawBoatOntoGrid(boat, boatNames[i]);
                 }
             }
             else if (boatNames[i].equals("Submarine"))
@@ -76,6 +77,7 @@ public class Game
                     points = ui.getPoints(boatNames[i]);
                     Boat boat = new Boat(boatNames[i], points);
                     boats.add(boat);
+                    drawBoatOntoGrid(boat, boatNames[i]);
                 }
             }
             else if (boatNames[i].equals("Cruiser"))
@@ -108,7 +110,42 @@ public class Game
 		}
 	}
 
-	private void enterCoordinateToGrid(String c)
+    private void drawBoatOntoGrid(Boat boat, String boatName) {
+	    String identification = "";
+        String letters[] ={"A","B","C","D","E","F","G","H","I","J"};
+        String parts[] = new String[0];
+        boolean found;
+        int letterPos = 0;
+
+	    switch(boatName)
+        {
+            case "Destroyer":   identification = "D"; break;
+            case "Submarine":   identification = "S"; break;
+            case "Cruiser":     identification = "C"; break;
+            case "Battleship":  identification = "B"; break;
+            case "Carrier":     identification = "Ca"; break;
+        }
+
+        ArrayList<String> points = boat.getPoints();
+	    System.out.println("POINTS: " + points);
+	    for (int i = 0; i < points.size(); i++)
+        {
+            parts = points.get(i).split(",");
+            found = false;
+            for (int j = 0; j < letters.length && !found; j++)
+            {
+                if (parts[0].equalsIgnoreCase(letters[j]))
+                {
+                    found = true;
+                    letterPos = j;
+                }
+            }
+            grid[Integer.parseInt(parts[1]) - 1][letterPos] = identification;
+        }
+	    ui.drawBoard(grid);
+    }
+
+    private void enterCoordinateToGrid(String c)
     {
 		// TODO write code so that it updates the grid.
 		String letters[] ={"A","B","C","D","E","F","G","H","I","J"};

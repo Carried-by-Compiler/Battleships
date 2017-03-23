@@ -14,6 +14,10 @@ public class Boat
         boatName = name;
     }
 
+    public ArrayList<String> getPoints() {
+        return  points;
+    }
+
     public String getName() { return boatName; }
 
     @Override

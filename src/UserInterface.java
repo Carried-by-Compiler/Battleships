@@ -133,7 +133,9 @@ public class UserInterface
             // if same column
             if (partsEnter[0].equalsIgnoreCase(partsEnd[0]))
             {
-                int distance = (int)partsEnd[0].charAt(0) - (int)partsEnter[0].charAt(0);
+                System.out.println(partsEnd[0].charAt(0));
+                int distance = Integer.parseInt(partsEnd[1]) - Integer.parseInt(partsEnter[1]);
+                System.out.println("DISTANCE: " + distance);
                 switch(boatName)
                 {
                     case "Destroyer":
@@ -170,7 +172,9 @@ public class UserInterface
             }
             else if (partsEnter[1].equalsIgnoreCase(partsEnd[1]))  // if same row
             {
-                int distance = Integer.parseInt(partsEnd[1]) - Integer.parseInt(partsEnter[1]);
+                System.out.println("ENTERED IF 2");
+                int distance = (int)partsEnd[0].charAt(0) - (int)partsEnter[0].charAt(0);
+                System.out.println("DISTANCE: " + distance);
                 switch(boatName)
                 {
                     case "Destroyer":
