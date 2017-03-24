@@ -61,7 +61,7 @@ public class AI
             {
                 for (index = 0; index < 3; index++) // cruisers (3 spaces)(3 boats)
                 {
-                   points = generateBoatCoordinates(boatNames[i], 3);
+                    points = generateBoatCoordinates(boatNames[i], 3);
                     Boat boat = new Boat(boatNames[i], points);
                     boats.add(boat);
                     //displayAiBoats(boat);
