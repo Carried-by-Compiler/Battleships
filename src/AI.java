@@ -14,7 +14,6 @@ public class AI
         grid = new String[10][10];
         boats = new ArrayList<Boat>();
         ui = new UserInterface();
-        /*
 
         for (int i = 0; i < 10; i++)
         {
@@ -22,7 +21,7 @@ public class AI
             {
                 grid[i][j] = " ";
             }
-        }*/
+        }
 
     }
 
@@ -42,7 +41,7 @@ public class AI
                     points = generateBoatCoordinates(boatNames[i], 5);
                     Boat boat = new Boat(boatNames[i], points);
                     boats.add(boat);
-                    //displayAiBoats(boat);
+                    displayAiBoats(boat);
                     //System.out.println(boat.getPoints());
                 }
             }
@@ -53,7 +52,7 @@ public class AI
                     points = generateBoatCoordinates(boatNames[i], 4);
                     Boat boat = new Boat(boatNames[i], points);
                     boats.add(boat);
-                    //displayAiBoats(boat);
+                    displayAiBoats(boat);
                     //System.out.println(boat.getPoints());
                 }
             }
@@ -64,7 +63,7 @@ public class AI
                     points = generateBoatCoordinates(boatNames[i], 3);
                     Boat boat = new Boat(boatNames[i], points);
                     boats.add(boat);
-                    //displayAiBoats(boat);
+                    displayAiBoats(boat);
                     //System.out.println(boat.getPoints());
                 }
             }
@@ -75,7 +74,7 @@ public class AI
                    points = generateBoatCoordinates(boatNames[i], 3);
                    Boat boat = new Boat(boatNames[i], points);
                    boats.add(boat);
-                    //displayAiBoats(boat);
+                    displayAiBoats(boat);
                     //System.out.println(boat.getPoints());
                 }
             }
@@ -86,7 +85,7 @@ public class AI
                     points = generateBoatCoordinates(boatNames[i], 2);
                     Boat boat = new Boat(boatNames[i], points);
                     boats.add(boat);
-                    //displayAiBoats(boat);
+                    displayAiBoats(boat);
                     //System.out.println(boat.getPoints());
                 }
             }
@@ -116,6 +115,18 @@ public class AI
         // check if the boat has been sunk
 
         return results;
+    }
+
+    public String getCoordinate()
+    {
+        ui.drawBoard(grid);
+        // Ai makes guess on letter position
+        int letter = (int)(Math.random() * ((74 - 65) + 1)) + 65;
+        // AI makes guess on number position
+        int number = (int)((Math.random() * 10) + 1);
+        String result = (char)letter + "," + number;
+
+        return result;
     }
 
     private void displayAiBoats(Boat b)

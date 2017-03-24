@@ -61,25 +61,45 @@ public class Game
                         else
                         {
                             // TODO write code to display the position of hit ship on grid
+                            // TODO FIX code where you hit a non existent ship on the AI's grid
                             results = opponent.checkIfHit(coordinate);
                             if (results[0] == true)
-                                ui.displayHit(coordinate);
+                                ui.displayHit(coordinate, turn);
                             else
-                                ui.displayMiss(coordinate);
+                                ui.displayMiss(coordinate, turn);
                             if (results[1] == true)
-                                ui.displaySunk();
+                            {
+                                ui.displaySunk(turn);
+                                boatSunkAi++;
+                            }
+                            if (boatSunkAi == 15)
+                                turn = 2;
+
                             turn = 1;
                         }
                     }
 
 			    	if (turn == 1)
                     {
-                        // TODO write code for AI's Turn
-                        //coordinate = opponent.getCoordinate(); // AI Guesses
+                        coordinate = opponent.getCoordinate(); // AI Guesses
+                        results = checkIfHit(coordinate);
+                        if (results[0] == true)
+                            ui.displayHit(coordinate, turn);
+                        else
+                            ui.displayMiss(coordinate, turn);
+                        if (results[1] == true)
+                        {
+                            ui.displaySunk(turn);
+                            boatSunkHuman++;
+                        }
+                        if (boatSunkHuman == 15)
+                            turn = 2;
+
                         turn = 0;
                     }
-                    // TODO Code for end game
+                    ui.displayEndGame(boatSunkAi, boatSunkHuman);
 		    	} while (turn != 2);
+
 		    	finished = false;
 		    	/*ui.drawBoard(grid);
                 String coordinate = ui.enterCoordinate();
@@ -89,6 +109,30 @@ public class Game
 			    finished = true;
 		} while (!finished);
 	}
+
+    private boolean[] checkIfHit(String coordinate)
+    {
+        boolean hit = false;
+        boolean sunk = false;
+        boolean results[] = new boolean[2];
+        Boat b;
+
+        // go through each boat, checking if the entered coordinate matches the position coordinate of any boat
+        for (int i = 0; i < boats.size() && !hit; i++)
+        {
+            b = boats.get(i);               // takes a boat from the list of boats
+            hit = b.checkIfHit(coordinate); // checks if entered coordinate has hit a part of that boat
+            // if it has been hit, check if it has sunk
+            if (hit)
+                sunk = b.checkIfSunk();
+        }
+        results[0] = hit;
+        results[1] = sunk;
+
+        // check if the boat has been sunk
+
+        return results;
+    }
 
     private void generateBoats()
     {

@@ -255,19 +255,28 @@ public class UserInterface
         return points;
     }
 
-    public void displayHit(String coordinate)
+    public void displayHit(String coordinate, int turn)
     {
-        System.out.println("YOU HAVE HIT A SHIP ON: " + coordinate);
+        if (turn == 0)
+            System.out.println("YOU HAVE HIT A SHIP ON: " + coordinate);
+        else if(turn == 1)
+            System.out.println("YOUR SHIP HAS BEEN HIT ON: " + coordinate);
     }
 
-    public void displayMiss(String coordinate)
+    public void displayMiss(String coordinate, int turn)
     {
-        System.out.println("YOU HAVE MISSED ON: " + coordinate);
+        if (turn == 0)
+            System.out.println("YOU HAVE MISSED ON: " + coordinate);
+        else if (turn == 1)
+            System.out.println("COMPUTER MISSED ON: " + coordinate);
     }
 
-    public void displaySunk()
+    public void displaySunk(int turn)
     {
-        System.out.println("YOU HAVE SUNK A BATTLESHIP!");
+        if (turn == 0)
+            System.out.println("YOU HAVE SUNK A BATTLESHIP!");
+        else if (turn == 1)
+            System.out.println("COMPUTER SUNK YOUR BATTLESHIP!");
     }
 
     private ArrayList<String> placePointsIntoArrayList(int d, String[] pS, String[] pE)
@@ -293,5 +302,13 @@ public class UserInterface
         }
 
         return points;
+    }
+
+    public void displayEndGame(int ai, int human)
+    {
+        if (ai == 15)
+            System.out.println("You won!");
+        else if (human == 15)
+            System.out.println("You lost!");
     }
 }
