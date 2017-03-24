@@ -74,7 +74,7 @@ public class AI
                    points = generateBoatCoordinates(boatNames[i], 3);
                    Boat boat = new Boat(boatNames[i], points);
                    boats.add(boat);
-                    displayAiBoats(boat);
+                   displayAiBoats(boat);
                     //System.out.println(boat.getPoints());
                 }
             }
@@ -119,7 +119,6 @@ public class AI
 
     public String getCoordinate()
     {
-        ui.drawBoard(grid);
         // Ai makes guess on letter position
         int letter = (int)(Math.random() * ((74 - 65) + 1)) + 65;
         // AI makes guess on number position
@@ -127,6 +126,26 @@ public class AI
         String result = (char)letter + "," + number;
 
         return result;
+    }
+
+    public void markHitOnBoard(String coordinate)
+    {
+        String letters[] ={"A","B","C","D","E","F","G","H","I","J"};
+        String parts[] = coordinate.split(",");
+        boolean found = false;
+        int letterPos = 0;
+
+        for (int i = 0; i < letters.length && !found; i++)
+        {
+            if(letters[i].equals((parts[0])))
+            {
+                found = true;
+                letterPos = i;
+            }
+
+        }
+        grid[Integer.parseInt(parts[1]) - 1][letterPos] = "X";
+        ui.drawBoard(grid);
     }
 
     private void displayAiBoats(Boat b)
@@ -154,7 +173,7 @@ public class AI
                 if (parts[0].equals(letters[j]))
                     pos = j;
             }
-            grid[pos][Integer.parseInt(parts[1])] = n;
+            grid[Integer.parseInt(parts[1]) - 1][pos] = n;
         }
     }
 
@@ -240,7 +259,7 @@ public class AI
             Boat b = boats.get(i);
 
             for (int j = 0; j < p.size(); j++)
-                if (b.checkIfHit(p.get(j)) == true)
+                if (b.checkIfOverlapsWithOther(p.get(j)) == true)
                     correct = false;
         }
         return correct;

@@ -102,26 +102,25 @@ public class UserInterface
 	{
 	    System.out.println("YOUR TURN\n");
 		boolean correct = true;
-		String pattern = "[A-Z]{1},[1-10]{1}";
+		String pattern = "[A-Za-z]{1},[0-9]{1,2}";
 		String input;
 		
 		do
 		{
-			System.out.print("Enter a coordinate (E.g \"A1\"): ");
+		    correct = true;
+			System.out.print("Enter a coordinate (E.g \"A,1\"): ");
 			input = in.nextLine();
 
 			if (input.isEmpty())
 			{
 				correct = false;
 				System.out.println("Please enter a coordinate!\n");
-				input = "";
 				
 			}
-			else if (input.matches(pattern))
+			else if (!input.matches(pattern))
 			{
 				correct = false;
 				System.out.println("Incorrect input!\n");
-				input = "";
 			}
 		} while (!correct);
 		

@@ -64,9 +64,16 @@ public class Game
                             // TODO FIX code where you hit a non existent ship on the AI's grid
                             results = opponent.checkIfHit(coordinate);
                             if (results[0] == true)
+                            {
                                 ui.displayHit(coordinate, turn);
+                                opponent.markHitOnBoard(coordinate);
+                            }
+
                             else
+                            {
                                 ui.displayMiss(coordinate, turn);
+                                opponent.markHitOnBoard(coordinate);
+                            }
                             if (results[1] == true)
                             {
                                 ui.displaySunk(turn);
@@ -84,9 +91,20 @@ public class Game
                         coordinate = opponent.getCoordinate(); // AI Guesses
                         results = checkIfHit(coordinate);
                         if (results[0] == true)
+                        {
+                            System.out.println("Enemy coordinate: " + coordinate);
+                            markHitOnBoard(coordinate);
                             ui.displayHit(coordinate, turn);
+                            ui.drawBoard(grid);
+                        }
+
                         else
+                        {
                             ui.displayMiss(coordinate, turn);
+                            markHitOnBoard(coordinate);
+                            ui.drawBoard(grid);
+                        }
+
                         if (results[1] == true)
                         {
                             ui.displaySunk(turn);
@@ -110,6 +128,25 @@ public class Game
 		} while (!finished);
 	}
 
+    private void markHitOnBoard(String coordinate)
+    {
+        String letters[] ={"A","B","C","D","E","F","G","H","I","J"};
+        String parts[] = coordinate.split(",");
+        boolean found = false;
+        int letterPos = 0;
+
+        for (int i = 0; i < letters.length && !found; i++)
+        {
+            if(letters[i].equals((parts[0])))
+            {
+                found = true;
+                letterPos = i;
+            }
+
+        }
+        grid[Integer.parseInt(parts[1]) - 1][letterPos] = "X";
+    }
+
     private boolean[] checkIfHit(String coordinate)
     {
         boolean hit = false;
@@ -128,8 +165,6 @@ public class Game
         }
         results[0] = hit;
         results[1] = sunk;
-
-        // check if the boat has been sunk
 
         return results;
     }
@@ -272,7 +307,7 @@ public class Game
             Boat b = boats.get(i);
 
             for (int j = 0; j < p.size(); j++)
-                if (b.checkIfHit(p.get(j)) == true)
+                if ((b.checkIfOverlapsWithOther(p.get(j)) == true))
                     correct = false;
         }
         return correct;
@@ -357,7 +392,7 @@ public class Game
         }
 
         ArrayList<String> points = boat.getPoints();
-	    System.out.println("POINTS: " + points);
+
 	    for (int i = 0; i < points.size(); i++)
         {
             parts = points.get(i).split(",");

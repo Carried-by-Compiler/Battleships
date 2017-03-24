@@ -28,8 +28,16 @@ public class Boat
 
         if (points.contains(point))
             hit = true;
-        if (hit) hitCounter++;
+        if (hit) hitCounter = hitCounter + 1;
 
+        return hit;
+    }
+
+    public boolean checkIfOverlapsWithOther(String point)
+    {
+        boolean hit = false;
+        if (points.contains(point))
+            hit = true;
         return hit;
     }
 
