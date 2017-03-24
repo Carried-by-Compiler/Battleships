@@ -5,11 +5,17 @@ public class Game
 	private UserInterface ui;
 	private ArrayList<Boat> boats;
 	private  String[][] grid;
+	private AI opponent;
+	private int boatSunkHuman;
+	private int boatSunkAi;
 
-	public Game(UserInterface ui)
+	public Game(UserInterface ui, AI ai)
 	{
 		this.ui = ui;
+		opponent = ai;
 		boats = new ArrayList<Boat>();
+		boatSunkHuman = 0; // keeps record of the number of human boats  that has been sunk
+		boatSunkAi = 0; // keeps record of the number of AI boats that has been sunk
 		grid = new String[10][10];
 
 		for (int i = 0; i < grid.length; i++) {
@@ -22,29 +28,58 @@ public class Game
 	public void start() {
 
 		boolean finished = false;
+		int turn = 0;
+		String coordinate = "";
+		boolean[] results;
 
 		do
 		{
-		    int choice = ui.displayOptions();
+		    int choice = ui.displayStartMenu();
 		    if (choice == 1) {
+		        opponent.generateBoats();
 		    	finished = false;
 		    	do
 		    	{
 		    		finished = false;
-		    		// TODO put option to put in boats
+		    		// TODO Write code for auto generating boats for human
+		    		int accept = ui.autoGenerateBoats();
+		    		if (accept == 1)
+                    {
+
+                    }
 			    	ui.drawBoard(grid);
 			    	placeBoatsOnBoard();
-	                String coordinate = ui.enterCoordinate();
-	                if (coordinate.equals("q,0") || coordinate.equals("Q,0"))
-	                	finished = true;
-	                else
-	                	enterCoordinateToGrid(coordinate);
-		    	} while (!finished);
+			    	if (turn == 0)
+                    {
+
+                        coordinate = ui.enterCoordinate(); // Human Guesses
+                        if (coordinate.equals("q,0") || coordinate.equals("Q,0"))
+                            turn = 2;
+                        else
+                        {
+                            results = opponent.checkIfHit(coordinate);
+                            if (results[0] == true)
+                                ui.displayHit(coordinate);
+                            else
+                                ui.displayMiss(coordinate);
+                            if (results[1] == true)
+                                ui.displaySunk();
+                            turn = 1;
+                        }
+                    }
+
+			    	if (turn == 1)
+                    {
+                        // TODO write code for AI's Turn
+                        //coordinate = opponent.getCoordinate(); // AI Guesses
+                        turn = 0;
+                    }
+                    // TODO Code for end game
+		    	} while (turn != 2);
 		    	finished = false;
-		        // TODO put option to put in boats
-		    	ui.drawBoard(grid);
+		    	/*ui.drawBoard(grid);
                 String coordinate = ui.enterCoordinate();
-                enterCoordinateToGrid(coordinate);
+                enterCoordinateToGrid(coordinate);*/
             }
 		    else
 			    finished = true;
@@ -53,28 +88,28 @@ public class Game
 
 	private void placeBoatsOnBoard()
 	{
-		String boatNames[] = {"Destroyer", "Submarine", "Cruiser", "Battleship", "Carrier"};
+		String boatNames[] = {"Carrier", "Battleship", "Cruiser", "Submarine", "Destroyer"};
         ArrayList<String> points = new ArrayList<String>();
 
 		for (int i = 0; i < boatNames.length; i++)
 		{
 			int index;
 
-			if (boatNames[i].equals("Destroyer"))
+			if (boatNames[i].equals("Carrier"))
             {
-                for (index = 0; index < 5; index++) // destroyer boats (2 spaces)(5 boats)
+                for (index = 0; index < 1; index++) // Carrier boats (5 spaces)(1 boats)
                 {
-                    points = ui.getPoints(boatNames[i]);
+                    points = ui.getPoints(boatNames[i], 5);
                     Boat boat = new Boat(boatNames[i], points);
                     boats.add(boat);
                     drawBoatOntoGrid(boat, boatNames[i]);
                 }
             }
-            else if (boatNames[i].equals("Submarine"))
+            else if (boatNames[i].equals("Battleship"))
             {
-                for (index = 0; index < 4; index++) // submarine (3 spaces)(4 boats)
+                for (index = 0; index < 2; index++) // Battleship (4 spaces)(2 boats)
                 {
-                    points = ui.getPoints(boatNames[i]);
+                    points = ui.getPoints(boatNames[i], 4);
                     Boat boat = new Boat(boatNames[i], points);
                     boats.add(boat);
                     drawBoatOntoGrid(boat, boatNames[i]);
@@ -84,28 +119,30 @@ public class Game
             {
                 for (index = 0; index < 3; index++) // cruisers (3 spaces)(3 boats)
                 {
-                    points = ui.getPoints(boatNames[i]);
+                    points = ui.getPoints(boatNames[i], 3);
                     Boat boat = new Boat(boatNames[i], points);
                     boats.add(boat);
+                    drawBoatOntoGrid(boat, boatNames[i]);
                 }
             }
-            else if (boatNames[i].equals("Battleship"))
+            else if (boatNames[i].equals("Submarine"))
             {
-                for (index = 0; index < 2; index++) // battleship (4 spaces)(2 boats)
+                for (index = 0; index < 4; index++) // Submarine (3 spaces)(4 boats)
                 {
-                    points = ui.getPoints(boatNames[i]);
+                    points = ui.getPoints(boatNames[i], 3);
                     Boat boat = new Boat(boatNames[i], points);
                     boats.add(boat);
-                    System.out.println(boat.toString());
+                    drawBoatOntoGrid(boat, boatNames[i]);
                 }
             }
-            else if (boatNames[i].equals("Carrier"))
+            else if (boatNames[i].equals("Destroyer"))
             {
-                for (index = 0; index < 1; index++) // carrier (4 spaces)(1 boats)
+                for (index = 0; index < 5; index++) // Destroyer (2 spaces)(5 boats)
                 {
-                    points = ui.getPoints(boatNames[i]);
+                    points = ui.getPoints(boatNames[i], 2);
                     Boat boat = new Boat(boatNames[i], points);
                     boats.add(boat);
+                    drawBoatOntoGrid(boat, boatNames[i]);
                 }
             }
 		}
@@ -124,7 +161,7 @@ public class Game
             case "Submarine":   identification = "S"; break;
             case "Cruiser":     identification = "C"; break;
             case "Battleship":  identification = "B"; break;
-            case "Carrier":     identification = "Ca"; break;
+            case "Carrier":     identification = "A"; break;
         }
 
         ArrayList<String> points = boat.getPoints();
@@ -144,13 +181,5 @@ public class Game
             grid[Integer.parseInt(parts[1]) - 1][letterPos] = identification;
         }
 	    ui.drawBoard(grid);
-    }
-
-    private void enterCoordinateToGrid(String c)
-    {
-		// TODO write code so that it updates the grid.
-		String letters[] ={"A","B","C","D","E","F","G","H","I","J"};
-		int pos = 0;
-		
     }
 }

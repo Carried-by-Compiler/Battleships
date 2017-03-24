@@ -5,7 +5,8 @@ public class Main
 	public static void main(String[] args)
 	{
 		UserInterface ui = new UserInterface();
-		Game game = new Game(ui);
+		AI ai = new AI();
+		Game game = new Game(ui, ai);
 		game.start();
 	}
 

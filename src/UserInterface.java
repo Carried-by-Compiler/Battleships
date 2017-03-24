@@ -12,7 +12,7 @@ public class UserInterface
 		in = new Scanner(System.in);
 	}
 
-	public int displayOptions()
+	public int displayStartMenu()
     {
         int choice = 0;
         boolean done;
@@ -39,6 +39,35 @@ public class UserInterface
         } while(!done);
 
 
+        return choice;
+    }
+
+    public int autoGenerateBoats()
+    {
+        String message = "1) Yes\n2) No\nAutomatically place boats on grid?: ";
+        boolean correct = true;
+        int choice = 0;
+
+        do
+        {
+            try
+            {
+                correct = true;
+                System.out.print(message);
+                choice = Integer.parseInt(in.nextLine());
+                if (choice < 1 || choice > 2)
+                {
+                    correct = false;
+                    System.out.println("Incorrect Input!\n");
+                }
+            }
+            catch (NullPointerException e)
+            {
+                correct = false;
+                System.out.println("Incorrect Input!\n");
+            }
+
+        } while (!correct);
         return choice;
     }
 
@@ -71,6 +100,7 @@ public class UserInterface
 	
 	public String enterCoordinate()
 	{
+	    System.out.println("YOUR TURN\n");
 		boolean correct = true;
 		String pattern = "[A-Z]{1},[1-10]{1}";
 		String input;
@@ -103,12 +133,12 @@ public class UserInterface
 
     returns a list of points as an arraylist
 	 */
-	public ArrayList<String> getPoints(String boatName)
+	public ArrayList<String> getPoints(String boatName, int length)
     {
         // intializing
         ArrayList<String> points = new ArrayList<String>();
-        String message1 = "Enter starting coordinate (E.g \"A,1\"): ";
-        String message2 = "Enter ending coordinate (E.g \"A,3\"): ";
+        String message1 = "Enter starting coordinate for the \"" + boatName + "\": ";
+        String message2 = "Enter ending coordinate (Length: " + length + "): ";
         String error = "Incorrect placement of ship! Please try again.";
         String p1, p2;
         String partsEnter[], partsEnd[];
@@ -134,7 +164,7 @@ public class UserInterface
             if (partsEnter[0].equalsIgnoreCase(partsEnd[0]))
             {
                 System.out.println(partsEnd[0].charAt(0));
-                int distance = Integer.parseInt(partsEnd[1]) - Integer.parseInt(partsEnter[1]);
+                int distance = (Integer.parseInt(partsEnd[1]) + 1) - Integer.parseInt(partsEnter[1]);
                 System.out.println("DISTANCE: " + distance);
                 switch(boatName)
                 {
@@ -173,7 +203,7 @@ public class UserInterface
             else if (partsEnter[1].equalsIgnoreCase(partsEnd[1]))  // if same row
             {
                 System.out.println("ENTERED IF 2");
-                int distance = (int)partsEnd[0].charAt(0) - (int)partsEnter[0].charAt(0);
+                int distance = (int)(partsEnd[0].charAt(0) + 1) - (int)partsEnter[0].charAt(0);
                 System.out.println("DISTANCE: " + distance);
                 switch(boatName)
                 {
@@ -223,6 +253,21 @@ public class UserInterface
 
 
         return points;
+    }
+
+    public void displayHit(String coordinate)
+    {
+        System.out.println("YOU HAVE HIT A SHIP ON: " + coordinate);
+    }
+
+    public void displayMiss(String coordinate)
+    {
+        System.out.println("YOU HAVE MISSED ON: " + coordinate);
+    }
+
+    public void displaySunk()
+    {
+        System.out.println("YOU HAVE SUNK A BATTLESHIP!");
     }
 
     private ArrayList<String> placePointsIntoArrayList(int d, String[] pS, String[] pE)
