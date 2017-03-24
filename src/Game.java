@@ -60,6 +60,7 @@ public class Game
                             turn = 2;
                         else
                         {
+                            // TODO write code to display the position of hit ship on grid
                             results = opponent.checkIfHit(coordinate);
                             if (results[0] == true)
                                 ui.displayHit(coordinate);
