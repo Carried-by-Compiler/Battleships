@@ -16,6 +16,7 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -29,7 +30,7 @@ public class MainActivity extends AppCompatActivity  {
     private TextView v;
     private Button on;
     private BluetoothAdapter mBluetoothAdapter;
-    private ArrayList<String> deviceNames;
+    private ArrayList<String> deviceNames = new ArrayList<String>();
     private ArrayList<String> deviceAddress = new ArrayList<String>();
     private ArrayAdapter<String> listAdapter;
     private HandleConnection bluetoothService;
@@ -52,20 +53,22 @@ public class MainActivity extends AppCompatActivity  {
 
     private void init() {
 
-        v = (TextView)findViewById(R.id.textview);
+        v = (TextView)findViewById(R.id.received_message);
         on = (Button)findViewById(R.id.bluetooth_on);
-        deviceNames = new ArrayList<String>();
         ListView lView = (ListView)findViewById(R.id.available_device);
         listAdapter = new ArrayAdapter<String>(this, R.layout.devices, R.id.deviceView, deviceNames);
         lView.setAdapter(listAdapter);
         lView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                v.setText(deviceAddress.get(position));
+                String address = String.valueOf(deviceAddress.get(position));
+                Toast.makeText(MainActivity.this, "Device Address: " + address, Toast.LENGTH_SHORT).show();
+                Log.d("BLUETOOTH", "Trying to connect to device: " + address);
+                bluetoothService.connectToDevice(address);
             }
         });
         mBluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
-        bluetoothService = new HandleConnection();
+        bluetoothService = new HandleConnection(mBluetoothAdapter, mHandler);
 
         IntentFilter filter = new IntentFilter(BluetoothDevice.ACTION_FOUND);
         registerReceiver(mReceiver, filter);
@@ -78,6 +81,13 @@ public class MainActivity extends AppCompatActivity  {
         public void handleMessage(Message msg) {
             /*super.handleMessage(msg);*/
             switch (msg.what) {
+                case 0:
+                    byte[] readBuff = (byte[])msg.obj;
+                    String newMessage = new String(readBuff);
+                    TextView view = (TextView)findViewById(R.id.received_message);
+                    view.setText(newMessage);
+                    break;
+
 
             }
         }
@@ -87,6 +97,7 @@ public class MainActivity extends AppCompatActivity  {
 
         public void onReceive(Context context, Intent intent) {
             String action = intent.getAction();
+            Log.d("Discovery", "Found a new device");
             if (BluetoothDevice.ACTION_FOUND.equals(action)) {
                 // Discovery has found a device. Get the BluetoothDevice
                 // object and its info from the Intent.
@@ -106,7 +117,13 @@ public class MainActivity extends AppCompatActivity  {
         Log.d("APP", "Update List");
         deviceNames.add(deviceName);
         deviceAddress.add(hAddress);
-        listAdapter.notifyDataSetChanged();
+        Log.d("APP", "Added details to lists");
+        if (deviceNames.size() != 0 && deviceAddress.size() != 0)
+        {
+            listAdapter.notifyDataSetChanged();
+            Log.d("APP", "Updated list");
+        }
+
     }
 
     public void startBluetooth(View view) {
@@ -143,4 +160,14 @@ public class MainActivity extends AppCompatActivity  {
         mBluetoothAdapter.startDiscovery();
     }
 
+    public void becomeServer(View view) {
+        bluetoothService.startServer(mBluetoothAdapter);
+    }
+
+    public void sendMessage(View view) {
+        Log.d("MESSAGE", "Send Button Pressed");
+        EditText text = (EditText)findViewById(R.id.editText);
+        byte[] send = String.valueOf(text.getText()).getBytes();
+        bluetoothService.sendMessage(send);
+    }
 }
