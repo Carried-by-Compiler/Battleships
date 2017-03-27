@@ -10,8 +10,59 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context="com.example.battleships.MainActivity">
 
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Start Bluetooth"
+        android:id="@+id/bluetooth_on"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true"
+        android:onClick="startBluetooth"/>
+
+    <ListView
+        android:layout_width="match_parent"
+        android:layout_height="180dp"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentStart="true"
+        android:id="@+id/available_device"/>
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:hint="Enter message to send here"
+        android:id="@+id/editText"
+        android:layout_alignBaseline="@+id/bluetooth_on"
+        android:layout_alignBottom="@+id/bluetooth_on"
+        android:layout_alignParentStart="true"
+        android:layout_alignEnd="@+id/textview" />
+
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Hello World!" />
+        android:text="Welcome to the app!"
+        android:id="@+id/textview"
+        android:textSize="15dp"
+        android:layout_below="@+id/start_discovery"
+        android:layout_alignParentStart="true"
+        android:layout_marginTop="67dp" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Send Message"
+        android:id="@+id/send"
+        android:layout_below="@+id/start_discovery"
+        android:layout_alignParentEnd="true"
+        android:layout_alignStart="@+id/start_discovery" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/start_discovery"
+        android:text="Start Discovery"
+        android:onClick="startDiscovery"
+        android:layout_below="@+id/bluetooth_on"
+        android:layout_alignParentEnd="true"
+        android:layout_alignStart="@+id/bluetooth_on" />
+
 </RelativeLayout>
