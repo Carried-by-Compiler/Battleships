@@ -10,6 +10,33 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context="com.example.hmaug.leaderboard.MainActivity">
 
+    <Button
+        android:text="ADD"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginStart="55dp"
+        android:layout_marginBottom="90dp"
+        android:id="@+id/btnAdd" />
+
+    <Button
+        android:text="VIEW DATA"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignTop="@+id/btnAdd"
+        android:layout_alignParentEnd="true"
+        android:layout_marginEnd="42dp"
+        android:id="@+id/BtnView" />
+
+    <ListView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/editText"
+        android:layout_marginBottom="41dp"
+        android:layout_above="@+id/btnAdd"
+        android:layout_alignParentStart="true" />
+
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -17,7 +44,7 @@
         android:textSize="36sp"
         android:lineSpacingExtra="10sp"
         android:fontFamily="sans-serif-condensed"
-        android:layout_alignParentTop="true"
+        android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="27dp" />
+        android:layout_marginBottom="14dp" />
 </RelativeLayout>
