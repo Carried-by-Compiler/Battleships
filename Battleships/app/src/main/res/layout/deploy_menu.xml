@@ -8,7 +8,7 @@
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
-    android:background="@drawable/screen"
+    android:background="@drawable/radar"
     tools:context="com.example.battleships.deployMenu">
 
 
@@ -23,7 +23,7 @@
         android:layout_height="33dp"
         android:textAllCaps="false"
         android:textStyle="normal|bold"
-        android:background="@android:color/transparent" />
+        android:background="@drawable/outline" />
 
     <Button
         android:layout_width="33dp"
@@ -34,7 +34,7 @@
         android:layout_toEndOf="@+id/A1"
         android:textStyle="normal|bold"
         android:textSize="14sp"
-        android:background="@android:color/transparent" />
+        android:background="@drawable/outline" />
 
     <Button
         android:layout_width="33dp"
@@ -45,7 +45,7 @@
         android:layout_toEndOf="@+id/A2"
         android:textSize="14sp"
         android:textStyle="normal|bold"
-        android:background="@android:color/transparent" />
+        android:background="@drawable/outline" />
 
     <Button
         android:layout_width="33dp"
@@ -56,7 +56,7 @@
         android:layout_toEndOf="@+id/A3"
         android:textSize="14sp"
         android:textStyle="normal|bold"
-        android:background="@android:color/transparent" />
+        android:background="@drawable/outline" />
 
     <Button
         android:layout_width="33dp"
@@ -67,7 +67,7 @@
         android:layout_toEndOf="@+id/A4"
         android:textSize="14sp"
         android:textStyle="normal|bold"
-        android:background="@android:color/transparent" />
+        android:background="@drawable/outline" />
 
     <Button
         android:layout_width="33dp"
@@ -78,7 +78,7 @@
         android:layout_toEndOf="@+id/A7"
         android:textSize="14sp"
         android:textStyle="normal|bold"
-        android:background="@android:color/transparent" />
+        android:background="@drawable/outline" />
 
     <Button
         android:layout_width="33dp"
@@ -89,7 +89,7 @@
         android:layout_toEndOf="@+id/A8"
         android:textSize="14sp"
         android:textStyle="normal|bold"
-        android:background="@android:color/transparent" />
+        android:background="@drawable/outline" />
 
     <Button
         android:layout_width="33dp"
@@ -99,7 +99,7 @@
         android:layout_alignParentStart="true"
         android:layout_below="@+id/A1"
         android:textSize="14sp"
-        android:background="@android:color/transparent"
+        android:background="@drawable/outline"
         android:textStyle="normal|bold" />
 
     <Button
@@ -109,7 +109,7 @@
         android:text="B3"
         android:layout_below="@+id/A3"
         android:layout_toEndOf="@+id/A2"
-        android:background="@android:color/transparent"
+        android:background="@drawable/outline"
         android:textStyle="normal|bold" />
 
     <Button
@@ -119,7 +119,7 @@
         android:text="B4"
         android:layout_below="@+id/A4"
         android:layout_toEndOf="@+id/A3"
-        android:background="@android:color/transparent"
+        android:background="@drawable/outline"
         android:textStyle="normal|bold" />
 
     <Button
@@ -129,7 +129,7 @@
         android:text="B5"
         android:layout_below="@+id/A5"
         android:layout_toEndOf="@+id/A4"
-        android:background="@android:color/transparent"
+        android:background="@drawable/outline"
         android:textStyle="normal|bold" />
 
     <Button
@@ -139,7 +139,7 @@
         android:text="B6"
         android:layout_below="@+id/A6"
         android:layout_toEndOf="@+id/A5"
-        android:background="@android:color/transparent"
+        android:background="@drawable/outline"
         android:textStyle="normal|bold" />
 
     <Button
@@ -149,7 +149,7 @@
         android:text="B8"
         android:layout_below="@+id/A8"
         android:layout_toEndOf="@+id/A7"
-        android:background="@android:color/transparent"
+        android:background="@drawable/outline"
         android:textStyle="normal|bold"
         android:textSize="14sp" />
 
@@ -162,7 +162,7 @@
         android:layout_toEndOf="@+id/A8"
         android:textSize="14sp"
         android:textStyle="normal|bold"
-        android:background="@android:color/transparent" />
+        android:background="@drawable/outline" />
 
     <Button
         android:layout_width="33dp"
@@ -171,7 +171,7 @@
         android:text="B10"
         android:layout_below="@+id/A10"
         android:layout_toEndOf="@+id/A9"
-        android:background="@android:color/transparent"
+        android:background="@drawable/outline"
         android:textStyle="normal|bold"
         android:textSize="14sp" />
 
@@ -182,7 +182,7 @@
         android:text="C1"
         android:layout_below="@+id/B1"
         android:layout_alignParentStart="true"
-        android:background="@android:color/transparent"
+        android:background="@drawable/outline"
         android:textStyle="normal|bold" />
 
     <Button
@@ -192,7 +192,7 @@
         android:text="C5"
         android:layout_below="@+id/B5"
         android:layout_toEndOf="@+id/B4"
-        android:background="@android:color/transparent"
+        android:background="@drawable/outline"
         android:textStyle="normal|bold" />
 
     <Button
@@ -202,7 +202,7 @@
         android:text="C6"
         android:layout_below="@+id/B6"
         android:layout_toEndOf="@+id/B5"
-        android:background="@android:color/transparent"
+        android:background="@drawable/outline"
         android:textStyle="normal|bold" />
 
     <Button
@@ -212,7 +212,7 @@
         android:text="C7"
         android:layout_below="@+id/B7"
         android:layout_toEndOf="@+id/B6"
-        android:background="@android:color/transparent"
+        android:background="@drawable/outline"
         android:textStyle="normal|bold" />
 
     <Button
@@ -222,7 +222,7 @@
         android:text="C8"
         android:layout_below="@+id/B8"
         android:layout_toEndOf="@+id/B7"
-        android:background="@android:color/transparent"
+        android:background="@drawable/outline"
         android:textStyle="normal|bold" />
 
     <Button
@@ -232,7 +232,7 @@
         android:text="C9"
         android:layout_below="@+id/B9"
         android:layout_toEndOf="@+id/B8"
-        android:background="@android:color/transparent"
+        android:background="@drawable/outline"
         android:textStyle="normal|bold" />
 
     <Button
@@ -242,7 +242,7 @@
         android:text="C10"
         android:layout_below="@+id/B10"
         android:layout_toEndOf="@+id/B9"
-        android:background="@android:color/transparent"
+        android:background="@drawable/outline"
         android:textStyle="normal|bold" />
 
     <Button
@@ -252,7 +252,7 @@
         android:text="D1"
         android:layout_below="@+id/C1"
         android:layout_alignParentStart="true"
-        android:background="@android:color/transparent"
+        android:background="@drawable/outline"
         android:textStyle="normal|bold" />
 
     <Button
@@ -262,7 +262,7 @@
         android:text="D2"
         android:layout_below="@+id/C2"
         android:layout_toEndOf="@+id/C1"
-        android:background="@android:color/transparent"
+        android:background="@drawable/outline"
         android:textStyle="normal|bold" />
 
     <Button
@@ -272,7 +272,7 @@
         android:text="D3"
         android:layout_below="@+id/C3"
         android:layout_toEndOf="@+id/C2"
-        android:background="@android:color/transparent"
+        android:background="@drawable/outline"
         android:textStyle="normal|bold" />
 
     <Button
@@ -282,7 +282,7 @@
         android:text="D5"
         android:layout_below="@+id/C5"
         android:layout_toEndOf="@+id/C4"
-        android:background="@android:color/transparent"
+        android:background="@drawable/outline"
         android:textStyle="normal|bold" />
 
     <Button
@@ -293,7 +293,7 @@
         android:text="D6"
         android:layout_below="@+id/C6"
         android:layout_toEndOf="@+id/C5"
-        android:background="@android:color/transparent"
+        android:background="@drawable/outline"
         android:textStyle="normal|bold" />
 
     <Button
@@ -303,7 +303,7 @@
         android:text="D7"
         android:layout_below="@+id/C7"
         android:layout_toEndOf="@+id/C6"
-        android:background="@android:color/transparent"
+        android:background="@drawable/outline"
         android:textStyle="normal|bold" />
 
     <Button
@@ -313,7 +313,7 @@
         android:text="D8"
         android:layout_below="@+id/C8"
         android:layout_toEndOf="@+id/C7"
-        android:background="@android:color/transparent"
+        android:background="@drawable/outline"
         android:textStyle="normal|bold" />
 
     <Button
@@ -323,7 +323,7 @@
         android:text="D9"
         android:layout_below="@+id/C9"
         android:layout_toEndOf="@+id/C8"
-        android:background="@android:color/transparent"
+        android:background="@drawable/outline"
         android:textStyle="normal|bold" />
 
     <Button
@@ -333,7 +333,7 @@
         android:text="D10"
         android:layout_below="@+id/C10"
         android:layout_toEndOf="@+id/C9"
-        android:background="@android:color/transparent"
+        android:background="@drawable/outline"
         android:textStyle="normal|bold" />
 
     <Button
@@ -343,7 +343,7 @@
         android:text="E1"
         android:layout_below="@+id/D1"
         android:layout_alignParentStart="true"
-        android:background="@android:color/transparent"
+        android:background="@drawable/outline"
         android:textStyle="normal|bold" />
 
     <Button
@@ -353,7 +353,7 @@
         android:text="E2"
         android:layout_below="@+id/D2"
         android:layout_toEndOf="@+id/D1"
-        android:background="@android:color/transparent"
+        android:background="@drawable/outline"
         android:textStyle="normal|bold" />
 
     <Button
@@ -363,7 +363,7 @@
         android:text="E3"
         android:layout_below="@+id/D3"
         android:layout_toEndOf="@+id/D2"
-        android:background="@android:color/transparent"
+        android:background="@drawable/outline"
         android:textStyle="normal|bold" />
 
     <Button
@@ -373,7 +373,7 @@
         android:text="E5"
         android:layout_below="@+id/D5"
         android:layout_toEndOf="@+id/D4"
-        android:background="@android:color/transparent"
+        android:background="@drawable/outline"
         android:textStyle="normal|bold" />
 
     <Button
@@ -383,7 +383,7 @@
         android:text="E6"
         android:layout_below="@+id/D6"
         android:layout_toEndOf="@+id/D5"
-        android:background="@android:color/transparent"
+        android:background="@drawable/outline"
         android:textStyle="normal|bold" />
 
     <Button
@@ -393,7 +393,7 @@
         android:text="E7"
         android:layout_below="@+id/D7"
         android:layout_toEndOf="@+id/D6"
-        android:background="@android:color/transparent"
+        android:background="@drawable/outline"
         android:textStyle="normal|bold" />
 
     <Button
@@ -403,7 +403,7 @@
         android:text="E8"
         android:layout_below="@+id/D8"
         android:layout_toEndOf="@+id/D7"
-        android:background="@android:color/transparent"
+        android:background="@drawable/outline"
         android:textStyle="normal|bold" />
 
     <Button
@@ -413,7 +413,7 @@
         android:text="E10"
         android:layout_below="@+id/D10"
         android:layout_toEndOf="@+id/D9"
-        android:background="@android:color/transparent"
+        android:background="@drawable/outline"
         android:textStyle="normal|bold" />
 
     <Button
@@ -423,7 +423,7 @@
         android:text="F1"
         android:layout_below="@+id/E1"
         android:layout_alignParentStart="true"
-        android:background="@android:color/transparent"
+        android:background="@drawable/outline"
         android:textStyle="normal|bold" />
 
     <Button
@@ -433,7 +433,7 @@
         android:text="F3"
         android:layout_below="@+id/E3"
         android:layout_toEndOf="@+id/E2"
-        android:background="@android:color/transparent"
+        android:background="@drawable/outline"
         android:textStyle="normal|bold" />
 
     <Button
@@ -443,7 +443,7 @@
         android:text="F5"
         android:layout_below="@+id/E5"
         android:layout_toEndOf="@+id/E4"
-        android:background="@android:color/transparent"
+        android:background="@drawable/outline"
         android:textStyle="normal|bold" />
 
     <Button
@@ -453,7 +453,7 @@
         android:text="F6"
         android:layout_below="@+id/E6"
         android:layout_toEndOf="@+id/E5"
-        android:background="@android:color/transparent"
+        android:background="@drawable/outline"
         android:textStyle="normal|bold" />
 
     <Button
@@ -463,7 +463,7 @@
         android:text="F7"
         android:layout_below="@+id/E7"
         android:layout_toEndOf="@+id/E6"
-        android:background="@android:color/transparent"
+        android:background="@drawable/outline"
         android:textStyle="normal|bold" />
 
     <Button
@@ -473,7 +473,7 @@
         android:text="F8"
         android:layout_below="@+id/E8"
         android:layout_toEndOf="@+id/E7"
-        android:background="@android:color/transparent"
+        android:background="@drawable/outline"
         android:textStyle="normal|bold" />
 
     <Button
@@ -483,7 +483,7 @@
         android:text="F9"
         android:layout_below="@+id/E9"
         android:layout_toEndOf="@+id/E8"
-        android:background="@android:color/transparent"
+        android:background="@drawable/outline"
         android:textStyle="normal|bold" />
 
     <Button
@@ -493,7 +493,7 @@
         android:text="F10"
         android:layout_below="@+id/E10"
         android:layout_toEndOf="@+id/E9"
-        android:background="@android:color/transparent"
+        android:background="@drawable/outline"
         android:textStyle="normal|bold" />
 
     <Button
@@ -503,7 +503,7 @@
         android:text="G1"
         android:layout_below="@+id/F1"
         android:layout_alignParentStart="true"
-        android:background="@android:color/transparent"
+        android:background="@drawable/outline"
         android:textStyle="normal|bold" />
 
     <Button
@@ -513,7 +513,7 @@
         android:text="G2"
         android:layout_below="@+id/F2"
         android:layout_toEndOf="@+id/F1"
-        android:background="@android:color/transparent"
+        android:background="@drawable/outline"
         android:textStyle="normal|bold" />
 
     <Button
@@ -523,7 +523,7 @@
         android:text="G3"
         android:layout_below="@+id/F3"
         android:layout_toEndOf="@+id/F2"
-        android:background="@android:color/transparent"
+        android:background="@drawable/outline"
         android:textStyle="normal|bold" />
 
     <Button
@@ -533,7 +533,7 @@
         android:text="G5"
         android:layout_below="@+id/F5"
         android:layout_toEndOf="@+id/F4"
-        android:background="@android:color/transparent"
+        android:background="@drawable/outline"
         android:textStyle="normal|bold" />
 
     <Button
@@ -543,7 +543,7 @@
         android:text="G6"
         android:layout_below="@+id/F6"
         android:layout_toEndOf="@+id/F5"
-        android:background="@android:color/transparent"
+        android:background="@drawable/outline"
         android:textStyle="normal|bold" />
 
     <Button
@@ -553,7 +553,7 @@
         android:text="G7"
         android:layout_below="@+id/F7"
         android:layout_toEndOf="@+id/F6"
-        android:background="@android:color/transparent"
+        android:background="@drawable/outline"
         android:textStyle="normal|bold" />
 
     <Button
@@ -563,7 +563,7 @@
         android:text="G8"
         android:layout_below="@+id/F8"
         android:layout_toEndOf="@+id/F7"
-        android:background="@android:color/transparent"
+        android:background="@drawable/outline"
         android:textStyle="normal|bold" />
 
     <Button
@@ -573,7 +573,7 @@
         android:text="G9"
         android:layout_below="@+id/F9"
         android:layout_toEndOf="@+id/F8"
-        android:background="@android:color/transparent"
+        android:background="@drawable/outline"
         android:textStyle="normal|bold" />
 
     <Button
@@ -583,7 +583,7 @@
         android:text="G10"
         android:layout_below="@+id/F10"
         android:layout_toEndOf="@+id/F9"
-        android:background="@android:color/transparent"
+        android:background="@drawable/outline"
         android:textStyle="normal|bold" />
 
     <Button
@@ -593,7 +593,7 @@
         android:text="H1"
         android:layout_below="@+id/G1"
         android:layout_alignParentStart="true"
-        android:background="@android:color/transparent"
+        android:background="@drawable/outline"
         android:textStyle="normal|bold" />
 
     <Button
@@ -603,7 +603,7 @@
         android:text="H2"
         android:layout_below="@+id/G2"
         android:layout_toEndOf="@+id/G1"
-        android:background="@android:color/transparent"
+        android:background="@drawable/outline"
         android:textStyle="normal|bold" />
 
     <Button
@@ -613,7 +613,7 @@
         android:text="H3"
         android:layout_below="@+id/G3"
         android:layout_toEndOf="@+id/G2"
-        android:background="@android:color/transparent"
+        android:background="@drawable/outline"
         android:textStyle="normal|bold" />
 
     <Button
@@ -623,7 +623,7 @@
         android:text="H4"
         android:layout_below="@+id/G4"
         android:layout_toEndOf="@+id/G3"
-        android:background="@android:color/transparent"
+        android:background="@drawable/outline"
         android:textStyle="normal|bold" />
 
     <Button
@@ -633,7 +633,7 @@
         android:text="H5"
         android:layout_below="@+id/G5"
         android:layout_toEndOf="@+id/G4"
-        android:background="@android:color/transparent"
+        android:background="@drawable/outline"
         android:textStyle="normal|bold" />
 
     <Button
@@ -643,7 +643,7 @@
         android:text="H6"
         android:layout_below="@+id/G6"
         android:layout_toEndOf="@+id/G5"
-        android:background="@android:color/transparent"
+        android:background="@drawable/outline"
         android:textStyle="normal|bold" />
 
     <Button
@@ -653,7 +653,7 @@
         android:text="H7"
         android:layout_below="@+id/G7"
         android:layout_toEndOf="@+id/G6"
-        android:background="@android:color/transparent"
+        android:background="@drawable/outline"
         android:textStyle="normal|bold" />
 
     <Button
@@ -663,7 +663,7 @@
         android:text="H8"
         android:layout_below="@+id/G8"
         android:layout_toEndOf="@+id/G7"
-        android:background="@android:color/transparent"
+        android:background="@drawable/outline"
         android:textStyle="normal|bold" />
 
     <Button
@@ -673,7 +673,7 @@
         android:text="H10"
         android:layout_below="@+id/G10"
         android:layout_toEndOf="@+id/G9"
-        android:background="@android:color/transparent"
+        android:background="@drawable/outline"
         android:textStyle="normal|bold" />
 
     <Button
@@ -683,7 +683,7 @@
         android:text="I1"
         android:layout_below="@+id/H1"
         android:layout_alignParentStart="true"
-        android:background="@android:color/transparent"
+        android:background="@drawable/outline"
         android:textStyle="normal|bold" />
 
     <Button
@@ -693,7 +693,7 @@
         android:text="I2"
         android:layout_below="@+id/H2"
         android:layout_toEndOf="@+id/H1"
-        android:background="@android:color/transparent"
+        android:background="@drawable/outline"
         android:textStyle="normal|bold" />
 
     <Button
@@ -703,7 +703,7 @@
         android:text="I3"
         android:layout_below="@+id/H3"
         android:layout_toEndOf="@+id/H2"
-        android:background="@android:color/transparent"
+        android:background="@drawable/outline"
         android:textStyle="normal|bold" />
 
     <Button
@@ -713,7 +713,7 @@
         android:text="I4"
         android:layout_below="@+id/H4"
         android:layout_toEndOf="@+id/H3"
-        android:background="@android:color/transparent"
+        android:background="@drawable/outline"
         android:textStyle="normal|bold" />
 
     <Button
@@ -723,7 +723,7 @@
         android:text="I5"
         android:layout_below="@+id/H5"
         android:layout_toEndOf="@+id/H4"
-        android:background="@android:color/transparent"
+        android:background="@drawable/outline"
         android:textStyle="normal|bold" />
 
     <Button
@@ -733,7 +733,7 @@
         android:text="I7"
         android:layout_below="@+id/H7"
         android:layout_toEndOf="@+id/H6"
-        android:background="@android:color/transparent"
+        android:background="@drawable/outline"
         android:textStyle="normal|bold" />
 
     <Button
@@ -743,7 +743,7 @@
         android:text="I8"
         android:layout_below="@+id/H8"
         android:layout_toEndOf="@+id/H7"
-        android:background="@android:color/transparent"
+        android:background="@drawable/outline"
         android:textStyle="normal|bold" />
 
     <Button
@@ -753,7 +753,7 @@
         android:text="J1"
         android:layout_below="@+id/I1"
         android:layout_alignParentStart="true"
-        android:background="@android:color/transparent"
+        android:background="@drawable/outline"
         android:textStyle="normal|bold" />
 
     <Button
@@ -763,7 +763,7 @@
         android:text="J2"
         android:layout_below="@+id/I2"
         android:layout_toEndOf="@+id/I1"
-        android:background="@android:color/transparent"
+        android:background="@drawable/outline"
         android:textStyle="normal|bold" />
 
     <Button
@@ -773,7 +773,7 @@
         android:text="J3"
         android:layout_below="@+id/I3"
         android:layout_toEndOf="@+id/I2"
-        android:background="@android:color/transparent"
+        android:background="@drawable/outline"
         android:textStyle="normal|bold" />
 
     <Button
@@ -783,7 +783,7 @@
         android:text="J4"
         android:layout_below="@+id/I4"
         android:layout_toEndOf="@+id/I3"
-        android:background="@android:color/transparent"
+        android:background="@drawable/outline"
         android:textStyle="normal|bold" />
 
     <Button
@@ -793,7 +793,7 @@
         android:text="J5"
         android:layout_below="@+id/I5"
         android:layout_toEndOf="@+id/I4"
-        android:background="@android:color/transparent"
+        android:background="@drawable/outline"
         android:textStyle="normal|bold" />
 
     <Button
@@ -803,7 +803,7 @@
         android:text="J6"
         android:layout_below="@+id/I6"
         android:layout_toEndOf="@+id/I5"
-        android:background="@android:color/transparent"
+        android:background="@drawable/outline"
         android:textStyle="normal|bold" />
 
     <Button
@@ -813,7 +813,7 @@
         android:text="J7"
         android:layout_below="@+id/I7"
         android:layout_toEndOf="@+id/I6"
-        android:background="@android:color/transparent"
+        android:background="@drawable/outline"
         android:textStyle="normal|bold" />
 
     <Button
@@ -823,7 +823,7 @@
         android:text="J9"
         android:layout_below="@+id/I9"
         android:layout_toEndOf="@+id/I8"
-        android:background="@android:color/transparent"
+        android:background="@drawable/outline"
         android:textStyle="normal|bold" />
 
     <Button
@@ -832,7 +832,7 @@
         android:id="@+id/J10"
         android:layout_below="@+id/I10"
         android:layout_toEndOf="@+id/I9"
-        android:background="@android:color/transparent"
+        android:background="@drawable/outline"
         android:textStyle="normal|bold"
         android:text="J10" />
 
@@ -857,7 +857,7 @@
         android:textStyle="normal|bold"
         android:layout_alignParentTop="true"
         android:layout_toEndOf="@+id/A5"
-        android:background="@android:color/transparent" />
+        android:background="@drawable/outline" />
 
     <Button
         android:layout_width="33dp"
@@ -868,7 +868,7 @@
         android:textStyle="normal|bold"
         android:layout_alignParentTop="true"
         android:layout_toEndOf="@+id/B6"
-        android:background="@android:color/transparent" />
+        android:background="@drawable/outline" />
 
     <Button
         android:layout_width="33dp"
@@ -878,7 +878,7 @@
 
         android:layout_alignBottom="@+id/D3"
         android:layout_toEndOf="@+id/C3"
-        android:background="@android:color/transparent"
+        android:background="@drawable/outline"
         android:textStyle="normal|bold" />
 
     <Button
@@ -890,7 +890,7 @@
         android:textSize="14sp"
         android:layout_alignParentTop="true"
         android:layout_toEndOf="@+id/A9"
-        android:background="@android:color/transparent" />
+        android:background="@drawable/outline" />
 
     <Button
         android:layout_width="33dp"
@@ -899,7 +899,7 @@
         android:text="B2"
         android:layout_alignBottom="@+id/B3"
         android:layout_toEndOf="@+id/A1"
-        android:background="@android:color/transparent"
+        android:background="@drawable/outline"
         android:textStyle="normal|bold" />
 
     <Button
@@ -909,7 +909,7 @@
         android:text="C2"
         android:layout_below="@+id/B2"
         android:layout_toEndOf="@+id/B1"
-        android:background="@android:color/transparent"
+        android:background="@drawable/outline"
         android:textStyle="normal|bold" />
 
     <Button
@@ -919,7 +919,7 @@
         android:text="I9"
         android:layout_alignBottom="@+id/I8"
         android:layout_toEndOf="@+id/H8"
-        android:background="@android:color/transparent"
+        android:background="@drawable/outline"
         android:textStyle="normal|bold" />
 
     <Button
@@ -929,7 +929,7 @@
         android:text="I6"
         android:layout_alignBottom="@+id/I5"
         android:layout_toEndOf="@+id/H5"
-        android:background="@android:color/transparent"
+        android:background="@drawable/outline"
         android:textStyle="normal|bold" />
 
     <Button
@@ -937,7 +937,7 @@
         android:layout_height="33dp"
         android:id="@+id/H9"
         android:text="H9"
-        android:background="@android:color/transparent"
+        android:background="@drawable/outline"
         android:layout_below="@+id/G9"
         android:layout_toEndOf="@+id/H8"
         android:textStyle="normal|bold" />
@@ -947,7 +947,7 @@
         android:layout_height="33dp"
         android:id="@+id/B7"
         android:text="B7"
-        android:background="@android:color/transparent"
+        android:background="@drawable/outline"
         android:textStyle="normal|bold"
         android:layout_alignBottom="@+id/B8"
         android:layout_toEndOf="@+id/B6" />
@@ -957,7 +957,7 @@
         android:layout_height="33dp"
         android:id="@+id/F2"
         android:text="F2"
-        android:background="@android:color/transparent"
+        android:background="@drawable/outline"
         android:layout_alignBottom="@+id/F1"
         android:layout_toEndOf="@+id/E1"
         android:textStyle="normal|bold" />
@@ -967,7 +967,7 @@
         android:layout_height="33dp"
         android:id="@+id/E4"
         android:text="E4"
-        android:background="@android:color/transparent"
+        android:background="@drawable/outline"
 
         android:layout_alignBottom="@+id/E3"
         android:layout_toEndOf="@+id/D3"
@@ -978,7 +978,7 @@
         android:layout_height="33dp"
         android:id="@+id/I10"
         android:text="I10"
-        android:background="@android:color/transparent"
+        android:background="@drawable/outline"
         android:layout_alignBottom="@+id/I9"
         android:layout_toEndOf="@+id/J9"
         android:textStyle="normal|bold" />
@@ -988,7 +988,7 @@
         android:layout_height="33dp"
         android:id="@+id/J8"
         android:text="J8"
-        android:background="@android:color/transparent"
+        android:background="@drawable/outline"
         android:layout_alignBottom="@+id/J9"
         android:layout_toEndOf="@+id/J7"
         android:textStyle="normal|bold" />
@@ -998,7 +998,7 @@
         android:layout_height="33dp"
         android:id="@+id/G4"
         android:text="G4"
-        android:background="@android:color/transparent"
+        android:background="@drawable/outline"
         android:layout_below="@+id/F4"
         android:layout_toEndOf="@+id/F3"
         android:textStyle="normal|bold" />
@@ -1008,7 +1008,7 @@
         android:layout_height="33dp"
         android:id="@+id/C3"
         android:text="C3"
-        android:background="@android:color/transparent"
+        android:background="@drawable/outline"
         android:textStyle="normal|bold"
         android:layout_below="@+id/B3"
         android:layout_toEndOf="@+id/D2" />
@@ -1018,7 +1018,7 @@
         android:layout_height="33dp"
         android:id="@+id/C4"
         android:text="C4"
-        android:background="@android:color/transparent"
+        android:background="@drawable/outline"
         android:textStyle="normal|bold"
 
         android:layout_alignBottom="@+id/C3"
@@ -1029,7 +1029,7 @@
         android:layout_height="33dp"
         android:id="@+id/F4"
         android:text="F4"
-        android:background="@android:color/transparent"
+        android:background="@drawable/outline"
         android:textStyle="normal|bold"
         android:layout_below="@+id/E4"
         android:layout_toEndOf="@+id/E3" />
@@ -1039,10 +1039,32 @@
         android:layout_height="33dp"
         android:id="@+id/E9"
         android:text="E9"
-        android:background="@android:color/transparent"
+        android:background="@drawable/outline"
         android:textStyle="normal|bold"
         android:layout_alignBottom="@+id/E8"
         android:layout_toEndOf="@+id/D8" />
+
+    <TextView
+        android:text="Starting Coordinate"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/startMsg"
+        android:layout_below="@+id/PosMsg"
+        android:layout_alignStart="@+id/PosMsg"
+        android:textAllCaps="false"
+        android:textStyle="normal|bold"
+        android:textColor="@color/colorAccent" />
+
+    <TextView
+        android:text="Ending Coordinate"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/endMsg"
+        android:layout_below="@+id/PosMsg"
+        android:layout_alignEnd="@+id/PosMsg"
+        android:textStyle="normal|bold"
+        android:textAllCaps="false"
+        android:textColor="@color/colorAccent" />
 
     <TextView
         android:text="Enter Position For Destroyer 1"
@@ -1054,56 +1076,44 @@
         android:textSize="18sp"
         android:textAlignment="center"
         android:layout_below="@+id/J1"
-        android:layout_alignParentStart="true"
-        android:layout_marginStart="15dp" />
-
-    <TextView
-        android:text="Starting Coordinate"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/startMsg"
-        android:layout_below="@+id/PosMsg"
-        android:layout_alignStart="@+id/PosMsg" />
-
-    <TextView
-        android:text="Ending Coordinate"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/endMsg"
-        android:layout_below="@+id/PosMsg"
-        android:layout_alignEnd="@+id/PosMsg" />
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/startingCoordinate"
-        android:layout_below="@+id/startMsg"
-        android:layout_toEndOf="@+id/J2"
-        android:layout_marginStart="10dp" />
-
-    <Button
-        android:text="Confirm"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/confirmButton"
-        android:layout_alignParentBottom="true"
-        android:layout_toStartOf="@+id/J10" />
-
-    <Button
-        android:text="Comfirm"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/autoButton"
-        android:layout_alignParentBottom="true"
-        android:layout_alignEnd="@+id/startMsg" />
+        android:layout_marginTop="11dp"
+        android:textColor="@color/colorAccent"
+        android:layout_alignEnd="@+id/J10"
+        android:layout_alignParentStart="true" />
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/endingCoordinate"
+        android:textColor="@color/colorAccent"
         android:layout_below="@+id/endMsg"
-        android:layout_toStartOf="@+id/J9"
-        android:layout_marginEnd="11dp" />
+        android:layout_toEndOf="@+id/J8" />
+
+    <Button
+        android:text="Confirm"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/endConfirm"
+        android:layout_alignBaseline="@+id/startConfirm"
+        android:layout_alignBottom="@+id/startConfirm"
+        android:layout_toEndOf="@+id/J7" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/startingCoordinate"
+        android:textColor="@color/colorAccent"
+        android:layout_below="@+id/startMsg"
+        android:layout_toStartOf="@+id/J3" />
+
+    <Button
+        android:text="Comfirm"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/startConfirm"
+        android:layout_marginTop="18dp"
+        android:layout_below="@+id/startingCoordinate"
+        android:layout_toStartOf="@+id/J4" />
 
 
 </RelativeLayout>

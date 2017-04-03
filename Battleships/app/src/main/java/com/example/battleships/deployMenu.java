@@ -1,6 +1,8 @@
 package com.example.battleships;
 
+import android.content.DialogInterface;
 import android.content.Intent;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -20,35 +22,20 @@ public class deployMenu extends AppCompatActivity {
                 R.id.I1, R.id.I2, R.id.I3, R.id.I4, R.id.I5, R.id.I6, R.id.I7, R.id.I8, R.id.I9, R.id.I10,
                 R.id.J1, R.id.J2, R.id.J3, R.id.J4, R.id.J5, R.id.J6, R.id.J7, R.id.J8, R.id.J9, R.id.J10};
 
-        private Button confirmBtn;
         private TextView startPosField;
         private TextView endPosField;
         private int Coord = 1;
+        private boolean endCoord = false;
 
         @Override
         protected void onCreate(Bundle savedInstanceState) {
             super.onCreate(savedInstanceState);
-            setContentView(R.layout.player_turn);
+            setContentView(R.layout.deploy_menu);
             this.startPosField = (TextView) findViewById(R.id.startingCoordinate);
             this.endPosField = (TextView) findViewById(R.id.endingCoordinate);
+
             setGridOnClickListener();
-
-            confirmBtn = (Button) findViewById(R.id.confirmButton);
-            confirmBtn.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-                    if(Coord == 3)
-                    {
-                        Intent intent = new Intent(deployMenu.this, playerTurn.class);
-                        startActivity(intent);
-                    }
-                }
-            });
-
-        }
-
-        @Override
-        public void onBackPressed(){
+            setButtonOnClickListeners();
 
         }
 
@@ -57,17 +44,75 @@ public class deployMenu extends AppCompatActivity {
                 @Override
                 public void onClick(View v) {
                     Button button = (Button) v;
-                    if (Coord == 1) {
+                    if (Coord == 1)
                         startPosField.setText(button.getText());
-                        Coord++;
-                    } else
+                    else {
                         endPosField.setText(button.getText());
-                        Coord ++;
+                        endCoord = true;
+                    }
                 }
             };
             for (int id : gridButtons) {
                 findViewById(id).setOnClickListener(listener);
             }
         }
+
+    private void setButtonOnClickListeners() {
+        View.OnClickListener listener2 = new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Button button = (Button) v;
+                //Need to add in taking the value of the start coordinate
+                Coord++;
+            }
+        };
+
+        findViewById(R.id.startConfirm).setOnClickListener(listener2);
+
+        View.OnClickListener listener3 = new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Button button = (Button) v;
+                //Need to add in taking the value of the end coordinate
+                if(Coord == 2 && endCoord) {
+                    Coord++;
+                    playGame();
+                }
+            }
+        };
+
+        findViewById(R.id.endConfirm).setOnClickListener(listener3);
+    }
+
+    private void playGame() {
+        if(Coord == 3) {
+            Intent intent = new Intent(deployMenu.this, playerTurn.class);
+            finish();
+            startActivity(intent);
+        }
+    }
+
+    @Override
+    public void onBackPressed() {
+        AlertDialog.Builder builder2 = new AlertDialog.Builder(deployMenu.this);
+        builder2.setMessage("Do you want to return to the Main Menu?");
+        builder2.setCancelable(true);
+        builder2.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int id) {
+                Intent intent = new Intent(deployMenu.this, menu.class);
+                finish();
+                startActivity(intent);
+            }
+        });
+        builder2.setNegativeButton("No", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int id) {
+                dialog.cancel();
+            }
+        });
+        AlertDialog alert = builder2.create();
+        alert.show();
+    }
 }
 

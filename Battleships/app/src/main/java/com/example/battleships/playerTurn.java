@@ -1,6 +1,8 @@
 package com.example.battleships;
 
+import android.content.DialogInterface;
 import android.content.Intent;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -20,42 +22,72 @@ public class playerTurn extends AppCompatActivity {
             R.id.I1, R.id.I2, R.id.I3, R.id.I4, R.id.I5, R.id.I6, R.id.I7, R.id.I8, R.id.I9, R.id.I10,
             R.id.J1, R.id.J2, R.id.J3, R.id.J4, R.id.J5, R.id.J6, R.id.J7, R.id.J8, R.id.J9, R.id.J10};
 
-    private Button button1;
     private TextView posField;
+    private boolean enteredCoord = false;
+    private boolean haveFired = false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.player_turn);
         this.posField = (TextView) findViewById(R.id.posField);
-        setGridOnClickListener();
-
-            button1 = (Button) findViewById(R.id.turnButton);
-            button1.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-                    Intent intent = new Intent(playerTurn.this, aiTurn.class);
-                    startActivity(intent);
-                }
-            });
-    }
-
-    @Override
-    public void onBackPressed(){
+        setButtonOnClickListener();
 
     }
 
-    private void setGridOnClickListener() {
+    private void setButtonOnClickListener() {
         View.OnClickListener listener = new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Button button = (Button) v;
-                posField.setText(button.getText());
-                }
-            };
-            for (int id : gridButtons) {
-                findViewById(id).setOnClickListener(listener);
+                if (!haveFired)
+                    posField.setText(button.getText());
+                    enteredCoord = true;
             }
+        };
+        for (int id : gridButtons) {
+            findViewById(id).setOnClickListener(listener);
         }
+
+        View.OnClickListener listener2 = new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Button button = (Button) v;
+                if(enteredCoord)
+                    gameStart();
+            };
+        };
+        findViewById(R.id.fireButton).setOnClickListener(listener2);
+    }
+
+    private void gameStart() {
+        Intent intent = new Intent(playerTurn.this, aiTurn.class);
+        finish();
+        startActivity(intent);
+    }
+
+
+    @Override
+    public void onBackPressed() {
+        AlertDialog.Builder builder3 = new AlertDialog.Builder(playerTurn.this);
+        builder3.setMessage("Do you want to return to the Main Menu?");
+        builder3.setCancelable(true);
+        builder3.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int id) {
+                Intent intent = new Intent(playerTurn.this, menu.class);
+                finish();
+                startActivity(intent);
+            }
+        });
+        builder3.setNegativeButton("No", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int id) {
+                dialog.cancel();
+            }
+        });
+        AlertDialog alert = builder3.create();
+        alert.show();
+    }
 }
 

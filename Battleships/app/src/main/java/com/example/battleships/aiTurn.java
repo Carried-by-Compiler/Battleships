@@ -1,6 +1,8 @@
 package com.example.battleships;
 
+import android.content.DialogInterface;
 import android.content.Intent;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -34,14 +36,33 @@ public class aiTurn extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                     Intent intent = new Intent(aiTurn.this, playerTurn.class);
+                    finish();
                     startActivity(intent);
             }
         });
     }
 
     @Override
-    public void onBackPressed(){
-
+    public void onBackPressed() {
+        AlertDialog.Builder builder4 = new AlertDialog.Builder(aiTurn.this);
+        builder4.setMessage("Do you want to return to the Main Menu?");
+        builder4.setCancelable(true);
+        builder4.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int id) {
+                Intent intent = new Intent(aiTurn.this, menu.class);
+                finish();
+                startActivity(intent);
+            }
+        });
+        builder4.setNegativeButton("No", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int id) {
+                dialog.cancel();
+            }
+        });
+        AlertDialog alert = builder4.create();
+        alert.show();
     }
 }
 
