@@ -9,7 +9,7 @@
 
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".winScreen">
+        <activity android:name=".menu">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -20,7 +20,7 @@
         <activity android:name=".deployMenu" />
         <activity android:name=".playerTurn" />
         <activity android:name=".aiTurn" />
-        <activity android:name=".menu" />
+        <activity android:name=".winScreen" />
         <activity android:name=".loseScreen" />
         <activity android:name=".pvpMenu" />
         <activity android:name=".leaderBoard"></activity>
