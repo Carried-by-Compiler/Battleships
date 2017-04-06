@@ -15,7 +15,7 @@ public class DatabaseHelper  extends SQLiteOpenHelper{
 
     private static  final String TAG = "DatabaseHelper";
 
-    private static final String TABLE_NAME = "people_table";
+    private static final String TABLE_NAME = " people_table";
     private static  final String COL1 = "ID";
     private static  final String COL2 = "name";
 
@@ -25,13 +25,13 @@ public class DatabaseHelper  extends SQLiteOpenHelper{
 
     @Override
     public void onCreate(SQLiteDatabase db){
-    String createTable = "Create Table" + TABLE_NAME + "(ID INTEGER PRIMARY KEY AUTOINCREMENT, " + COL2 + " Text)";
+    String createTable = "CREATE TABLE " + TABLE_NAME + "(ID INTEGER PRIMARY KEY AUTOINCREMENT, " + COL2 + " TEXT)";
         db.execSQL(createTable);
     }
 
     @Override
     public void onUpgrade(SQLiteDatabase db, int i, int i1){
-        db.execSQL("Drop if Table Exists" + TABLE_NAME);
+        db.execSQL("DROP IF TABLE EXISTS" + TABLE_NAME);
         onCreate(db);
     }
 
@@ -53,7 +53,8 @@ public class DatabaseHelper  extends SQLiteOpenHelper{
 
     public Cursor getData(){
         SQLiteDatabase db = this.getWritableDatabase();
-        Cursor data = db.rawQuery("SELECT * FROM " + TABLE_NAME, null);
+        String query = "SELECT * FROM" + TABLE_NAME;
+        Cursor data = db.rawQuery(query, null);
         return data ;
     }
 

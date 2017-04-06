@@ -11,16 +11,6 @@
     tools:context="com.example.hmaug.leaderboard.MainActivity">
 
     <Button
-        android:text="ADD"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:layout_alignParentStart="true"
-        android:layout_marginStart="55dp"
-        android:layout_marginBottom="90dp"
-        android:id="@+id/btnAdd" />
-
-    <Button
         android:text="VIEW DATA"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -29,22 +19,21 @@
         android:layout_marginEnd="42dp"
         android:id="@+id/BtnView" />
 
-    <ListView
+    <EditText
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="50dp"
         android:id="@+id/editText"
-        android:layout_marginBottom="41dp"
-        android:layout_above="@+id/btnAdd"
+        android:layout_marginTop="121dp"
+        android:layout_below="@+id/textView"
         android:layout_alignParentStart="true" />
 
-    <TextView
+    <Button
+        android:text="ADD"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="LeaderBoard"
-        android:textSize="36sp"
-        android:lineSpacingExtra="10sp"
-        android:fontFamily="sans-serif-condensed"
-        android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginBottom="14dp" />
+        android:layout_marginStart="53dp"
+        android:id="@+id/btnAdd"
+        android:layout_below="@+id/editText"
+        android:layout_alignParentStart="true"
+        android:layout_marginTop="124dp" />
 </RelativeLayout>

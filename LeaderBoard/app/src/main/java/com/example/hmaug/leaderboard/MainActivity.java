@@ -48,9 +48,11 @@ public class MainActivity extends AppCompatActivity {
     public void AddData(String newEntry){
         boolean insertData = mDatabaseHelper.addData(newEntry);
 
-        if(insertData){
+        if(insertData)
+        {
             toastMessage("Data Successfully Inserted!");
-        } else {
+        } else
+        {
             toastMessage("Something went wrong");
         }
     }

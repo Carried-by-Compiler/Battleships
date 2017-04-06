@@ -3,6 +3,7 @@ package com.example.hmaug.leaderboard;
 import android.database.Cursor;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.widget.ArrayAdapter;
 import android.widget.ListAdapter;
@@ -15,7 +16,7 @@ import java.util.ArrayList;
  * Created by hmaug on 03/04/2017.
  */
 
-public class ListDataActivity {
+public class ListDataActivity  extends AppCompatActivity {
 
     private static final String TAG = "ListDataActivity";
 
