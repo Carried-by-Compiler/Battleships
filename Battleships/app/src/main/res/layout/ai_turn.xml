@@ -8,7 +8,6 @@
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
-    android:background="@drawable/radar"
     tools:context="com.example.battleships.aiTurn">
 
 
@@ -836,19 +835,6 @@
         android:textStyle="normal|bold"
         android:text="J10" />
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignTop="@+id/textView"
-        android:id="@+id/posField"
-        android:layout_alignBottom="@+id/textView"
-        android:layout_alignEnd="@+id/J10"
-        android:textAlignment="center"
-        android:textSize="22sp"
-        android:layout_toEndOf="@+id/textView"
-        android:textStyle="normal|bold"
-        android:textColor="@color/colorAccent" />
-
     <Button
         android:layout_width="33dp"
         android:layout_height="33dp"
@@ -1045,45 +1031,6 @@
         android:layout_alignBottom="@+id/E8"
         android:layout_toEndOf="@+id/D8" />
 
-    <TextView
-        android:text="ATTACK POSITION:"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="12dp"
-        android:id="@+id/textView"
-        android:textStyle="normal|bold"
-        android:textAlignment="textStart"
-        android:textSize="22sp"
-        android:layout_below="@+id/J1"
-        android:layout_alignParentStart="true"
-        android:textAllCaps="true"
-        android:textColor="@color/colorAccent" />
-
-    <TextView
-        android:text="Result:"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/textView2"
-        android:fontFamily="sans-serif"
-        android:textSize="22sp"
-        android:textStyle="normal|bold"
-        android:textAllCaps="true"
-        android:textAlignment="textStart"
-        android:layout_below="@+id/textView"
-        android:layout_alignParentStart="true"
-        android:layout_toStartOf="@+id/posField"
-        android:textColor="@color/colorAccent" />
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/posField"
-        android:id="@+id/resultField"
-        android:layout_alignEnd="@+id/posField"
-        android:layout_toEndOf="@+id/J6"
-        android:layout_alignBottom="@+id/textView2"
-        android:textAlignment="viewStart"
-        android:textColor="@color/colorAccent" />
 
     <Button
         android:text="Your Turn"
@@ -1093,6 +1040,27 @@
         android:textStyle="normal|bold"
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/resultField"
+        android:textAlignment="viewStart"
+        android:textColor="@color/colorAccent"
+        android:layout_below="@+id/J4"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="22dp" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/posField"
+        android:textAlignment="center"
+        android:textSize="22sp"
+        android:textStyle="normal|bold"
+        android:textColor="@color/colorAccent"
+        android:layout_below="@+id/resultField"
+        android:layout_toEndOf="@+id/J2" />
 
 
 </RelativeLayout>

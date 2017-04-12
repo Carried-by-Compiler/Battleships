@@ -11,25 +11,25 @@ public class pvpMenu extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.pvp_menu);
-        setButtonOnClickListeners();
+        setButtonOnClickListeners(); //  initialises the button listeners.
     }
 
     private void setButtonOnClickListeners() {
         View.OnClickListener listener = new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(pvpMenu.this, menu.class);
-                finish();
-                startActivity(intent);
+                Intent intent = new Intent(pvpMenu.this, menu.class); // initialises intent.
+                finish(); // ends activity.
+                startActivity(intent); // starts intent.
             }
         };
-        findViewById(R.id.returnButtonp).setOnClickListener(listener);
+        findViewById(R.id.returnButtonp).setOnClickListener(listener);  // initialises listener.
     }
 
     @Override
     public void onBackPressed() {
-        Intent intent = new Intent(pvpMenu.this, menu.class);
-        finish();
-        startActivity(intent);
+        Intent intent = new Intent(pvpMenu.this, menu.class); // initialises intent.
+        finish(); // ends activity.
+        startActivity(intent); // starts intent.
     }
 }

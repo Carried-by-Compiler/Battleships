@@ -10,7 +10,7 @@
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context="com.example.battleships.menu"
-    android:background="@drawable/radar">
+    android:background="@drawable/background">
 
     <RelativeLayout
         android:layout_width="match_parent"
@@ -42,31 +42,31 @@
         <Button
             android:layout_width="50dp"
             android:layout_height="50dp"
-            android:id="@+id/soundButton"
-            android:background="@drawable/silent_n"
-            android:layout_alignParentBottom="true"
-            android:layout_alignParentEnd="true" />
-
-        <Button
-            android:layout_width="50dp"
-            android:layout_height="50dp"
             android:layout_x="129dp"
             android:layout_y="415dp"
             android:id="@+id/highscoresButton"
             android:background="@android:drawable/btn_star"
-            android:layout_alignParentBottom="true"
+            android:layout_alignBaseline="@+id/soundButton"
+            android:layout_alignBottom="@+id/soundButton"
             android:layout_alignParentStart="true" />
 
+        <Button
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:id="@+id/soundButton"
+            android:background="@drawable/silent_n"
+            android:layout_marginBottom="28dp"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentEnd="true" />
+
         <ImageView
-            android:layout_width="300dp"
-            android:layout_height="70dp"
-            android:src="@drawable/title"
-            android:id="@+id/Title"
-            android:layout_x="15dp"
-            android:layout_y="75dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:srcCompat="@drawable/title"
+            android:id="@+id/imageView"
             android:layout_alignParentTop="true"
-            android:layout_centerHorizontal="true"
-            android:layout_marginTop="39dp" />
+            android:layout_alignParentStart="true"
+            android:layout_marginTop="43dp" />
 
     </RelativeLayout>
 

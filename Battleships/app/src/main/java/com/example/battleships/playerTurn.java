@@ -1,13 +1,19 @@
 package com.example.battleships;
 
+import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.os.AsyncTask;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
+
+import java.util.ArrayList;
 
 public class playerTurn extends AppCompatActivity {
 
@@ -22,16 +28,23 @@ public class playerTurn extends AppCompatActivity {
             R.id.I1, R.id.I2, R.id.I3, R.id.I4, R.id.I5, R.id.I6, R.id.I7, R.id.I8, R.id.I9, R.id.I10,
             R.id.J1, R.id.J2, R.id.J3, R.id.J4, R.id.J5, R.id.J6, R.id.J7, R.id.J8, R.id.J9, R.id.J10};
 
-    private TextView posField;
-    private boolean enteredCoord = false;
-    private boolean haveFired = false;
+    private TextView posField; // initialises the textfield for the position the user wishes to attack.
+    private boolean enteredCoord = false; // initialises the boolean to detect that the user has selected a coordinate.
+    private String chosenPoint;
+    private ArrayList<Point> hitHistory;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.player_turn);
-        this.posField = (TextView) findViewById(R.id.posField);
-        setButtonOnClickListener();
+        this.posField = (TextView) findViewById(R.id.posField); // links the textView to the posField button.
+        setButtonOnClickListener(); // initialises the listeners to the buttons.
+
+        hitHistory = new ArrayList<Point>();
+        ArrayList<Boat> b = deployMenu.game.getBoats();
+        Boat c = b.get(0);
+        ArrayList<Point> p = c.getPoints();
+        posField.setText(p.get(0).getCoordinate());
 
     }
 
@@ -40,44 +53,70 @@ public class playerTurn extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Button button = (Button) v;
-                if (!haveFired)
-                    posField.setText(button.getText());
-                    enteredCoord = true;
+                posField.setText(button.getText()); // changes text in textView to the text in the button.
+                chosenPoint = button.getText().toString();
+                enteredCoord = true; // sets to true to show that a coordinate has been chosen.
+               /* for (Point p: hitHistory)
+                    Log.d("HITHISTORY", p.getCoordinate());*/
             }
         };
         for (int id : gridButtons) {
-            findViewById(id).setOnClickListener(listener);
+            findViewById(id).setOnClickListener(listener); // links the listener to the grid buttons.
         }
 
         View.OnClickListener listener2 = new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Button button = (Button) v;
-                if(enteredCoord)
-                    gameStart();
+                Point newPoint;
+                Point p;
+                // checks if a coordinate has been selected.
+                if(enteredCoord) {
+                    // WRITE CODE TO CHECK IF HIT ( game logic + Toast)
+                    boolean found = false;
+                    newPoint = new Point(chosenPoint);
+                    for (int i = 0; i < hitHistory.size() && !found; i++) {
+
+                        p = hitHistory.get(i);
+                        if (p.equals(newPoint))
+                        {
+                            found = true;
+                            Toast.makeText(playerTurn.this, "You've chosen this coordinate before!", Toast.LENGTH_SHORT).show();
+                        }
+
+                    }
+                    if (!found) {
+                        Log.d("APP", "not found");
+                        new HitChecker().execute(new Point(chosenPoint));
+                        endTurn(); // ends turn.
+                    }
+
+                }
+
             };
         };
-        findViewById(R.id.fireButton).setOnClickListener(listener2);
+        findViewById(R.id.fireButton).setOnClickListener(listener2); // links listener to the fireButton.
     }
 
-    private void gameStart() {
-        Intent intent = new Intent(playerTurn.this, aiTurn.class);
-        finish();
-        startActivity(intent);
+    // end the player's turn
+    private void endTurn() {
+        Intent intent = new Intent(playerTurn.this, aiTurn.class); // initialises the intent.
+        intent.addFlags(Intent.FLAG_ACTIVITY_BROUGHT_TO_FRONT);
+        startActivity(intent); // starts the intent.
     }
 
 
     @Override
     public void onBackPressed() {
-        AlertDialog.Builder builder3 = new AlertDialog.Builder(playerTurn.this);
+        AlertDialog.Builder builder3 = new AlertDialog.Builder(playerTurn.this); // creates the alert dialog.
         builder3.setMessage("Do you want to return to the Main Menu?");
         builder3.setCancelable(true);
         builder3.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int id) {
-                Intent intent = new Intent(playerTurn.this, menu.class);
-                finish();
-                startActivity(intent);
+                Intent intent = new Intent(playerTurn.this, menu.class); // initialises the intent.
+                finish(); // ends the activity.
+                startActivity(intent); // starts the intent.
             }
         });
         builder3.setNegativeButton("No", new DialogInterface.OnClickListener() {
@@ -88,6 +127,67 @@ public class playerTurn extends AppCompatActivity {
         });
         AlertDialog alert = builder3.create();
         alert.show();
+    }
+
+    private void endGame() {
+        Intent intent = new Intent(playerTurn.this, winScreen.class); // initialises the intent.
+        finish();
+        startActivity(intent);
+    }
+
+    private class HitChecker extends AsyncTask <Point, String, Boolean[]> {
+
+        @Override
+        protected Boolean[] doInBackground(Point... params) {
+
+            Log.d("THREAD", "Entered hit checker thread.");
+            boolean[] hit;
+            Boolean hitArray[] = new Boolean[3];
+
+            hit = deployMenu.game.checkIfEnemyWasHit(params[0]);
+
+            for (int i = 0; i < 3; i++)
+                hitArray[i] = hit[i];
+
+            if (hitArray[1]) {
+                publishProgress(params[0].getCoordinate());
+                hitHistory.add(params[0]);
+            }
+
+            return hitArray;
+        }
+
+        @Override
+        protected void onPostExecute(Boolean[] hit) {
+            boolean hitShip = hit[1];
+            boolean sunkShip = hit[0];
+            boolean defeatedAi = hit[2];
+
+            if (hitShip)
+                Toast.makeText(playerTurn.this, "You've hit a battleship!", Toast.LENGTH_SHORT).show();
+            if (sunkShip)
+                Toast.makeText(playerTurn.this, "You have sunk a battleship!", Toast.LENGTH_SHORT).show();
+            if (defeatedAi) {
+                Toast.makeText(playerTurn.this, "You won!", Toast.LENGTH_SHORT).show();
+                endGame();
+            }
+
+            if (!hitShip)
+                Toast.makeText(playerTurn.this, "You missed!", Toast.LENGTH_SHORT).show();
+        }
+
+        @Override
+        protected void onProgressUpdate(String... values) {
+            super.onProgressUpdate(values);
+            Button button;
+            int identifier = getStringIdentifier(playerTurn.this, values[0]);
+            button = (Button)findViewById(identifier);
+            button.setBackgroundResource(R.drawable.fire);
+        }
+
+        private int getStringIdentifier(Context pContext, String pString) {
+            return pContext.getResources().getIdentifier(pString, "id", pContext.getPackageName());
+        }
     }
 }
 

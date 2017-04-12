@@ -11,25 +11,25 @@ public class leaderBoard extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.highscores);
-        setButtonOnClickListeners();
+        setButtonOnClickListeners(); //  initialises the button listeners.
     }
 
     private void setButtonOnClickListeners() {
         View.OnClickListener listener = new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(leaderBoard.this, menu.class);
-                finish();
-                startActivity(intent);
+                Intent intent = new Intent(leaderBoard.this, menu.class); // initialises intent.
+                finish(); // ends activity.
+                startActivity(intent); // starts intent.
             }
         };
-        findViewById(R.id.returnButton).setOnClickListener(listener);
+        findViewById(R.id.returnButton).setOnClickListener(listener); // initialises listener.
     }
 
     @Override
     public void onBackPressed() {
-        Intent intent = new Intent(leaderBoard.this, menu.class);
-        finish();
-        startActivity(intent);
+        Intent intent = new Intent(leaderBoard.this, menu.class);  // initialises intent.
+        finish(); // ends activity.
+        startActivity(intent); // starts intent.
     }
 }
