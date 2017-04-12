@@ -214,7 +214,6 @@ public class deployMenu extends AppCompatActivity {
             Boat b;
             Point p;
 
-            // TODO make code for auto generate boats,
             Log.d("APP", "Entered auto generate boats thread");
             for (int i = 0; i < 7; i++) {
                 b = game.autoGenerateBoat(i);

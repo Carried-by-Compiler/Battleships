@@ -1,5 +1,6 @@
 package com.example.battleships;
 
+import android.bluetooth.BluetoothAdapter;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
@@ -33,6 +34,8 @@ public class playerTurn extends AppCompatActivity {
     private String chosenPoint;
     private ArrayList<Point> hitHistory;
 
+    private Game g;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -41,10 +44,10 @@ public class playerTurn extends AppCompatActivity {
         setButtonOnClickListener(); // initialises the listeners to the buttons.
 
         hitHistory = new ArrayList<Point>();
-        ArrayList<Boat> b = deployMenu.game.getBoats();
+        /*ArrayList<Boat> b = deployMenu.game.getBoats();
         Boat c = b.get(0);
         ArrayList<Point> p = c.getPoints();
-        posField.setText(p.get(0).getCoordinate());
+        posField.setText(p.get(0).getCoordinate());*/
 
     }
 
@@ -72,7 +75,6 @@ public class playerTurn extends AppCompatActivity {
                 Point p;
                 // checks if a coordinate has been selected.
                 if(enteredCoord) {
-                    // WRITE CODE TO CHECK IF HIT ( game logic + Toast)
                     boolean found = false;
                     newPoint = new Point(chosenPoint);
                     for (int i = 0; i < hitHistory.size() && !found; i++) {
