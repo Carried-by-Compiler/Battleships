@@ -838,13 +838,13 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignTop="@+id/textView"
+        android:layout_alignTop="@+id/textView1"
         android:id="@+id/posField"
-        android:layout_alignBottom="@+id/textView"
+        android:layout_alignBottom="@+id/textView1"
         android:layout_alignEnd="@+id/J10"
         android:textAlignment="center"
         android:textSize="22sp"
-        android:layout_toEndOf="@+id/textView"
+        android:layout_toEndOf="@+id/textView1"
         android:textStyle="normal|bold" />
 
     <Button

@@ -92,12 +92,9 @@ public class Connector {
         r.write(message);
     }
 
-    public void sendMessage(boolean state) {
-        String stringBoolean = "";
-        if (state)
-            stringBoolean = "true";
+    public void sendMessage(boolean readyState, String coordinate, int flag) {
 
-        String m = stringBoolean + "," + "NA,NA,NA,NA";
+        String m = readyState + "," + coordinate + "," + flag + ",";
 
         ConnectedThread r;
 

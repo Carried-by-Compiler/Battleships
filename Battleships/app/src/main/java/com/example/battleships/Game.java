@@ -10,7 +10,7 @@ public class Game
     private boolean isPVPEnabled;
 	private AI opponent;
 	private int boatSunkHuman;
-	private int boatSunkAi;
+	private int boatSunkOpponent;
     private int gameStarted;
 
 	public Game(AI ai)
@@ -18,14 +18,14 @@ public class Game
 		opponent = ai;
 		boats = new ArrayList<Boat>();
 		boatSunkHuman = 0; // keeps record of the number of human boats  that has been sunk
-		boatSunkAi = 0; // keeps record of the number of AI boats that has been sunk
+		boatSunkOpponent = 0; // keeps record of the number of AI boats that has been sunk
     }
 
     public Game(boolean pvp) {
         isPVPEnabled = pvp;
         boats = new ArrayList<Boat>();
         boatSunkHuman = 0;
-        boatSunkAi = 0;
+        boatSunkOpponent = 0;
         gameStarted = 0;
     }
 
@@ -282,16 +282,22 @@ public class Game
     }
 
     public boolean[] checkIfBoatWasHit(Point p) {
-        boolean[] hitArray = {false, false};
+        boolean[] hitArray = {false, false, false};
         Boat b;
 
         for (int i = 0; i < boats.size() && !hitArray[1]; i++) {
             b = boats.get(i);
-            hitArray[1] = b.checkIfHit(p);
+            hitArray[1] = b.checkIfHit(p); // checks if a boat was hit
 
-            if (hitArray[1])
+            if (hitArray[1]) // if hit, check if a boat sunk
                 hitArray[0] = b.checkIfSunk();
         }
+
+        if (hitArray[0]) { // if a boat sunk, check if you've lost
+            boatSunkHuman++;
+            hitArray[2] = checkIfOpponentWon();
+        }
+
 
         return hitArray;
     }
@@ -302,7 +308,7 @@ public class Game
         opponent.checkIfBoatWasHit(p, hitArray);
 
         if (hitArray[0])
-            boatSunkAi++;
+            boatSunkOpponent++;
 
         hitArray[2] = checkIfHumanWon();
 
@@ -312,12 +318,12 @@ public class Game
     public ArrayList<Boat> getBoats() { return boats; }
 
     private boolean checkIfHumanWon() {
-        if (boatSunkAi == 7)
+        if (boatSunkOpponent == 7)
             return true;
         else
             return false;
     }
-    public boolean checkIfAiWon() {
+    public boolean checkIfOpponentWon() {
         if (boatSunkHuman == 7)
             return true;
         else
@@ -354,7 +360,7 @@ public class Game
         if (hitArray[0])
             boatSunkHuman++;
 
-        hitArray[2] = checkIfAiWon();
+        hitArray[2] = checkIfOpponentWon();
 
         return hitArray;
     }
