@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/player_turn"
+    android:id="@+id/deploy_menu"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:paddingBottom="@dimen/activity_vertical_margin"
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
-    tools:context="com.example.battleships.playerTurn">
+    tools:context="com.example.battleships.deployMenu">
 
 
     <Button
@@ -287,7 +287,7 @@
     <Button
         android:layout_width="33dp"
         android:layout_height="33dp"
-        
+
         android:id="@+id/D6"
         android:text="D6"
         android:layout_below="@+id/C6"
@@ -845,8 +845,7 @@
         android:textAlignment="center"
         android:textSize="22sp"
         android:layout_toEndOf="@+id/textView"
-        android:textStyle="normal|bold"
-        android:textColor="@color/colorAccent" />
+        android:textStyle="normal|bold" />
 
     <Button
         android:layout_width="33dp"
@@ -1045,71 +1044,75 @@
         android:layout_toEndOf="@+id/D8" />
 
     <TextView
-        android:text="ATTACK POSITION:"
+        android:text="Starting Coordinate"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="12dp"
-        android:id="@+id/textView"
+        android:id="@+id/startMsg"
+        android:layout_below="@+id/PosMsg"
+        android:layout_alignStart="@+id/PosMsg"
+        android:textAllCaps="false"
         android:textStyle="normal|bold"
-        android:textAlignment="textStart"
-        android:textSize="22sp"
+        android:textColor="@color/colorAccent" />
+
+    <TextView
+        android:text="Ending Coordinate"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/endMsg"
+        android:layout_below="@+id/PosMsg"
+        android:layout_alignEnd="@+id/PosMsg"
+        android:textStyle="normal|bold"
+        android:textAllCaps="false"
+        android:textColor="@color/colorAccent" />
+
+    <TextView
+        android:text="Enter Position For Destroyer 1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/PosMsg"
+        android:textStyle="normal|bold"
+        android:textAllCaps="true"
+        android:textSize="18sp"
+        android:textAlignment="center"
         android:layout_below="@+id/J1"
-        android:layout_alignParentStart="true"
-        android:textAllCaps="true"
-        android:textColor="@color/colorAccent" />
-
-    <TextView
-        android:text="Result:"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/textView2"
-        android:fontFamily="sans-serif"
-        android:textSize="22sp"
-        android:textStyle="normal|bold"
-        android:textAllCaps="true"
-        android:textAlignment="textStart"
-        android:layout_below="@+id/textView"
-        android:layout_alignParentStart="true"
-        android:layout_toStartOf="@+id/posField"
-        android:textColor="@color/colorAccent" />
+        android:layout_marginTop="11dp"
+        android:textColor="@color/colorAccent"
+        android:layout_alignEnd="@+id/J10"
+        android:layout_alignParentStart="true" />
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/posField"
-        android:id="@+id/resultField"
-        android:layout_alignEnd="@+id/posField"
-        android:layout_toEndOf="@+id/J6"
-        android:layout_alignBottom="@+id/textView2"
-        android:textColor="@color/colorAccent" />
+        android:id="@+id/endingCoordinate"
+        android:textColor="@color/colorAccent"
+        android:layout_below="@+id/endMsg"
+        android:layout_toEndOf="@+id/J8" />
 
     <Button
-        android:id="@+id/fireButton"
-        android:textStyle="normal|bold"
-        android:background="@drawable/fire"
-        android:layout_width="100dp"
-        android:layout_height="100dp"
-        android:layout_alignParentBottom="true"
-        android:layout_toStartOf="@+id/J8"
-        android:layout_marginEnd="15dp" />
-
-    <Button
-        android:text="Manual"
+        android:text="Confirm"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:layout_alignParentStart="true"
-        android:id="@+id/manual"
-        android:visibility="invisible" />
+        android:id="@+id/endConfirm"
+        android:layout_alignBaseline="@+id/startConfirm"
+        android:layout_alignBottom="@+id/startConfirm"
+        android:layout_toEndOf="@+id/J7" />
 
-    <Button
-        android:text="Automate"
+    <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:layout_alignParentEnd="true"
-        android:id="@+id/automate"
-        android:visibility="invisible" />
+        android:id="@+id/startingCoordinate"
+        android:textColor="@color/colorAccent"
+        android:layout_below="@+id/startMsg"
+        android:layout_toStartOf="@+id/J3" />
+
+    <Button
+        android:text="Comfirm"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/startConfirm"
+        android:layout_marginTop="18dp"
+        android:layout_below="@+id/startingCoordinate"
+        android:layout_toStartOf="@+id/J4" />
 
 
 </RelativeLayout>

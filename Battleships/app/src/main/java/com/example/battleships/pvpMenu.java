@@ -211,7 +211,6 @@ public class pvpMenu extends AppCompatActivity {
             // get address of device
             String address = String.valueOf(deviceAddress.get(position));
 
-            // TODO Code for connecting to the selected device
             Intent startGameIntent = new Intent(pvpMenu.this, PVP.class);
             startGameIntent.putExtra("ROLE", 1); // 1 as client
             startGameIntent.putExtra("ADDRESS", address); // send address to next activity

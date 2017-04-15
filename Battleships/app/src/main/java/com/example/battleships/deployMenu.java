@@ -35,6 +35,7 @@ public class deployMenu extends AppCompatActivity {
     protected static Game game;
     private Point p1;
     private Point p2;
+    private boolean pvpEnabled;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -44,38 +45,56 @@ public class deployMenu extends AppCompatActivity {
         this.endPosField = (TextView) findViewById(R.id.endingCoordinate); //sets the textfield to the endConfirm button.
         TextView tv = (TextView)findViewById(R.id.PosMsg);
 
-        AI ai = new AI();
-        game = new Game(ai);
-        tv.setText("Enter Position For: " + game.getNextBoatName());
-
-
-
         Bundle extras = getIntent().getExtras();
-        int message = extras.getInt("DEPLOY_MESSAGE");
+        int multiplayer = extras.getInt("MULTIPLAYER");
 
-        if (message == 1) { // auto generate boats selected
-            new BoatGenerator().execute();
-            tv.setText("Satisfied with boat placement?");
-            Button startGameButton = (Button)findViewById(R.id.endConfirm);
-            Button generateAgainButton = (Button)findViewById(R.id.startConfirm);
-
-            startGameButton.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    playGame();
-                }
-            });
-
-            generateAgainButton.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    recreate();
-                }
-            });
-        } else {
+        if (multiplayer == 1) {
+            // deploy menu screen is used for PVP purpose
+            this.game = PVP.game;
+            pvpEnabled = true;
+            // TODO get manual boat placement working
+            tv.setText("Enter Position For: " + game.getNextBoatName());
             Coord = 1;
             setGridOnClickListener(); //initialises the grid listener and applys to all buttons.
             setButtonOnClickListeners(); // initialises the remaining buttons.
+
+        } else if (multiplayer == 0) {
+
+            pvpEnabled = false;
+            AI ai = new AI();
+            game = new Game(ai);
+            tv.setText("Enter Position For: " + game.getNextBoatName());
+
+
+
+
+            int message = extras.getInt("DEPLOY_MESSAGE");
+
+            if (message == 1) { // auto generate boats selected
+                new BoatGenerator().execute();
+                tv.setText("Satisfied with boat placement?");
+                Button startGameButton = (Button)findViewById(R.id.endConfirm);
+                Button generateAgainButton = (Button)findViewById(R.id.startConfirm);
+
+                startGameButton.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        playGame();
+                    }
+                });
+
+                generateAgainButton.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        recreate();
+                    }
+                });
+            } else {
+                Coord = 1;
+                setGridOnClickListener(); //initialises the grid listener and applys to all buttons.
+                setButtonOnClickListeners(); // initialises the remaining buttons.
+            }
+
         }
 
     }
@@ -134,14 +153,21 @@ public class deployMenu extends AppCompatActivity {
 
                     if (correct) { // if correct, create a boat object and place it in the "virtual grid"
                         b = game.createBoat(p1, p2);
+                        b.debugPoints(); // TODO remove this
                         placeBoatOnGrid(b);
                         Log.d("APP", "Number of boats: " + game.getNumberOfBoats());
                     }
 
                     // if there are 7 boats, move to main game
                     if (game.getNumberOfBoats() == 7) {
-                        Log.d("APP", "Starting next activity");
-                        playGame(); // starts the user portion of the game.
+                        if (pvpEnabled) {
+                            setResult(RESULT_OK);
+                            finish();
+                        } else {
+                            Log.d("APP", "Starting next activity");
+                            playGame(); // starts the user portion of the game.
+                        }
+
                     } else { // else start choosing again
                         Coord = 1;
                         String nextBoat = game.getNextBoatName();
@@ -242,7 +268,7 @@ public class deployMenu extends AppCompatActivity {
             super.onProgressUpdate(values);
             Button button;
             button = (Button)findViewById(values[0]);
-            button.setBackgroundResource(R.drawable.fire);
+            button.setBackgroundResource(R.drawable.flame);
         }
     }
 }

@@ -11,17 +11,14 @@ import android.widget.Button;
 
 public class menu extends AppCompatActivity {
 
-    boolean isPressed = false; // used boolean for the sound button to detected if the button has been pressed before.
-    MediaPlayer background; // used for the background music.
+    /*boolean isPressed = false; // used boolean for the sound button to detected if the button has been pressed before.
+    MediaPlayer background; // used for the background music.*/
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.menu);
-        background = MediaPlayer.create(this, R.raw.menu_music); // initialises music for the menu.
-        background.setVolume(0.5f, 0.5f); // sets volume.
-        background.start(); // starts music in background.
 
         setButtonOnClickListeners(); //  initialises the button listeners.
     }
@@ -39,7 +36,7 @@ public class menu extends AppCompatActivity {
                         /*dialog.cancel();*/
                         Intent intent = new Intent(menu.this, deployMenu.class);
                         intent.putExtra("DEPLOY_MESSAGE", 1);
-                        background.stop();
+                        intent.putExtra("MULTIPLAYER", 0);
                         finish();
                         startActivity(intent);
                     }
@@ -49,7 +46,6 @@ public class menu extends AppCompatActivity {
                     public void onClick(DialogInterface dialog, int id) {
                         Intent intent = new Intent(menu.this, deployMenu.class);
                         intent.putExtra("DEPLOY_MESSAGE", 0);
-                        background.stop(); // stops music.
                         finish(); // Ends activity.
                         startActivity(intent); // starts intent.
                     }
@@ -65,7 +61,6 @@ public class menu extends AppCompatActivity {
             public void onClick(View v) {
                 Button button = (Button) v;
                 Intent intent = new Intent(menu.this, pvpMenu.class); // initialises intent.
-                background.stop(); // stops music.
                 finish(); // Ends activity.
                 startActivity(intent); // starts intent.
             }
@@ -77,7 +72,6 @@ public class menu extends AppCompatActivity {
             public void onClick(View v) {
                 Button button = (Button) v;
                 Intent intent = new Intent(menu.this, leaderBoard.class); // initialises intent.
-                background.stop(); // stops music.
                 finish(); // ends activity.
                 startActivity(intent); // starts intent.
             }
@@ -85,7 +79,7 @@ public class menu extends AppCompatActivity {
         findViewById(R.id.highscoresButton).setOnClickListener(listener3); // initialises listener.
 
 
-        View.OnClickListener listener4 = new View.OnClickListener() {
+       /* View.OnClickListener listener4 = new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Button button = (Button) v;
@@ -101,7 +95,7 @@ public class menu extends AppCompatActivity {
                 }
             }
         };
-        findViewById(R.id.soundButton).setOnClickListener(listener4); // initialises listener.
+        findViewById(R.id.soundButton).setOnClickListener(listener4); // initialises listener.*/
 
     }
 
@@ -113,7 +107,6 @@ public class menu extends AppCompatActivity {
         builder.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int id) {
-                background.stop(); // stops music.
                 finishAffinity(); // Ends application
             }
         });

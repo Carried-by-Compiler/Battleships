@@ -7,10 +7,11 @@ import java.util.ArrayList;
 public class Game
 {
 	private ArrayList<Boat> boats;
-	/*private  String[][] grid;*/
+    private boolean isPVPEnabled;
 	private AI opponent;
 	private int boatSunkHuman;
 	private int boatSunkAi;
+    private int gameStarted;
 
 	public Game(AI ai)
 	{
@@ -18,14 +19,18 @@ public class Game
 		boats = new ArrayList<Boat>();
 		boatSunkHuman = 0; // keeps record of the number of human boats  that has been sunk
 		boatSunkAi = 0; // keeps record of the number of AI boats that has been sunk
-		/*grid = new String[10][10];
-
-		for (int i = 0; i < grid.length; i++) {
-		    for (int j = 0; j < grid[0].length; j++) {
-		        grid[i][j] = "";
-            }
-        }*/
     }
+
+    public Game(boolean pvp) {
+        isPVPEnabled = pvp;
+        boats = new ArrayList<Boat>();
+        boatSunkHuman = 0;
+        boatSunkAi = 0;
+        gameStarted = 0;
+    }
+
+    public int getGameStarted() { return gameStarted; }
+    public void setGameStarted(int state) { gameStarted = state;}
 
     public Boat autoGenerateBoat(int boatNumber) {
         Boat b;
@@ -148,11 +153,11 @@ public class Game
             /*Log.d("GAME", "Validate Battleship");*/
             if (p1.getLength(p2) == 4)
                 correct = true;
-        } else if (boats.size() >= 3 && boats.size() <= 5) { // cruiser
+        } else if (boats.size() >= 3 && boats.size() <= 4) { // cruiser
             /*Log.d("GAME", "Validate Cruiser");*/
             if (p1.getLength(p2) == 3)
                 correct = true;
-        } else if (boats.size() >= 6 && boats.size() <= 9) { // submarine
+        } else if (boats.size() == 5) { // submarine
             /*Log.d("GAME", "Validate Submarine");*/
             if (p1.getLength(p2) == 3)
                 correct = true;
@@ -178,7 +183,7 @@ public class Game
                 boatName = "Destroyer";
                 break;
             case 3:
-                if (boats.size() >= 4 && boats.size() <= 6)
+                if (boats.size() >= 3 && boats.size() <= 4)
                     boatName = "Cruiser";
                 else
                     boatName = "Submarine";
@@ -265,9 +270,9 @@ public class Game
             name = "Carrier";
         } else if (boats.size() >= 1 && boats.size() <= 2) { // battleship
             name = "Battleship";
-        } else if (boats.size() >= 3 && boats.size() <= 5) { // cruiser
+        } else if (boats.size() >= 3 && boats.size() <= 4) { // cruiser
             name = "Cruiser";
-        } else if (boats.size() >= 6 && boats.size() <= 9) { // submarine
+        } else if (boats.size() == 5) { // submarine
             name = "Submarine";
         } else { // destroyer
             name = "Destroyer";

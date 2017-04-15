@@ -29,6 +29,9 @@ public class Connector {
     public static final int READ_MESSAGE = 0;
     public static final int CONNECTED = 1;
 
+    public static boolean IS_OPP_READY = false;
+    public static boolean TURN = false;
+
     public Connector(Handler handler) {
         mAdapter = BluetoothAdapter.getDefaultAdapter();
         mHandler = handler;
@@ -86,6 +89,24 @@ public class Connector {
 
         byte[] message = point.getCoordinate().getBytes();
 
+        r.write(message);
+    }
+
+    public void sendMessage(boolean state) {
+        String stringBoolean = "";
+        if (state)
+            stringBoolean = "true";
+
+        String m = stringBoolean + "," + "NA,NA,NA,NA";
+
+        ConnectedThread r;
+
+        synchronized (this) {
+            r =connectedThread;
+        }
+
+        byte[] message = m.getBytes();
+        Log.d("MESSAGE", "To send: " + message);
         r.write(message);
     }
 
@@ -178,7 +199,9 @@ public class Connector {
                 if (socket != null) {
                     // A connection was accepted. Perform work associated with
                     // the connection in a separate thread.
+                    TURN = true;
                     connected(socket);
+
                     try {
                         mmServerSocket.close();
                     } catch (IOException e) {
@@ -259,8 +282,22 @@ public class Connector {
                 mmOutStream.write(buffer);
 
                 // Share the sent message back to the UI Activity
-                mHandler.obtainMessage(1, -1, -1, buffer)
-                        .sendToTarget();
+                /*mHandler.obtainMessage(1, -1, -1, buffer)
+                        .sendToTarget();*/
+                Log.d("THREAD", "Should have the message sent by now xD");
+            } catch (IOException e) {
+                Log.e("THREAD", "Exception during write", e);
+            }
+        }
+
+        public void writeState(byte[] buffer) {
+            Log.d("THREAD", "Trying to write to other phone lol xD");
+            try {
+                mmOutStream.write(buffer);
+
+                // Share the sent message back to the UI Activity
+                /*mHandler.obtainMessage(1, -1, -1, buffer)
+                        .sendToTarget();*/
                 Log.d("THREAD", "Should have the message sent by now xD");
             } catch (IOException e) {
                 Log.e("THREAD", "Exception during write", e);

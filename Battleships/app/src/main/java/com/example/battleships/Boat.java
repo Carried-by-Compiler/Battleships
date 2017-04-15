@@ -73,7 +73,7 @@ public class Boat
             output += p.getCoordinate() + ", ";
         }
         output += "]";
-        Log.d("BOAT", "Boat Points: " + output);
+        Log.d(boatName, "Boat Points: " + output);
     }
 
     public String getName() { return boatName; }
