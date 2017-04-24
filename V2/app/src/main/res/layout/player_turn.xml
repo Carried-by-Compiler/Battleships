@@ -1,0 +1,1100 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/player_turn"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    android:background="@drawable/background"
+    tools:context="com.example.battleships.playerTurn">
+
+
+    <Button
+        android:id="@+id/A1"
+        android:text="A1"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentStart="true"
+        android:textSize="14sp"
+        android:textAlignment="center"
+        android:layout_width="33dp"
+        android:layout_height="33dp"
+        android:textAllCaps="false"
+        android:textStyle="normal|bold"
+        android:background="@drawable/outline" />
+
+    <Button
+        android:layout_width="33dp"
+        android:layout_height="33dp"
+        android:id="@+id/A2"
+        android:text="A2"
+        android:layout_alignParentTop="true"
+        android:layout_toEndOf="@+id/A1"
+        android:textStyle="normal|bold"
+        android:textSize="14sp"
+        android:background="@drawable/outline" />
+
+    <Button
+        android:layout_width="33dp"
+        android:layout_height="33dp"
+        android:id="@+id/A3"
+        android:text="A3"
+        android:layout_alignParentTop="true"
+        android:layout_toEndOf="@+id/A2"
+        android:textSize="14sp"
+        android:textStyle="normal|bold"
+        android:background="@drawable/outline" />
+
+    <Button
+        android:layout_width="33dp"
+        android:layout_height="33dp"
+        android:id="@+id/A4"
+        android:text="A4"
+        android:layout_alignParentTop="true"
+        android:layout_toEndOf="@+id/A3"
+        android:textSize="14sp"
+        android:textStyle="normal|bold"
+        android:background="@drawable/outline" />
+
+    <Button
+        android:layout_width="33dp"
+        android:layout_height="33dp"
+        android:id="@+id/A5"
+        android:text="A5"
+        android:layout_alignParentTop="true"
+        android:layout_toEndOf="@+id/A4"
+        android:textSize="14sp"
+        android:textStyle="normal|bold"
+        android:background="@drawable/outline" />
+
+    <Button
+        android:layout_width="33dp"
+        android:layout_height="33dp"
+        android:id="@+id/A8"
+        android:text="A8"
+        android:layout_alignParentTop="true"
+        android:layout_toEndOf="@+id/A7"
+        android:textSize="14sp"
+        android:textStyle="normal|bold"
+        android:background="@drawable/outline" />
+
+    <Button
+        android:layout_width="33dp"
+        android:layout_height="33dp"
+        android:id="@+id/A9"
+        android:text="A9"
+        android:layout_alignParentTop="true"
+        android:layout_toEndOf="@+id/A8"
+        android:textSize="14sp"
+        android:textStyle="normal|bold"
+        android:background="@drawable/outline" />
+
+    <Button
+        android:layout_width="33dp"
+        android:layout_height="33dp"
+        android:id="@+id/B1"
+        android:text="B1"
+        android:layout_alignParentStart="true"
+        android:layout_below="@+id/A1"
+        android:textSize="14sp"
+        android:background="@drawable/outline"
+        android:textStyle="normal|bold" />
+
+    <Button
+        android:layout_width="33dp"
+        android:layout_height="33dp"
+        android:id="@+id/B3"
+        android:text="B3"
+        android:layout_below="@+id/A3"
+        android:layout_toEndOf="@+id/A2"
+        android:background="@drawable/outline"
+        android:textStyle="normal|bold" />
+
+    <Button
+        android:layout_width="33dp"
+        android:layout_height="33dp"
+        android:id="@+id/B4"
+        android:text="B4"
+        android:layout_below="@+id/A4"
+        android:layout_toEndOf="@+id/A3"
+        android:background="@drawable/outline"
+        android:textStyle="normal|bold" />
+
+    <Button
+        android:layout_width="33dp"
+        android:layout_height="33dp"
+        android:id="@+id/B5"
+        android:text="B5"
+        android:layout_below="@+id/A5"
+        android:layout_toEndOf="@+id/A4"
+        android:background="@drawable/outline"
+        android:textStyle="normal|bold" />
+
+    <Button
+        android:layout_width="33dp"
+        android:layout_height="33dp"
+        android:id="@+id/B6"
+        android:text="B6"
+        android:layout_below="@+id/A6"
+        android:layout_toEndOf="@+id/A5"
+        android:background="@drawable/outline"
+        android:textStyle="normal|bold" />
+
+    <Button
+        android:layout_width="33dp"
+        android:layout_height="33dp"
+        android:id="@+id/B8"
+        android:text="B8"
+        android:layout_below="@+id/A8"
+        android:layout_toEndOf="@+id/A7"
+        android:background="@drawable/outline"
+        android:textStyle="normal|bold"
+        android:textSize="14sp" />
+
+    <Button
+        android:layout_width="33dp"
+        android:layout_height="33dp"
+        android:id="@+id/B9"
+        android:text="B9"
+        android:layout_below="@+id/A9"
+        android:layout_toEndOf="@+id/A8"
+        android:textSize="14sp"
+        android:textStyle="normal|bold"
+        android:background="@drawable/outline" />
+
+    <Button
+        android:layout_width="33dp"
+        android:layout_height="33dp"
+        android:id="@+id/B10"
+        android:text="B10"
+        android:layout_below="@+id/A10"
+        android:layout_toEndOf="@+id/A9"
+        android:background="@drawable/outline"
+        android:textStyle="normal|bold"
+        android:textSize="14sp" />
+
+    <Button
+        android:layout_width="33dp"
+        android:layout_height="33dp"
+        android:id="@+id/C1"
+        android:text="C1"
+        android:layout_below="@+id/B1"
+        android:layout_alignParentStart="true"
+        android:background="@drawable/outline"
+        android:textStyle="normal|bold" />
+
+    <Button
+        android:layout_width="33dp"
+        android:layout_height="33dp"
+        android:id="@+id/C5"
+        android:text="C5"
+        android:layout_below="@+id/B5"
+        android:layout_toEndOf="@+id/B4"
+        android:background="@drawable/outline"
+        android:textStyle="normal|bold" />
+
+    <Button
+        android:layout_width="33dp"
+        android:layout_height="33dp"
+        android:id="@+id/C6"
+        android:text="C6"
+        android:layout_below="@+id/B6"
+        android:layout_toEndOf="@+id/B5"
+        android:background="@drawable/outline"
+        android:textStyle="normal|bold" />
+
+    <Button
+        android:layout_width="33dp"
+        android:layout_height="33dp"
+        android:id="@+id/C7"
+        android:text="C7"
+        android:layout_below="@+id/B7"
+        android:layout_toEndOf="@+id/B6"
+        android:background="@drawable/outline"
+        android:textStyle="normal|bold" />
+
+    <Button
+        android:layout_width="33dp"
+        android:layout_height="33dp"
+        android:id="@+id/C8"
+        android:text="C8"
+        android:layout_below="@+id/B8"
+        android:layout_toEndOf="@+id/B7"
+        android:background="@drawable/outline"
+        android:textStyle="normal|bold" />
+
+    <Button
+        android:layout_width="33dp"
+        android:layout_height="33dp"
+        android:id="@+id/C9"
+        android:text="C9"
+        android:layout_below="@+id/B9"
+        android:layout_toEndOf="@+id/B8"
+        android:background="@drawable/outline"
+        android:textStyle="normal|bold" />
+
+    <Button
+        android:layout_width="33dp"
+        android:layout_height="33dp"
+        android:id="@+id/C10"
+        android:text="C10"
+        android:layout_below="@+id/B10"
+        android:layout_toEndOf="@+id/B9"
+        android:background="@drawable/outline"
+        android:textStyle="normal|bold" />
+
+    <Button
+        android:layout_width="33dp"
+        android:layout_height="33dp"
+        android:id="@+id/D1"
+        android:text="D1"
+        android:layout_below="@+id/C1"
+        android:layout_alignParentStart="true"
+        android:background="@drawable/outline"
+        android:textStyle="normal|bold" />
+
+    <Button
+        android:layout_width="33dp"
+        android:layout_height="33dp"
+        android:id="@+id/D2"
+        android:text="D2"
+        android:layout_below="@+id/C2"
+        android:layout_toEndOf="@+id/C1"
+        android:background="@drawable/outline"
+        android:textStyle="normal|bold" />
+
+    <Button
+        android:layout_width="33dp"
+        android:layout_height="33dp"
+        android:id="@+id/D3"
+        android:text="D3"
+        android:layout_below="@+id/C3"
+        android:layout_toEndOf="@+id/C2"
+        android:background="@drawable/outline"
+        android:textStyle="normal|bold" />
+
+    <Button
+        android:layout_width="33dp"
+        android:layout_height="33dp"
+        android:id="@+id/D5"
+        android:text="D5"
+        android:layout_below="@+id/C5"
+        android:layout_toEndOf="@+id/C4"
+        android:background="@drawable/outline"
+        android:textStyle="normal|bold" />
+
+    <Button
+        android:layout_width="33dp"
+        android:layout_height="33dp"
+        
+        android:id="@+id/D6"
+        android:text="D6"
+        android:layout_below="@+id/C6"
+        android:layout_toEndOf="@+id/C5"
+        android:background="@drawable/outline"
+        android:textStyle="normal|bold" />
+
+    <Button
+        android:layout_width="33dp"
+        android:layout_height="33dp"
+        android:id="@+id/D7"
+        android:text="D7"
+        android:layout_below="@+id/C7"
+        android:layout_toEndOf="@+id/C6"
+        android:background="@drawable/outline"
+        android:textStyle="normal|bold" />
+
+    <Button
+        android:layout_width="33dp"
+        android:layout_height="33dp"
+        android:id="@+id/D8"
+        android:text="D8"
+        android:layout_below="@+id/C8"
+        android:layout_toEndOf="@+id/C7"
+        android:background="@drawable/outline"
+        android:textStyle="normal|bold" />
+
+    <Button
+        android:layout_width="33dp"
+        android:layout_height="33dp"
+        android:id="@+id/D9"
+        android:text="D9"
+        android:layout_below="@+id/C9"
+        android:layout_toEndOf="@+id/C8"
+        android:background="@drawable/outline"
+        android:textStyle="normal|bold" />
+
+    <Button
+        android:layout_width="33dp"
+        android:layout_height="33dp"
+        android:id="@+id/D10"
+        android:text="D10"
+        android:layout_below="@+id/C10"
+        android:layout_toEndOf="@+id/C9"
+        android:background="@drawable/outline"
+        android:textStyle="normal|bold" />
+
+    <Button
+        android:layout_width="33dp"
+        android:layout_height="33dp"
+        android:id="@+id/E1"
+        android:text="E1"
+        android:layout_below="@+id/D1"
+        android:layout_alignParentStart="true"
+        android:background="@drawable/outline"
+        android:textStyle="normal|bold" />
+
+    <Button
+        android:layout_width="33dp"
+        android:layout_height="33dp"
+        android:id="@+id/E2"
+        android:text="E2"
+        android:layout_below="@+id/D2"
+        android:layout_toEndOf="@+id/D1"
+        android:background="@drawable/outline"
+        android:textStyle="normal|bold" />
+
+    <Button
+        android:layout_width="33dp"
+        android:layout_height="33dp"
+        android:id="@+id/E3"
+        android:text="E3"
+        android:layout_below="@+id/D3"
+        android:layout_toEndOf="@+id/D2"
+        android:background="@drawable/outline"
+        android:textStyle="normal|bold" />
+
+    <Button
+        android:layout_width="33dp"
+        android:layout_height="33dp"
+        android:id="@+id/E5"
+        android:text="E5"
+        android:layout_below="@+id/D5"
+        android:layout_toEndOf="@+id/D4"
+        android:background="@drawable/outline"
+        android:textStyle="normal|bold" />
+
+    <Button
+        android:layout_width="33dp"
+        android:layout_height="33dp"
+        android:id="@+id/E6"
+        android:text="E6"
+        android:layout_below="@+id/D6"
+        android:layout_toEndOf="@+id/D5"
+        android:background="@drawable/outline"
+        android:textStyle="normal|bold" />
+
+    <Button
+        android:layout_width="33dp"
+        android:layout_height="33dp"
+        android:id="@+id/E7"
+        android:text="E7"
+        android:layout_below="@+id/D7"
+        android:layout_toEndOf="@+id/D6"
+        android:background="@drawable/outline"
+        android:textStyle="normal|bold" />
+
+    <Button
+        android:layout_width="33dp"
+        android:layout_height="33dp"
+        android:id="@+id/E8"
+        android:text="E8"
+        android:layout_below="@+id/D8"
+        android:layout_toEndOf="@+id/D7"
+        android:background="@drawable/outline"
+        android:textStyle="normal|bold" />
+
+    <Button
+        android:layout_width="33dp"
+        android:layout_height="33dp"
+        android:id="@+id/E10"
+        android:text="E10"
+        android:layout_below="@+id/D10"
+        android:layout_toEndOf="@+id/D9"
+        android:background="@drawable/outline"
+        android:textStyle="normal|bold" />
+
+    <Button
+        android:layout_width="33dp"
+        android:layout_height="33dp"
+        android:id="@+id/F1"
+        android:text="F1"
+        android:layout_below="@+id/E1"
+        android:layout_alignParentStart="true"
+        android:background="@drawable/outline"
+        android:textStyle="normal|bold" />
+
+    <Button
+        android:layout_width="33dp"
+        android:layout_height="33dp"
+        android:id="@+id/F3"
+        android:text="F3"
+        android:layout_below="@+id/E3"
+        android:layout_toEndOf="@+id/E2"
+        android:background="@drawable/outline"
+        android:textStyle="normal|bold" />
+
+    <Button
+        android:layout_width="33dp"
+        android:layout_height="33dp"
+        android:id="@+id/F5"
+        android:text="F5"
+        android:layout_below="@+id/E5"
+        android:layout_toEndOf="@+id/E4"
+        android:background="@drawable/outline"
+        android:textStyle="normal|bold" />
+
+    <Button
+        android:layout_width="33dp"
+        android:layout_height="33dp"
+        android:id="@+id/F6"
+        android:text="F6"
+        android:layout_below="@+id/E6"
+        android:layout_toEndOf="@+id/E5"
+        android:background="@drawable/outline"
+        android:textStyle="normal|bold" />
+
+    <Button
+        android:layout_width="33dp"
+        android:layout_height="33dp"
+        android:id="@+id/F7"
+        android:text="F7"
+        android:layout_below="@+id/E7"
+        android:layout_toEndOf="@+id/E6"
+        android:background="@drawable/outline"
+        android:textStyle="normal|bold" />
+
+    <Button
+        android:layout_width="33dp"
+        android:layout_height="33dp"
+        android:id="@+id/F8"
+        android:text="F8"
+        android:layout_below="@+id/E8"
+        android:layout_toEndOf="@+id/E7"
+        android:background="@drawable/outline"
+        android:textStyle="normal|bold" />
+
+    <Button
+        android:layout_width="33dp"
+        android:layout_height="33dp"
+        android:id="@+id/F9"
+        android:text="F9"
+        android:layout_below="@+id/E9"
+        android:layout_toEndOf="@+id/E8"
+        android:background="@drawable/outline"
+        android:textStyle="normal|bold" />
+
+    <Button
+        android:layout_width="33dp"
+        android:layout_height="33dp"
+        android:id="@+id/F10"
+        android:text="F10"
+        android:layout_below="@+id/E10"
+        android:layout_toEndOf="@+id/E9"
+        android:background="@drawable/outline"
+        android:textStyle="normal|bold" />
+
+    <Button
+        android:layout_width="33dp"
+        android:layout_height="33dp"
+        android:id="@+id/G1"
+        android:text="G1"
+        android:layout_below="@+id/F1"
+        android:layout_alignParentStart="true"
+        android:background="@drawable/outline"
+        android:textStyle="normal|bold" />
+
+    <Button
+        android:layout_width="33dp"
+        android:layout_height="33dp"
+        android:id="@+id/G2"
+        android:text="G2"
+        android:layout_below="@+id/F2"
+        android:layout_toEndOf="@+id/F1"
+        android:background="@drawable/outline"
+        android:textStyle="normal|bold" />
+
+    <Button
+        android:layout_width="33dp"
+        android:layout_height="33dp"
+        android:id="@+id/G3"
+        android:text="G3"
+        android:layout_below="@+id/F3"
+        android:layout_toEndOf="@+id/F2"
+        android:background="@drawable/outline"
+        android:textStyle="normal|bold" />
+
+    <Button
+        android:layout_width="33dp"
+        android:layout_height="33dp"
+        android:id="@+id/G5"
+        android:text="G5"
+        android:layout_below="@+id/F5"
+        android:layout_toEndOf="@+id/F4"
+        android:background="@drawable/outline"
+        android:textStyle="normal|bold" />
+
+    <Button
+        android:layout_width="33dp"
+        android:layout_height="33dp"
+        android:id="@+id/G6"
+        android:text="G6"
+        android:layout_below="@+id/F6"
+        android:layout_toEndOf="@+id/F5"
+        android:background="@drawable/outline"
+        android:textStyle="normal|bold" />
+
+    <Button
+        android:layout_width="33dp"
+        android:layout_height="33dp"
+        android:id="@+id/G7"
+        android:text="G7"
+        android:layout_below="@+id/F7"
+        android:layout_toEndOf="@+id/F6"
+        android:background="@drawable/outline"
+        android:textStyle="normal|bold" />
+
+    <Button
+        android:layout_width="33dp"
+        android:layout_height="33dp"
+        android:id="@+id/G8"
+        android:text="G8"
+        android:layout_below="@+id/F8"
+        android:layout_toEndOf="@+id/F7"
+        android:background="@drawable/outline"
+        android:textStyle="normal|bold" />
+
+    <Button
+        android:layout_width="33dp"
+        android:layout_height="33dp"
+        android:id="@+id/G9"
+        android:text="G9"
+        android:layout_below="@+id/F9"
+        android:layout_toEndOf="@+id/F8"
+        android:background="@drawable/outline"
+        android:textStyle="normal|bold" />
+
+    <Button
+        android:layout_width="33dp"
+        android:layout_height="33dp"
+        android:id="@+id/G10"
+        android:text="G10"
+        android:layout_below="@+id/F10"
+        android:layout_toEndOf="@+id/F9"
+        android:background="@drawable/outline"
+        android:textStyle="normal|bold" />
+
+    <Button
+        android:layout_width="33dp"
+        android:layout_height="33dp"
+        android:id="@+id/H1"
+        android:text="H1"
+        android:layout_below="@+id/G1"
+        android:layout_alignParentStart="true"
+        android:background="@drawable/outline"
+        android:textStyle="normal|bold" />
+
+    <Button
+        android:layout_width="33dp"
+        android:layout_height="33dp"
+        android:id="@+id/H2"
+        android:text="H2"
+        android:layout_below="@+id/G2"
+        android:layout_toEndOf="@+id/G1"
+        android:background="@drawable/outline"
+        android:textStyle="normal|bold" />
+
+    <Button
+        android:layout_width="33dp"
+        android:layout_height="33dp"
+        android:id="@+id/H3"
+        android:text="H3"
+        android:layout_below="@+id/G3"
+        android:layout_toEndOf="@+id/G2"
+        android:background="@drawable/outline"
+        android:textStyle="normal|bold" />
+
+    <Button
+        android:layout_width="33dp"
+        android:layout_height="33dp"
+        android:id="@+id/H4"
+        android:text="H4"
+        android:layout_below="@+id/G4"
+        android:layout_toEndOf="@+id/G3"
+        android:background="@drawable/outline"
+        android:textStyle="normal|bold" />
+
+    <Button
+        android:layout_width="33dp"
+        android:layout_height="33dp"
+        android:id="@+id/H5"
+        android:text="H5"
+        android:layout_below="@+id/G5"
+        android:layout_toEndOf="@+id/G4"
+        android:background="@drawable/outline"
+        android:textStyle="normal|bold" />
+
+    <Button
+        android:layout_width="33dp"
+        android:layout_height="33dp"
+        android:id="@+id/H6"
+        android:text="H6"
+        android:layout_below="@+id/G6"
+        android:layout_toEndOf="@+id/G5"
+        android:background="@drawable/outline"
+        android:textStyle="normal|bold" />
+
+    <Button
+        android:layout_width="33dp"
+        android:layout_height="33dp"
+        android:id="@+id/H7"
+        android:text="H7"
+        android:layout_below="@+id/G7"
+        android:layout_toEndOf="@+id/G6"
+        android:background="@drawable/outline"
+        android:textStyle="normal|bold" />
+
+    <Button
+        android:layout_width="33dp"
+        android:layout_height="33dp"
+        android:id="@+id/H8"
+        android:text="H8"
+        android:layout_below="@+id/G8"
+        android:layout_toEndOf="@+id/G7"
+        android:background="@drawable/outline"
+        android:textStyle="normal|bold" />
+
+    <Button
+        android:layout_width="33dp"
+        android:layout_height="33dp"
+        android:id="@+id/H10"
+        android:text="H10"
+        android:layout_below="@+id/G10"
+        android:layout_toEndOf="@+id/G9"
+        android:background="@drawable/outline"
+        android:textStyle="normal|bold" />
+
+    <Button
+        android:layout_width="33dp"
+        android:layout_height="33dp"
+        android:id="@+id/I1"
+        android:text="I1"
+        android:layout_below="@+id/H1"
+        android:layout_alignParentStart="true"
+        android:background="@drawable/outline"
+        android:textStyle="normal|bold" />
+
+    <Button
+        android:layout_width="33dp"
+        android:layout_height="33dp"
+        android:id="@+id/I2"
+        android:text="I2"
+        android:layout_below="@+id/H2"
+        android:layout_toEndOf="@+id/H1"
+        android:background="@drawable/outline"
+        android:textStyle="normal|bold" />
+
+    <Button
+        android:layout_width="33dp"
+        android:layout_height="33dp"
+        android:id="@+id/I3"
+        android:text="I3"
+        android:layout_below="@+id/H3"
+        android:layout_toEndOf="@+id/H2"
+        android:background="@drawable/outline"
+        android:textStyle="normal|bold" />
+
+    <Button
+        android:layout_width="33dp"
+        android:layout_height="33dp"
+        android:id="@+id/I4"
+        android:text="I4"
+        android:layout_below="@+id/H4"
+        android:layout_toEndOf="@+id/H3"
+        android:background="@drawable/outline"
+        android:textStyle="normal|bold" />
+
+    <Button
+        android:layout_width="33dp"
+        android:layout_height="33dp"
+        android:id="@+id/I5"
+        android:text="I5"
+        android:layout_below="@+id/H5"
+        android:layout_toEndOf="@+id/H4"
+        android:background="@drawable/outline"
+        android:textStyle="normal|bold" />
+
+    <Button
+        android:layout_width="33dp"
+        android:layout_height="33dp"
+        android:id="@+id/I7"
+        android:text="I7"
+        android:layout_below="@+id/H7"
+        android:layout_toEndOf="@+id/H6"
+        android:background="@drawable/outline"
+        android:textStyle="normal|bold" />
+
+    <Button
+        android:layout_width="33dp"
+        android:layout_height="33dp"
+        android:id="@+id/I8"
+        android:text="I8"
+        android:layout_below="@+id/H8"
+        android:layout_toEndOf="@+id/H7"
+        android:background="@drawable/outline"
+        android:textStyle="normal|bold" />
+
+    <Button
+        android:layout_width="33dp"
+        android:layout_height="33dp"
+        android:id="@+id/J1"
+        android:text="J1"
+        android:layout_below="@+id/I1"
+        android:layout_alignParentStart="true"
+        android:background="@drawable/outline"
+        android:textStyle="normal|bold" />
+
+    <Button
+        android:layout_width="33dp"
+        android:layout_height="33dp"
+        android:id="@+id/J2"
+        android:text="J2"
+        android:layout_below="@+id/I2"
+        android:layout_toEndOf="@+id/I1"
+        android:background="@drawable/outline"
+        android:textStyle="normal|bold" />
+
+    <Button
+        android:layout_width="33dp"
+        android:layout_height="33dp"
+        android:id="@+id/J3"
+        android:text="J3"
+        android:layout_below="@+id/I3"
+        android:layout_toEndOf="@+id/I2"
+        android:background="@drawable/outline"
+        android:textStyle="normal|bold" />
+
+    <Button
+        android:layout_width="33dp"
+        android:layout_height="33dp"
+        android:id="@+id/J4"
+        android:text="J4"
+        android:layout_below="@+id/I4"
+        android:layout_toEndOf="@+id/I3"
+        android:background="@drawable/outline"
+        android:textStyle="normal|bold" />
+
+    <Button
+        android:layout_width="33dp"
+        android:layout_height="33dp"
+        android:id="@+id/J5"
+        android:text="J5"
+        android:layout_below="@+id/I5"
+        android:layout_toEndOf="@+id/I4"
+        android:background="@drawable/outline"
+        android:textStyle="normal|bold" />
+
+    <Button
+        android:layout_width="33dp"
+        android:layout_height="33dp"
+        android:id="@+id/J6"
+        android:text="J6"
+        android:layout_below="@+id/I6"
+        android:layout_toEndOf="@+id/I5"
+        android:background="@drawable/outline"
+        android:textStyle="normal|bold" />
+
+    <Button
+        android:layout_width="33dp"
+        android:layout_height="33dp"
+        android:id="@+id/J7"
+        android:text="J7"
+        android:layout_below="@+id/I7"
+        android:layout_toEndOf="@+id/I6"
+        android:background="@drawable/outline"
+        android:textStyle="normal|bold" />
+
+    <Button
+        android:layout_width="33dp"
+        android:layout_height="33dp"
+        android:id="@+id/J9"
+        android:text="J9"
+        android:layout_below="@+id/I9"
+        android:layout_toEndOf="@+id/I8"
+        android:background="@drawable/outline"
+        android:textStyle="normal|bold" />
+
+    <Button
+        android:layout_width="33dp"
+        android:layout_height="33dp"
+        android:id="@+id/J10"
+        android:layout_below="@+id/I10"
+        android:layout_toEndOf="@+id/I9"
+        android:background="@drawable/outline"
+        android:textStyle="normal|bold"
+        android:text="J10" />
+
+    <Button
+        android:layout_width="33dp"
+        android:layout_height="33dp"
+        android:id="@+id/A6"
+        android:text="A6"
+        android:textSize="14sp"
+        android:textStyle="normal|bold"
+        android:layout_alignParentTop="true"
+        android:layout_toEndOf="@+id/A5"
+        android:background="@drawable/outline" />
+
+    <Button
+        android:layout_width="33dp"
+        android:layout_height="33dp"
+        android:id="@+id/A7"
+        android:text="A7"
+        android:textSize="14sp"
+        android:textStyle="normal|bold"
+        android:layout_alignParentTop="true"
+        android:layout_toEndOf="@+id/B6"
+        android:background="@drawable/outline" />
+
+    <Button
+        android:layout_width="33dp"
+        android:layout_height="33dp"
+        android:id="@+id/D4"
+        android:text="D4"
+
+        android:layout_alignBottom="@+id/D3"
+        android:layout_toEndOf="@+id/C3"
+        android:background="@drawable/outline"
+        android:textStyle="normal|bold" />
+
+    <Button
+        android:layout_width="33dp"
+        android:layout_height="33dp"
+        android:id="@+id/A10"
+        android:text="A10"
+        android:textStyle="normal|bold"
+        android:textSize="14sp"
+        android:layout_alignParentTop="true"
+        android:layout_toEndOf="@+id/A9"
+        android:background="@drawable/outline" />
+
+    <Button
+        android:layout_width="33dp"
+        android:layout_height="33dp"
+        android:id="@+id/B2"
+        android:text="B2"
+        android:layout_alignBottom="@+id/B3"
+        android:layout_toEndOf="@+id/A1"
+        android:background="@drawable/outline"
+        android:textStyle="normal|bold" />
+
+    <Button
+        android:layout_width="33dp"
+        android:layout_height="33dp"
+        android:id="@+id/C2"
+        android:text="C2"
+        android:layout_below="@+id/B2"
+        android:layout_toEndOf="@+id/B1"
+        android:background="@drawable/outline"
+        android:textStyle="normal|bold" />
+
+    <Button
+        android:layout_width="33dp"
+        android:layout_height="33dp"
+        android:id="@+id/I9"
+        android:text="I9"
+        android:layout_alignBottom="@+id/I8"
+        android:layout_toEndOf="@+id/H8"
+        android:background="@drawable/outline"
+        android:textStyle="normal|bold" />
+
+    <Button
+        android:layout_width="33dp"
+        android:layout_height="33dp"
+        android:id="@+id/I6"
+        android:text="I6"
+        android:layout_alignBottom="@+id/I5"
+        android:layout_toEndOf="@+id/H5"
+        android:background="@drawable/outline"
+        android:textStyle="normal|bold" />
+
+    <Button
+        android:layout_width="33dp"
+        android:layout_height="33dp"
+        android:id="@+id/H9"
+        android:text="H9"
+        android:background="@drawable/outline"
+        android:layout_below="@+id/G9"
+        android:layout_toEndOf="@+id/H8"
+        android:textStyle="normal|bold" />
+
+    <Button
+        android:layout_width="33dp"
+        android:layout_height="33dp"
+        android:id="@+id/B7"
+        android:text="B7"
+        android:background="@drawable/outline"
+        android:textStyle="normal|bold"
+        android:layout_alignBottom="@+id/B8"
+        android:layout_toEndOf="@+id/B6" />
+
+    <Button
+        android:layout_width="33dp"
+        android:layout_height="33dp"
+        android:id="@+id/F2"
+        android:text="F2"
+        android:background="@drawable/outline"
+        android:layout_alignBottom="@+id/F1"
+        android:layout_toEndOf="@+id/E1"
+        android:textStyle="normal|bold" />
+
+    <Button
+        android:layout_width="33dp"
+        android:layout_height="33dp"
+        android:id="@+id/E4"
+        android:text="E4"
+        android:background="@drawable/outline"
+
+        android:layout_alignBottom="@+id/E3"
+        android:layout_toEndOf="@+id/D3"
+        android:textStyle="normal|bold" />
+
+    <Button
+        android:layout_width="33dp"
+        android:layout_height="33dp"
+        android:id="@+id/I10"
+        android:text="I10"
+        android:background="@drawable/outline"
+        android:layout_alignBottom="@+id/I9"
+        android:layout_toEndOf="@+id/J9"
+        android:textStyle="normal|bold" />
+
+    <Button
+        android:layout_width="33dp"
+        android:layout_height="33dp"
+        android:id="@+id/J8"
+        android:text="J8"
+        android:background="@drawable/outline"
+        android:layout_alignBottom="@+id/J9"
+        android:layout_toEndOf="@+id/J7"
+        android:textStyle="normal|bold" />
+
+    <Button
+        android:layout_width="33dp"
+        android:layout_height="33dp"
+        android:id="@+id/G4"
+        android:text="G4"
+        android:background="@drawable/outline"
+        android:layout_below="@+id/F4"
+        android:layout_toEndOf="@+id/F3"
+        android:textStyle="normal|bold" />
+
+    <Button
+        android:layout_width="33dp"
+        android:layout_height="33dp"
+        android:id="@+id/C3"
+        android:text="C3"
+        android:background="@drawable/outline"
+        android:textStyle="normal|bold"
+        android:layout_below="@+id/B3"
+        android:layout_toEndOf="@+id/D2" />
+
+    <Button
+        android:layout_width="33dp"
+        android:layout_height="33dp"
+        android:id="@+id/C4"
+        android:text="C4"
+        android:background="@drawable/outline"
+        android:textStyle="normal|bold"
+
+        android:layout_alignBottom="@+id/C3"
+        android:layout_toEndOf="@+id/D3" />
+
+    <Button
+        android:layout_width="33dp"
+        android:layout_height="33dp"
+        android:id="@+id/F4"
+        android:text="F4"
+        android:background="@drawable/outline"
+        android:textStyle="normal|bold"
+        android:layout_below="@+id/E4"
+        android:layout_toEndOf="@+id/E3" />
+
+    <Button
+        android:layout_width="33dp"
+        android:layout_height="33dp"
+        android:id="@+id/E9"
+        android:text="E9"
+        android:background="@drawable/outline"
+        android:textStyle="normal|bold"
+        android:layout_alignBottom="@+id/E8"
+        android:layout_toEndOf="@+id/D8" />
+
+    <Button
+        android:text="Manual"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentStart="true"
+        android:id="@+id/manual"
+        android:visibility="invisible" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/posField"
+        android:textAlignment="center"
+        android:textSize="50sp"
+        android:textStyle="normal|bold"
+        android:textColor="@color/colorAccent"
+        android:layout_below="@+id/textView1"
+        android:layout_alignEnd="@+id/textView1"
+        android:layout_alignStart="@+id/textView1"
+        android:visibility="visible" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/resultField"
+        android:textColor="@color/colorAccent"
+        android:text=""
+        android:layout_below="@+id/textView2"
+        android:layout_toStartOf="@+id/J5" />
+
+    <Button
+        android:text="Automate"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/automate"
+        android:visibility="invisible"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentEnd="true" />
+
+    <TextView
+        android:text="ATTACK"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="12dp"
+        android:id="@+id/textView1"
+        android:textStyle="normal|bold"
+        android:textAlignment="textStart"
+        android:textSize="24sp"
+        android:textAllCaps="true"
+        android:textColor="@color/colorAccent"
+        android:layout_below="@+id/J2"
+        android:layout_alignEnd="@+id/resultField" />
+
+    <Button
+        android:id="@+id/fireButton"
+        android:textStyle="normal|bold"
+        android:background="@drawable/fire"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_alignTop="@+id/textView1"
+        android:layout_toEndOf="@+id/J6"
+        android:layout_alignBottom="@+id/posField" />
+
+
+</RelativeLayout>
