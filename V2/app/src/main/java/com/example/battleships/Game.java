@@ -12,6 +12,8 @@ public class Game
 	private int boatSunkHuman;
 	private int boatSunkOpponent;
     private int gameStarted;
+    private int score;
+    private int counter = 1;
 
 	public Game(AI ai)
 	{
@@ -19,6 +21,7 @@ public class Game
 		boats = new ArrayList<Boat>();
 		boatSunkHuman = 0; // keeps record of the number of human boats  that has been sunk
 		boatSunkOpponent = 0; // keeps record of the number of AI boats that has been sunk
+        score = 0;
     }
 
     public Game(boolean pvp) {
@@ -28,6 +31,14 @@ public class Game
         boatSunkOpponent = 0;
         gameStarted = 0;
     }
+
+    public int getScore() { return score; }
+    public void setScore(int n) { this.score += n; }
+    public void incrementCounter() {this.counter++; }
+    public void resetCounter() { this.counter = 1; }
+    public int getCounter() { return counter;}
+
+    public void removeBoats() { boats.clear(); }
 
     public int getGameStarted() { return gameStarted; }
     public void setGameStarted(int state) { gameStarted = state;}

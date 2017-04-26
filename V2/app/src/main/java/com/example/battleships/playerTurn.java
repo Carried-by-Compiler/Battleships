@@ -1,5 +1,6 @@
 package com.example.battleships;
 
+import android.app.Activity;
 import android.bluetooth.BluetoothAdapter;
 import android.content.Context;
 import android.content.DialogInterface;
@@ -33,6 +34,7 @@ public class playerTurn extends AppCompatActivity {
     private boolean enteredCoord = false; // initialises the boolean to detect that the user has selected a coordinate.
     private String chosenPoint;
     private ArrayList<Point> hitHistory;
+    public static Activity playerAct;
 
     private Game g;
 
@@ -40,6 +42,7 @@ public class playerTurn extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.player_turn);
+        playerAct = this;
         this.posField = (TextView) findViewById(R.id.posField); // links the textView to the posField button.
         setButtonOnClickListener(); // initialises the listeners to the buttons.
 
@@ -133,7 +136,9 @@ public class playerTurn extends AppCompatActivity {
 
     private void endGame() {
         Intent intent = new Intent(playerTurn.this, winScreen.class); // initialises the intent.
+        intent.putExtra("FINAL_SCORE", deployMenu.game.getScore());
         finish();
+        aiTurn.aiAct.finish();
         startActivity(intent);
     }
 
@@ -152,8 +157,14 @@ public class playerTurn extends AppCompatActivity {
                 hitArray[i] = hit[i];
 
             if (hitArray[1]) {
+                double scoreNow = 100;
+                scoreNow = scoreNow * deployMenu.game.getCounter();
+                deployMenu.game.setScore(scoreNow);
+                deployMenu.game.incrementCounter();
                 publishProgress(params[0].getCoordinate());
                 hitHistory.add(params[0]);
+            } else {
+                deployMenu.game.resetCounter();
             }
 
             return hitArray;

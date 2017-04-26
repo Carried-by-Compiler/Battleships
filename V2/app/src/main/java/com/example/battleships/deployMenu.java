@@ -34,6 +34,7 @@ public class deployMenu extends AppCompatActivity {
     private int Coord;        // initialises int for detecting which stage the activity is in.
     protected static Game game;
     private Point p1;
+
     private Point p2;
     private boolean pvpEnabled;
 
@@ -52,7 +53,7 @@ public class deployMenu extends AppCompatActivity {
             // deploy menu screen is used for PVP purpose
             this.game = PVP.game;
             pvpEnabled = true;
-            // TODO get manual boat placement working
+            // TODO stop user from placing boats on already occupied positions
             tv.setText("Enter Position For: " + game.getNextBoatName());
             Coord = 1;
             setGridOnClickListener(); //initialises the grid listener and applys to all buttons.

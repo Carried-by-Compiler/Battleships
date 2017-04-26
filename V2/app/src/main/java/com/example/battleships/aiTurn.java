@@ -1,5 +1,6 @@
 package com.example.battleships;
 
+import android.app.Activity;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
@@ -32,12 +33,14 @@ public class aiTurn extends AppCompatActivity {
     public Button button; // sets up a button for the end turn button.
     private TextView posField;
     ArrayList<String> hitHistory;
+    public static Activity aiAct;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.ai_turn);
         Log.d("AITURN", "ONCREATE called");
+        aiAct = this;
         this.posField = (TextView) findViewById(R.id.posField); // links the textfied
         hitHistory = new ArrayList<String>();
 

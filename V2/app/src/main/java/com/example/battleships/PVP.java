@@ -34,14 +34,19 @@ public class PVP extends AppCompatActivity {
             R.id.I1, R.id.I2, R.id.I3, R.id.I4, R.id.I5, R.id.I6, R.id.I7, R.id.I8, R.id.I9, R.id.I10,
             R.id.J1, R.id.J2, R.id.J3, R.id.J4, R.id.J5, R.id.J6, R.id.J7, R.id.J8, R.id.J9, R.id.J10};
 
-    private ArrayList<Point> hitHistory;
+    private ArrayList<String> hitHistory;
+    public static ArrayList<Point> hitPoints;
 
     private TextView tv1, tv2, posField, resultField;
+    private Button viewYourBoat;
     private boolean enteredCoord;
     private String chosenPoint;
+    private boolean buttonForBoatPlacementPressed;
 
     public static Game game;
     private Connector connector;
+
+
 
     public static boolean READY = false;
     public static final int HIT = 1;
@@ -55,11 +60,23 @@ public class PVP extends AppCompatActivity {
         setContentView(R.layout.player_turn);
 
         // initialize stuff
-        hitHistory = new ArrayList<Point>();
+        viewYourBoat = (Button)findViewById(R.id.view_boats);
+        viewYourBoat.setVisibility(View.INVISIBLE);
+        viewYourBoat.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                // Button to view your boats
+                Intent intent = new Intent(PVP.this, ViewBoats.class);
+                startActivity(intent);
+            }
+        });
+        buttonForBoatPlacementPressed = false;
+        hitHistory = new ArrayList<String>();
+        hitPoints = new ArrayList<Point>();
         tv1 = (TextView)findViewById(R.id.textView1);
-        tv2 = (TextView)findViewById(R.id.textView2);
+        tv2 = (TextView)findViewById(R.id.status_message);
         posField = (TextView)findViewById(R.id.posField);
-        this.resultField = (TextView)findViewById(R.id.resultField);
+        this.resultField = (TextView)findViewById(R.id.hit_marker);
         tv2.setText("Game will start once connection is established");
 
         setButtonOnClickListeners();
@@ -142,13 +159,14 @@ public class PVP extends AppCompatActivity {
                         tv2.setText("Waiting for opponent to get ready");
                     else { // if BOTH you and the opponent are ready
                         tv2.setText("Opponent is ready");
-                        new ClearBoard().execute();
+                        new ClearBoard().execute(1);
                         if (Connector.TURN)
                             tv1.setText("Your guess: ");
                         else
                             tv1.setText("Wait");
 
                         tv2.setText("Result: ");
+                        viewYourBoat.setVisibility(View.VISIBLE);
                     }
 
                     connector.sendMessage(READY, "NA", -1);
@@ -164,7 +182,7 @@ public class PVP extends AppCompatActivity {
                 if(enteredCoord && Connector.TURN) {
                     boolean found = false;
                     newPoint = new Point(chosenPoint);
-                    for (int i = 0; i < hitHistory.size() && !found; i++) {
+                    /*for (int i = 0; i < hitHistory.size() && !found; i++) {
 
                         p = hitHistory.get(i);
                         if (p.equals(newPoint))
@@ -173,9 +191,14 @@ public class PVP extends AppCompatActivity {
                             Toast.makeText(PVP.this, "You've chosen this coordinate before!", Toast.LENGTH_SHORT).show();
                         }
 
+                    }*/
+                    if (hitHistory.contains(newPoint.getCoordinate())) {
+                        found = true;
+                        Toast.makeText(PVP.this, "You've selected this point before!", Toast.LENGTH_SHORT).show();
                     }
                     if (!found) {
                         Log.d("APP", "not found");
+                        hitHistory.add(newPoint.getCoordinate());
                         connector.sendMessage(false, chosenPoint, -1);
                         Connector.TURN = false;
                         tv1.setText("Wait");
@@ -213,13 +236,14 @@ public class PVP extends AppCompatActivity {
                         tv2.setText("Opponent is ready");
                         // if BOTH you and your opponent are ready
                         if (READY) {
-                            new ClearBoard().execute();
+                            new ClearBoard().execute(1);
                             if (Connector.TURN)
                                 tv1.setText("Your guess: ");
                             else
                                 tv1.setText("Wait");
 
                             tv2.setText("Result: ");
+                            viewYourBoat.setVisibility(View.VISIBLE);
                         }
 
                     }
@@ -234,14 +258,20 @@ public class PVP extends AppCompatActivity {
                         boolean[] flags = game.checkIfBoatWasHit(sentPoint);
                         if (flags[2]) {
                             currentState = DEFEATED;
-                            // TODO display endgame activity
+                            hitPoints.add(sentPoint);
+                            Intent intent = new Intent(PVP.this, loseScreen.class);
+                            intent.putExtra("TOTAL_SCORE", game.getScore());
+                            startActivity(intent);
+                            finish();
                         } else if (flags[0]) {
                             currentState = SUNKSHIP;
                             resultField.setText("SUNK AT: " + sentPoint.getCoordinate());
+                            hitPoints.add(sentPoint);
 
                         } else if (flags[1]) {
                             currentState = HIT;
                             resultField.setText("HIT AT: " + sentPoint.getCoordinate());
+                            hitPoints.add(sentPoint);
 
                         } else {
                             currentState = MISS;
@@ -257,24 +287,37 @@ public class PVP extends AppCompatActivity {
                     // contains flags (hit/miss/sunk/win)
                     if (Integer.parseInt(segments[2]) != -1) {
 
+                        int currentScore = 100;
                         switch (Integer.parseInt(segments[2])) {
 
                             case HIT:
                                 resultField.setText("You've hit a ship at: " + chosenPoint);
                                 displayHitBoat(chosenPoint);
+                                currentScore = currentScore * game.getCounter();
+                                game.setScore(currentScore);
+                                game.incrementCounter();
                                 break;
 
                             case MISS:
                                 resultField.setText("You missed a ship at: " + chosenPoint);
+                                game.resetCounter();
+                                currentScore = currentScore * game.getCounter();
+                                game.setScore(currentScore);
                                 break;
 
                             case SUNKSHIP:
                                 resultField.setText("You've sunk a ship at: " + chosenPoint);
                                 displayHitBoat(chosenPoint);
+                                currentScore = currentScore * game.getCounter();
+                                game.setScore(currentScore);
+                                game.incrementCounter();
                                 break;
 
                             case DEFEATED:
-                                // TODO display victory activity
+                                Intent intent = new Intent(PVP.this, winScreen.class);
+                                intent.putExtra("TOTAL_SCORE", game.getScore());
+                                startActivity(intent);
+                                finish();
                                 break;
                         }
                     }
@@ -290,11 +333,16 @@ public class PVP extends AppCompatActivity {
 
     };
 
+    /*
+    Appears when connection has been established.
+    Displays option whether you want to automate boat placement or manually place
+    boats yourself.
+     */
     private void automateShipPlacement() {
 
         Button b1 = (Button)findViewById(R.id.manual);
         Button b2 = (Button)findViewById(R.id.automate);
-        tv1.setText("Automate?"); // TODO make better
+        tv1.setText("Automate?");
         b1.setVisibility(View.VISIBLE);
         b2.setVisibility(View.VISIBLE);
 
@@ -302,10 +350,14 @@ public class PVP extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-                Intent intent = new Intent(PVP.this, deployMenu.class); //initialises the intent.
-                intent.putExtra("MULTIPLAYER", 1);
-                startActivityForResult(intent, 5); // starts intent.
-                tv2.setText("Press FIRE button to confirm");
+                if (!buttonForBoatPlacementPressed) {
+                    buttonForBoatPlacementPressed = true;
+                    Intent intent = new Intent(PVP.this, deployMenu.class); //initialises the intent.
+                    intent.putExtra("MULTIPLAYER", 1);
+                    startActivityForResult(intent, 5); // starts intent.
+                    tv2.setText("Press FIRE button to confirm");
+                }
+
                 // TODO check if activity updates even when new intent is started
 
             }
@@ -314,52 +366,18 @@ public class PVP extends AppCompatActivity {
         b2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
-                new BoatGenerator().execute();
-                tv2.setText("Press FIRE button to confirm");
-
+                if (!buttonForBoatPlacementPressed) {
+                    buttonForBoatPlacementPressed = true;
+                    new BoatGenerator().execute();
+                    tv2.setText("Press FIRE button to confirm");
+                } else {
+                    new ClearBoard().execute(0);
+                    // TODO check if this affects automatic boat placement
+                    // These threads are occurring at the same time and can influence each other
+                    new BoatGenerator().execute();
+                }
             }
         });
-
-
-
-        /*//
-        AlertDialog.Builder builder = new AlertDialog.Builder(PVP.this); // creates alert dialog.
-        builder.setMessage("Do you want automated ship placement?");
-        builder.setCancelable(false);
-        builder.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
-            @Override
-            public void onClick(DialogInterface dialog, int id) {
-                *//*
-                User decides to allow automated ship placement.
-                Start thread to create boats.
-                 *//*
-                game = new Game(true);
-                new BoatGenerator().execute();
-                display.setText("Press FIRE button to confirm");
-
-            }
-        });
-        builder.setNegativeButton("No", new DialogInterface.OnClickListener() {
-            @Override
-            public void onClick(DialogInterface dialog, int id) {
-                *//*
-                User decides he will manually place boats himself.
-                Create listeners for the buttons and use game object to store the
-                location of boats.
-                 *//*
-                game = new Game(true);
-                Intent intent = new Intent(PVP.this, deployMenu.class); //initialises the intent.
-                intent.putExtra("MULTIPLAYER", 1);
-                startActivityForResult(intent, 5); // starts intent.
-                display.setText("Press FIRE button to confirm");
-
-            }
-        });
-        AlertDialog alert = builder.create();
-        alert.show();*/
-
-
     }
 
     private int getStringIdentifier(Context pContext, String pString) {
@@ -409,10 +427,12 @@ public class PVP extends AppCompatActivity {
         }
     }
 
-    private class ClearBoard extends AsyncTask <Void, Integer, Void> {
+    private class ClearBoard extends AsyncTask <Integer, Integer, Void> {
 
         @Override
-        protected Void doInBackground(Void... params) {
+        protected Void doInBackground(Integer... params) {
+
+            int flag = params[0].intValue();
 
             for (Boat b: game.getBoats()) {
 
@@ -426,7 +446,8 @@ public class PVP extends AppCompatActivity {
 
             }
 
-
+            if (flag == 0)
+                game.removeBoats();
 
             return null;
         }

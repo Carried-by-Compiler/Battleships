@@ -5,6 +5,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.TextView;
 
 public class winScreen extends AppCompatActivity {
 
@@ -15,6 +16,10 @@ public class winScreen extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.win_screen);
 
+        TextView v = (TextView)findViewById(R.id.scoreValue);
+        int totalScore = getIntent().getIntExtra("TOTAL_SCORE", 100);
+        TextView scoreMessage = (TextView)findViewById(R.id.scoreMsg);
+        scoreMessage.setText(String.valueOf(totalScore));
         button = (Button) findViewById(R.id.returnButtonW); // links the button to the end turn button.
         button.setOnClickListener(new View.OnClickListener() {
             @Override

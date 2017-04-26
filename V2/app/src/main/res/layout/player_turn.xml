@@ -1050,18 +1050,11 @@
         android:textStyle="normal|bold"
         android:textColor="@color/colorAccent"
         android:layout_below="@+id/textView1"
-        android:layout_alignEnd="@+id/textView1"
         android:layout_alignStart="@+id/textView1"
-        android:visibility="visible" />
+        android:visibility="visible"
+        android:layout_alignBottom="@+id/view_boats"
+        android:layout_toStartOf="@+id/J8" />
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/resultField"
-        android:textColor="@color/colorAccent"
-        android:text=""
-        android:layout_below="@+id/textView2"
-        android:layout_toStartOf="@+id/J5" />
 
     <Button
         android:text="Automate"
@@ -1073,18 +1066,20 @@
         android:layout_alignParentEnd="true" />
 
     <TextView
-        android:text="ATTACK"
-        android:layout_width="wrap_content"
+        android:text="Welcome to PVP"
+        android:layout_width="155dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="12dp"
-        android:id="@+id/textView1"
-        android:textStyle="normal|bold"
-        android:textAlignment="textStart"
-        android:textSize="24sp"
-        android:textAllCaps="true"
-        android:textColor="@color/colorAccent"
-        android:layout_below="@+id/J2"
-        android:layout_alignEnd="@+id/resultField" />
+        android:layout_alignParentBottom="true"
+        android:id="@+id/status_message"
+        android:layout_alignTop="@+id/manual"
+        android:layout_toEndOf="@+id/manual" />
+
+    <TextView
+        android:layout_width="155dp"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/status_message"
+        android:id="@+id/hit_marker"
+        android:layout_toEndOf="@+id/manual" />
 
     <Button
         android:id="@+id/fireButton"
@@ -1093,8 +1088,31 @@
         android:layout_width="100dp"
         android:layout_height="100dp"
         android:layout_alignTop="@+id/textView1"
-        android:layout_toEndOf="@+id/J6"
-        android:layout_alignBottom="@+id/posField" />
+        android:layout_alignEnd="@+id/J10" />
+
+    <Button
+        android:text="View Your Ships"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignTop="@+id/textView1"
+        android:layout_alignParentStart="true"
+        android:id="@+id/view_boats"
+        android:layout_alignBottom="@+id/fireButton"
+        android:layout_toStartOf="@+id/hit_marker" />
+
+    <TextView
+        android:text="ATTACK"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="17dp"
+        android:id="@+id/textView1"
+        android:textStyle="normal|bold"
+        android:textAlignment="textStart"
+        android:textSize="24sp"
+        android:textAllCaps="true"
+        android:textColor="@color/colorAccent"
+        android:layout_below="@+id/J3"
+        android:layout_toEndOf="@+id/view_boats" />
 
 
 </RelativeLayout>
