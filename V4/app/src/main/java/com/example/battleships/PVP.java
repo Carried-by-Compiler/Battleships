@@ -1,12 +1,15 @@
 package com.example.battleships;
 
 
+import android.app.Activity;
+import android.bluetooth.BluetoothAdapter;
 import android.bluetooth.BluetoothDevice;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.IntentFilter;
+import android.content.res.Resources;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.os.Handler;
@@ -14,13 +17,16 @@ import android.os.Message;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.app.AppCompatDialog;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import java.lang.reflect.Method;
 import java.util.ArrayList;
+import java.util.Set;
 
 /**
  * Created by johnr on 12/04/2017.
@@ -102,6 +108,34 @@ public class PVP extends AppCompatActivity {
             connector.connectToDevice(address);
         }
     }
+
+    @Override
+    public void onBackPressed() {
+
+        AlertDialog.Builder builder = new AlertDialog.Builder(PVP.this);
+        builder.setMessage("Leave this game?")
+                .setCancelable(false)
+                .setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int id) {
+                        //do things
+                        dialog.dismiss();
+                        BluetoothAdapter bA = BluetoothAdapter.getDefaultAdapter();
+                        bA.disable();
+                        Intent intent = new Intent(PVP.this, menu.class);
+                        startActivity(intent);
+                        finish();
+                    }
+                }).setNegativeButton("No", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                dialog.cancel();
+            }
+        });
+        AlertDialog alert = builder.create();
+        alert.show();
+    }
+
+    // TODO Bug where connection is still remember even after leaving or finishing a game
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
@@ -367,7 +401,7 @@ public class PVP extends AppCompatActivity {
 
         Button b1 = (Button)findViewById(R.id.manual);
         Button b2 = (Button)findViewById(R.id.automate);
-        tv1.setText("Automate?");
+        tv1.setText("Boat Placement");
         b1.setVisibility(View.VISIBLE);
         b2.setVisibility(View.VISIBLE);
 
@@ -383,8 +417,6 @@ public class PVP extends AppCompatActivity {
                     tv2.setText("Press FIRE button to confirm");
                 }
 
-                // TODO check if activity updates even when new intent is started
-
             }
         });
 
@@ -397,7 +429,6 @@ public class PVP extends AppCompatActivity {
                     tv2.setText("Press FIRE button to confirm");
                 } else {
                     new ClearBoard().execute(0);
-                    // TODO check if this affects automatic boat placement
                     // These threads are occurring at the same time and can influence each other
                     new BoatGenerator().execute();
                 }

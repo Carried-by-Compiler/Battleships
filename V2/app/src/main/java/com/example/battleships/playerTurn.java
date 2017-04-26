@@ -157,7 +157,7 @@ public class playerTurn extends AppCompatActivity {
                 hitArray[i] = hit[i];
 
             if (hitArray[1]) {
-                double scoreNow = 100;
+                int scoreNow = 100;
                 scoreNow = scoreNow * deployMenu.game.getCounter();
                 deployMenu.game.setScore(scoreNow);
                 deployMenu.game.incrementCounter();

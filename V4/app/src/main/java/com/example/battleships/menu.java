@@ -1,5 +1,6 @@
 package com.example.battleships;
 
+import android.bluetooth.BluetoothAdapter;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.media.MediaPlayer;
@@ -127,6 +128,8 @@ public class menu extends AppCompatActivity {
         builder.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int id) {
+                BluetoothAdapter b = BluetoothAdapter.getDefaultAdapter();
+                b.disable();
                 finishAffinity(); // Ends application
             }
         });

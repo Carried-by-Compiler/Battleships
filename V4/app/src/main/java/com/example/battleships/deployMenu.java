@@ -216,9 +216,15 @@ public class deployMenu extends AppCompatActivity {
         builder2.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int id) {
-                Intent intent = new Intent(deployMenu.this, menu.class); // initialises the intent.
-                finish(); // end activity.
-                startActivity(intent); // start activity.
+                if (pvpEnabled) {
+                    PVP.game.removeBoats();
+                    deployMenu.this.finish();
+                } else {
+                    Intent intent = new Intent(deployMenu.this, menu.class); // initialises the intent.
+                    finish(); // end activity.
+                    startActivity(intent); // start activity.
+                }
+
             }
         });
         builder2.setNegativeButton("No", new DialogInterface.OnClickListener() {

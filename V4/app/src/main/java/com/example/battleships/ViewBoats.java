@@ -48,6 +48,12 @@ public class ViewBoats extends AppCompatActivity {
         return pContext.getResources().getIdentifier(pString, "id", pContext.getPackageName());
     }
 
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        ViewBoats.this.finish();
+    }
+
     private class DisplayBoats extends AsyncTask<Void, Integer, Void> {
 
         @Override

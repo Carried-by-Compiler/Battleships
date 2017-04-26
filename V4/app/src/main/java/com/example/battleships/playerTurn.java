@@ -120,6 +120,8 @@ public class playerTurn extends AppCompatActivity {
             @Override
             public void onClick(DialogInterface dialog, int id) {
                 Intent intent = new Intent(playerTurn.this, menu.class); // initialises the intent.
+                BluetoothAdapter mAdapter = BluetoothAdapter.getDefaultAdapter();
+                mAdapter.disable();
                 finish(); // ends the activity.
                 startActivity(intent); // starts the intent.
             }

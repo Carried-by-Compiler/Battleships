@@ -1,13 +1,18 @@
 package com.example.battleships;
 
 
+import android.bluetooth.BluetoothDevice;
+import android.content.BroadcastReceiver;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.IntentFilter;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
 import android.support.annotation.Nullable;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
@@ -165,7 +170,7 @@ public class PVP extends AppCompatActivity {
                         else
                             tv1.setText("Wait");
 
-                        tv2.setText("Result: ");
+                        tv2.setVisibility(View.INVISIBLE);
                         viewYourBoat.setVisibility(View.VISIBLE);
                     }
 
@@ -327,6 +332,26 @@ public class PVP extends AppCompatActivity {
                 case Connector.CONNECTED:
                     tv2.setText("CONNECTED");
                     automateShipPlacement();
+                    break;
+
+                case Connector.DISCONNECTED:
+
+                    //Device has disconnected
+                    AlertDialog.Builder builder = new AlertDialog.Builder(PVP.this);
+                    builder.setMessage("Opponent has disconnected!")
+                            .setCancelable(false)
+                            .setPositiveButton("OK", new DialogInterface.OnClickListener() {
+                                public void onClick(DialogInterface dialog, int id) {
+                                    //do things
+                                    Intent intent = new Intent(PVP.this, winScreen.class);
+                                    intent.putExtra("TOTAL_SCORE", game.getScore());
+                                    startActivity(intent);
+                                    finish();
+                                }
+                            });
+                    AlertDialog alert = builder.create();
+                    alert.show();
+
                     break;
             }
         }

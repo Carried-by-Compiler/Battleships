@@ -97,11 +97,20 @@ public class pvpMenu extends AppCompatActivity {
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
 
-            if (resultCode == RESULT_OK) { // if user accepts to turn on bluetooth
-                displayStatus.setText("Bluetooth ON");
-            } else {
-                displayStatus.setText("Bluetooth cannot initialize");
+        if (requestCode == 5) {
+            if (resultCode == 600) {
+                // Initiate the game activity and establish connection with client
+                Intent startGameIntent = new Intent(pvpMenu.this, PVP.class);
+                startGameIntent.putExtra("ROLE", 0); // 0 as server
+                startActivity(startGameIntent);
+                pvpMenu.this.finish();
             }
+        }
+        if (resultCode == RESULT_OK) { // if user accepts to turn on bluetooth
+            displayStatus.setText("Bluetooth ON");
+        } else {
+            displayStatus.setText("Bluetooth cannot initialize");
+        }
 
     }
 
@@ -154,6 +163,13 @@ public class pvpMenu extends AppCompatActivity {
         unregisterReceiver(mReceiver);
     }
 
+    private void deviceDiscoverable() {
+        Intent discoverableIntent = new Intent(BluetoothAdapter.ACTION_REQUEST_DISCOVERABLE);
+        // make device discoverable for 10 minutes
+        discoverableIntent.putExtra(BluetoothAdapter.EXTRA_DISCOVERABLE_DURATION, 600);
+        startActivityForResult(discoverableIntent, 5);
+    }
+
     /*
     Class which handles the listeners of each button on the activity
      */
@@ -173,15 +189,10 @@ public class pvpMenu extends AppCompatActivity {
 
                 case R.id.start_lobby:
                     // Make device discoverable
-                    Intent discoverableIntent = new Intent(BluetoothAdapter.ACTION_REQUEST_DISCOVERABLE);
-                    // make device discoverable for 10 minutes
-                    discoverableIntent.putExtra(BluetoothAdapter.EXTRA_DISCOVERABLE_DURATION, 600);
-                    startActivity(discoverableIntent);
+                    deviceDiscoverable();
 
-                    // Initiate the game activity and establish connection with client
-                    Intent startGameIntent = new Intent(pvpMenu.this, PVP.class);
-                    startGameIntent.putExtra("ROLE", 0); // 0 as server
-                    startActivity(startGameIntent);
+
+
                     break;
 
 
@@ -215,6 +226,7 @@ public class pvpMenu extends AppCompatActivity {
             startGameIntent.putExtra("ROLE", 1); // 1 as client
             startGameIntent.putExtra("ADDRESS", address); // send address to next activity
             startActivity(startGameIntent);
+            pvpMenu.this.finish();
         }
     }
 }

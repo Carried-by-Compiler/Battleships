@@ -26,22 +26,32 @@ public class ViewBoats extends AppCompatActivity {
         Button fireButton = (Button)findViewById(R.id.fireButton);
         fireButton.setVisibility(View.INVISIBLE);
         TextView textView1 = (TextView)findViewById(R.id.textView1);
-        textView1.setText(String.valueOf(PVP.game.getScore()));
+        textView1.setText("Score:");
         TextView posField = (TextView)findViewById(R.id.posField);
-        posField.setVisibility(View.INVISIBLE);
+        posField.setText(String.valueOf(PVP.game.getScore()));
+        TextView hitMarker = (TextView)findViewById(R.id.hit_marker);
+        hitMarker.setVisibility(View.INVISIBLE);
+        TextView status = (TextView)findViewById(R.id.status_message);
+        hitMarker.setVisibility(View.INVISIBLE);
         Button viewBoats = (Button)findViewById(R.id.view_boats);
         viewBoats.setVisibility(View.VISIBLE);
         viewBoats.setText("Go Back");
         viewBoats.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                finish();
+                ViewBoats.this.finish();
             }
         });
     }
 
     private int getStringIdentifier(Context pContext, String pString) {
         return pContext.getResources().getIdentifier(pString, "id", pContext.getPackageName());
+    }
+
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        ViewBoats.this.finish();
     }
 
     private class DisplayBoats extends AsyncTask<Void, Integer, Void> {

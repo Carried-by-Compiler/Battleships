@@ -18,8 +18,7 @@ public class winScreen extends AppCompatActivity {
 
         TextView v = (TextView)findViewById(R.id.scoreValue);
         int totalScore = getIntent().getIntExtra("TOTAL_SCORE", 100);
-        TextView scoreMessage = (TextView)findViewById(R.id.scoreMsg);
-        scoreMessage.setText(String.valueOf(totalScore));
+        v.setText(String.valueOf(totalScore));
         button = (Button) findViewById(R.id.returnButtonW); // links the button to the end turn button.
         button.setOnClickListener(new View.OnClickListener() {
             @Override

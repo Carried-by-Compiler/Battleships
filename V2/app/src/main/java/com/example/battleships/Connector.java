@@ -28,6 +28,7 @@ public class Connector {
 
     public static final int READ_MESSAGE = 0;
     public static final int CONNECTED = 1;
+    public static final int DISCONNECTED = 2;
 
     public static boolean IS_OPP_READY = false;
     public static boolean TURN = false;
@@ -268,6 +269,8 @@ public class Connector {
                     readMsg.sendToTarget();
                 } catch (IOException e) {
                     Log.d("THREAD", "Input stream was disconnected", e);
+                    Message msg = mHandler.obtainMessage(DISCONNECTED);
+                    mHandler.sendMessage(msg);
                     break;
                 }
             }
