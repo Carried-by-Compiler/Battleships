@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/win_screen"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    android:background="@drawable/background"
+    tools:context="com.example.battleships.winScreen">
+
+    <TextView
+        android:text="Victory"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/gameMsg"
+        android:textSize="36sp"
+        android:textStyle="normal|bold"
+        android:textAlignment="center"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:textAllCaps="true"
+        android:textColor="@color/colorAccent" />
+
+    <TextView
+        android:text="Enter Name:"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="135dp"
+        android:id="@+id/nameMsg"
+        android:textStyle="normal|bold"
+        android:textAllCaps="true"
+        android:textAlignment="center"
+        android:textSize="18sp"
+        android:layout_below="@+id/gameMsg"
+        android:layout_alignParentStart="true"
+        android:textColor="@color/colorAccent"
+        android:layout_toStartOf="@+id/gameMsg" />
+
+    <Button
+        android:text="Return to Main Menu"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:id="@+id/returnButtonW"
+        android:textStyle="normal|bold"
+        android:textColor="@color/colorAccent"
+        android:background="@drawable/button"
+        android:layout_alignEnd="@+id/scoreValue"
+        android:layout_alignParentStart="true" />
+
+    <Button
+        android:text="ADD SCORE"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/btnAdd"
+        android:background="@drawable/button"
+        android:layout_above="@+id/returnButtonW"
+        android:layout_alignStart="@+id/gameMsg"
+        android:textStyle="normal|bold" />
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:inputType="textPersonName"
+        android:ems="10"
+        android:id="@+id/editName"
+        android:maxLines="1"
+        android:singleLine="true"
+        android:selectAllOnFocus="false"
+        android:textColor="@color/colorAccent"
+        android:textColorHighlight="@color/colorAccent"
+        android:textColorHint="@color/colorAccent"
+        android:textCursorDrawable="@color/colorAccent"
+        android:textColorLink="@color/colorAccent"
+        android:textAlignment="center"
+        android:textStyle="normal|bold"
+        android:textAllCaps="true"
+        android:layout_above="@+id/scoreMsg"
+        android:layout_toEndOf="@+id/nameMsg" />
+
+    <TextView
+        android:text="Score:"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/scoreMsg"
+        android:textSize="18sp"
+        android:textStyle="normal|bold"
+        android:textAllCaps="true"
+        android:textColor="@color/colorAccent"
+        android:layout_below="@+id/nameMsg"
+        android:layout_alignParentStart="true"
+        android:layout_toStartOf="@+id/editName"
+        android:textAlignment="center" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/scoreValue"
+        android:textColor="@color/colorAccent"
+        android:textAlignment="center"
+        android:textStyle="normal|bold"
+        android:textAllCaps="true"
+        android:textSize="18sp"
+        android:layout_below="@+id/editName"
+        android:layout_alignEnd="@+id/editName"
+        android:layout_toEndOf="@+id/nameMsg" />
+
+</RelativeLayout>
