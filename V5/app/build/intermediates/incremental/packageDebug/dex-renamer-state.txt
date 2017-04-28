@@ -1,0 +1,7 @@
+#Fri Apr 28 23:37:54 GMT 2017
+base.0=C\:\\Users\\aaron\\Desktop\\Mobile-App-Project\\V5\\app\\build\\intermediates\\transforms\\dex\\debug\\folders\\1000\\10\\instant-run-bootstrap_4f34aec91093b14cf882936f9db0808e2cad264e
+renamed.1=classes.dex
+renamed.0=classes2.dex
+file.1=C\:\\Users\\aaron\\Desktop\\Mobile-App-Project\\V5\\app\\build\\intermediates\\transforms\\dex\\debug\\folders\\1000\\10\\instant-run_6727a79cf008ed4dd64565d81744f9a9b6ed2623\\classes.dex
+base.1=C\:\\Users\\aaron\\Desktop\\Mobile-App-Project\\V5\\app\\build\\intermediates\\transforms\\dex\\debug\\folders\\1000\\10\\instant-run_6727a79cf008ed4dd64565d81744f9a9b6ed2623
+file.0=C\:\\Users\\aaron\\Desktop\\Mobile-App-Project\\V5\\app\\build\\intermediates\\transforms\\dex\\debug\\folders\\1000\\10\\instant-run-bootstrap_4f34aec91093b14cf882936f9db0808e2cad264e\\classes.dex

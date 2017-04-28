@@ -1,0 +1,14 @@
+[
+    {
+        "merged": "C:\\Users\\aaron\\Desktop\\New folder (2)\\V5\\app\\build\\intermediates\\res\\merged\\debug\\raw\\hit_sound.mp3",
+        "source": "C:\\Users\\aaron\\Desktop\\New folder (2)\\V5\\app\\src\\main\\res\\raw\\hit_sound.mp3"
+    },
+    {
+        "merged": "C:\\Users\\aaron\\Desktop\\New folder (2)\\V5\\app\\build\\intermediates\\res\\merged\\debug\\raw\\miss_sound.mp3",
+        "source": "C:\\Users\\aaron\\Desktop\\New folder (2)\\V5\\app\\src\\main\\res\\raw\\miss_sound.mp3"
+    },
+    {
+        "merged": "C:\\Users\\aaron\\Desktop\\New folder (2)\\V5\\app\\build\\intermediates\\res\\merged\\debug\\raw\\background_music.mp3",
+        "source": "C:\\Users\\aaron\\Desktop\\New folder (2)\\V5\\app\\src\\main\\res\\raw\\background_music.mp3"
+    }
+]
