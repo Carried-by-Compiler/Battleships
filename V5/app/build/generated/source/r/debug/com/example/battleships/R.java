@@ -2106,7 +2106,7 @@ containing a value of this type.
         public static final int beginning=0x7f0b001a;
         public static final int bluetooth_listview=0x7f0b00fe;
         public static final int bottom=0x7f0b002a;
-        public static final int btnAdd=0x7f0b0104;
+        public static final int btnAdd=0x7f0b0106;
         public static final int buttonPanel=0x7f0b0036;
         public static final int cancel_action=0x7f0b00e0;
         public static final int checkbox=0x7f0b0046;
@@ -2121,7 +2121,7 @@ containing a value of this type.
         public static final int deploy_menu=0x7f0b00c6;
         public static final int deviceView=0x7f0b00d0;
         public static final int disableHome=0x7f0b000c;
-        public static final int editName=0x7f0b0105;
+        public static final int editName=0x7f0b0103;
         public static final int edit_query=0x7f0b0051;
         public static final int end=0x7f0b001b;
         public static final int endConfirm=0x7f0b00cd;
@@ -2178,8 +2178,8 @@ containing a value of this type.
         public static final int returnButtonl=0x7f0b00d6;
         public static final int right_icon=0x7f0b00ed;
         public static final int right_side=0x7f0b00e6;
-        public static final int scoreMsg=0x7f0b0106;
-        public static final int scoreValue=0x7f0b0103;
+        public static final int scoreMsg=0x7f0b0104;
+        public static final int scoreValue=0x7f0b0105;
         public static final int screen=0x7f0b0015;
         public static final int scrollIndicatorDown=0x7f0b003e;
         public static final int scrollIndicatorUp=0x7f0b003a;

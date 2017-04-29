@@ -162,10 +162,11 @@ public class playerTurn extends AppCompatActivity {
                 scoreNow = scoreNow * deployMenu.game.getCounter();
                 deployMenu.game.setScore(scoreNow);
                 deployMenu.game.incrementCounter();
-                publishProgress(params[0].getCoordinate());
+                publishProgress(params[0].getCoordinate(), "");
                 hitHistory.add(params[0]);
             } else {
                 deployMenu.game.resetCounter();
+                publishProgress(params[0].getCoordinate(), "FLAG");
             }
 
             return hitArray;
@@ -186,8 +187,10 @@ public class playerTurn extends AppCompatActivity {
                 endGame();
             }
 
-            if (!hitShip)
+            if (!hitShip) {
                 Toast.makeText(playerTurn.this, "You missed!", Toast.LENGTH_SHORT).show();
+            }
+
         }
 
         @Override
@@ -196,7 +199,11 @@ public class playerTurn extends AppCompatActivity {
             Button button;
             int identifier = getStringIdentifier(playerTurn.this, values[0]);
             button = (Button)findViewById(identifier);
-            button.setBackgroundResource(R.drawable.ship_hit);
+
+            if (values[1].equals("FLAG"))
+                button.setBackgroundResource(R.drawable.ship_miss);
+            else
+                button.setBackgroundResource(R.drawable.ship_hit);
         }
 
         private int getStringIdentifier(Context pContext, String pString) {

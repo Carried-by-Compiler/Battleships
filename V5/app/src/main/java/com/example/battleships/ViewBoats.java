@@ -90,7 +90,7 @@ public class ViewBoats extends AppCompatActivity {
             button = (Button)findViewById(values[0]);
 
             if (values[1] == 1)
-                button.setBackgroundResource(R.drawable.fire);
+                button.setBackgroundResource(R.drawable.ship_miss);
             else
                 button.setBackgroundResource(R.drawable.ship_hit);
         }

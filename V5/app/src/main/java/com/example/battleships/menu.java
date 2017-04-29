@@ -90,7 +90,7 @@ public class menu extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Button button = (Button) v;
-                Intent intent = new Intent(menu.this, leaderBoard.class); // initialises intent.
+                Intent intent = new Intent(menu.this, ListDataActivity.class); // initialises intent.
                 finish(); // ends activity.
                 startActivity(intent); // starts intent.
             }

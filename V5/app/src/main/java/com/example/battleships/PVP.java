@@ -155,10 +155,14 @@ public class PVP extends AppCompatActivity {
         }
     }
 
-    private void displayHitBoat(String stringId) {
+    private void displayHitBoat(String stringId, boolean miss) {
         int identifier = getStringIdentifier(PVP.this, stringId);
         Button button = (Button)findViewById(identifier);
-        button.setBackgroundResource(R.drawable.ship_hit);
+
+        if (!miss)
+            button.setBackgroundResource(R.drawable.ship_hit);
+        else
+            button.setBackgroundResource(R.drawable.ship_miss);
     }
 
     /*
@@ -330,7 +334,7 @@ public class PVP extends AppCompatActivity {
 
                             case HIT:
                                 resultField.setText("You've hit a ship at: " + chosenPoint);
-                                displayHitBoat(chosenPoint);
+                                displayHitBoat(chosenPoint, false);
                                 currentScore = currentScore * game.getCounter();
                                 game.setScore(currentScore);
                                 game.incrementCounter();
@@ -338,6 +342,7 @@ public class PVP extends AppCompatActivity {
 
                             case MISS:
                                 resultField.setText("You missed a ship at: " + chosenPoint);
+                                displayHitBoat(chosenPoint, true);
                                 game.resetCounter();
                                 currentScore = currentScore * game.getCounter();
                                 game.setScore(currentScore);
@@ -345,7 +350,7 @@ public class PVP extends AppCompatActivity {
 
                             case SUNKSHIP:
                                 resultField.setText("You've sunk a ship at: " + chosenPoint);
-                                displayHitBoat(chosenPoint);
+                                displayHitBoat(chosenPoint, false);
                                 currentScore = currentScore * game.getCounter();
                                 game.setScore(currentScore);
                                 game.incrementCounter();

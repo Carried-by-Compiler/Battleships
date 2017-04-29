@@ -138,7 +138,7 @@ public class aiTurn extends AppCompatActivity {
 
 
 
-    private class AiMakesGuess extends AsyncTask <Void, Point, Object[]> {
+    private class AiMakesGuess extends AsyncTask <Void, String, Object[]> {
 
         @Override
         protected Object[] doInBackground(Void... params) {
@@ -156,9 +156,11 @@ public class aiTurn extends AppCompatActivity {
                 hitArray[i] = hits[i];
 
             if ((boolean)hitArray[1]) {
-                publishProgress(aiGuess);
+                publishProgress(aiGuess.getCoordinate(), "");
                 hitHistory.add(aiGuess.getCoordinate());
                 Log.d("AI", "" + hitHistory);
+            } else {
+                publishProgress(aiGuess.getCoordinate(), "FLAG");
             }
 
             hitArray[3] = aiGuess;
@@ -167,12 +169,16 @@ public class aiTurn extends AppCompatActivity {
         }
 
         @Override
-        protected void onProgressUpdate(Point... values) {
+        protected void onProgressUpdate(String... values) {
             super.onProgressUpdate(values);
             Button button;
-            int identifier = getStringIdentifier(aiTurn.this, values[0].getCoordinate());
+            int identifier = getStringIdentifier(aiTurn.this, values[0]);
             button = (Button)findViewById(identifier);
-            button.setBackgroundResource(R.drawable.ship_hit);
+
+            if (values[1].equals("FLAG"))
+                button.setBackgroundResource(R.drawable.ship_miss);
+            else
+                button.setBackgroundResource(R.drawable.ship_hit);
         }
 
         @Override
