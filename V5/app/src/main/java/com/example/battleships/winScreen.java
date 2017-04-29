@@ -25,7 +25,7 @@ public class winScreen extends AppCompatActivity {
         mDatabaseHelper = new DatabaseHelper(this);
 
         TextView v = (TextView)findViewById(R.id.scoreValue);
-        final int totalScore = getIntent().getIntExtra("TOTAL_SCORE", deployMenu.game.getScore());
+        final int totalScore = getIntent().getIntExtra("TOTAL_SCORE", 0);
         v.setText(String.valueOf(totalScore));
         button = (Button) findViewById(R.id.returnButtonW); // links the button to the end turn button.
         button.setOnClickListener(new View.OnClickListener() {

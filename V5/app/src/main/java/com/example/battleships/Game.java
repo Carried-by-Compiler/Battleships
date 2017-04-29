@@ -30,6 +30,7 @@ public class Game
         boatSunkHuman = 0;
         boatSunkOpponent = 0;
         gameStarted = 0;
+        score = 0;
     }
 
     public int getScore() { return score; }

@@ -120,7 +120,7 @@ public class PVP extends AppCompatActivity {
                         BluetoothAdapter bA = BluetoothAdapter.getDefaultAdapter();
                         bA.disable();
                         Intent intent = new Intent(PVP.this, menu.class);
-                        mp.stop();
+                        /*mp.stop();*/
                         startActivity(intent);
                         finish();
                     }
@@ -193,7 +193,7 @@ public class PVP extends AppCompatActivity {
                 Point newPoint;
                 Point p;
                 // if fire button pressed to confirm user is ready
-                if (!READY) {
+                if (!READY && buttonForBoatPlacementPressed) {
 
                     // let opponent know that you are ready.
                     READY = true;
@@ -219,6 +219,9 @@ public class PVP extends AppCompatActivity {
                     b2.setVisibility(View.INVISIBLE);
 
                 }
+
+                if (!buttonForBoatPlacementPressed)
+                    Toast.makeText(PVP.this, "Please choose a boat placement method", Toast.LENGTH_SHORT).show();
 
                 // checks if a coordinate has been selected.
                 if(enteredCoord && Connector.TURN) {
@@ -382,7 +385,7 @@ public class PVP extends AppCompatActivity {
                                 public void onClick(DialogInterface dialog, int id) {
                                     //do things
                                     Intent intent = new Intent(PVP.this, winScreen.class);
-                                    intent.putExtra("TOTAL_SCORE", game.getScore());
+                                    intent.putExtra("TOTAL_SCORE", PVP.game.getScore());
                                     startActivity(intent);
                                     finish();
                                 }
@@ -405,7 +408,7 @@ public class PVP extends AppCompatActivity {
 
         Button b1 = (Button)findViewById(R.id.manual);
         Button b2 = (Button)findViewById(R.id.automate);
-        tv1.setText("Boat Placement");
+        tv1.setText("Place Boats");
         b1.setVisibility(View.VISIBLE);
         b2.setVisibility(View.VISIBLE);
 
@@ -516,7 +519,7 @@ public class PVP extends AppCompatActivity {
         protected void onProgressUpdate(Integer... values) {
             super.onProgressUpdate(values);
             Button button = (Button)findViewById(values[0]);
-            button.setBackgroundResource(R.drawable.ship_miss);
+            button.setBackgroundResource(R.drawable.outline);
         }
     }
 
