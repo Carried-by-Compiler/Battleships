@@ -1,0 +1,140 @@
+<?xml version="1.0" encoding="utf-8"?>
+<items version="2" >
+
+    <item
+        is-multidex="true"
+        jar="C:\Users\hmaug\AndroidStudioProjects\V6\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-appindexing\8.4.0\jars\classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.2"
+        sha1="65d086ee9daaf87b5af62ad24471edafa433354c">
+        <dex dex="C:\Users\hmaug\AndroidStudioProjects\V6\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.google.android.gms-play-services-appindexing-8.4.0_4b7fef0c51c20d152692be7bda40b92e4f459015\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\hmaug\AndroidStudioProjects\V6\app\build\intermediates\exploded-aar\com.android.support\support-core-ui\25.1.0\jars\classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.2"
+        sha1="aee64634871d88a419d59eb743c1258a60f19700">
+        <dex dex="C:\Users\hmaug\AndroidStudioProjects\V6\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.android.support-support-core-ui-25.1.0_2dc617f12300076a70a301cab606b47b5613c36b\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\hmaug\AndroidStudioProjects\V6\app\build\intermediates\exploded-aar\com.android.support\support-core-utils\25.1.0\jars\classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.2"
+        sha1="0a0ef86b7fa568a52bf6214a0326ca1f1d618da7">
+        <dex dex="C:\Users\hmaug\AndroidStudioProjects\V6\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.android.support-support-core-utils-25.1.0_33e6853d94b0d33fd7e4c11f73c5bc61de526376\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\hmaug\AndroidStudioProjects\V6\app\build\intermediates\exploded-aar\com.android.support\appcompat-v7\25.1.0\jars\classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.2"
+        sha1="1630658fbc2d222b988603c27b4a4249586fbfe7">
+        <dex dex="C:\Users\hmaug\AndroidStudioProjects\V6\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.android.support-appcompat-v7-25.1.0_44a16b394ec960275c292202fb9193268f07e9ca\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\hmaug\AppData\Local\Android\sdk\extras\android\m2repository\com\android\support\support-annotations\25.1.0\support-annotations-25.1.0.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.2"
+        sha1="64cb6b229a8bdfd907bc8dd46839a0053e4c018d">
+        <dex dex="C:\Users\hmaug\AndroidStudioProjects\V6\app\build\intermediates\transforms\dex\debug\folders\1000\10\support-annotations-25.1.0_206773e1a149c138038619bfb8962c4631b9b6dd\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\hmaug\AndroidStudioProjects\V6\app\build\intermediates\exploded-aar\com.android.support\support-fragment\25.1.0\jars\classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.2"
+        sha1="2a53c4f3518116b8c6aee0e477233f0f7da8616f">
+        <dex dex="C:\Users\hmaug\AndroidStudioProjects\V6\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.android.support-support-fragment-25.1.0_76c0b1b891a216437d664d5d8973d213387a25fb\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\hmaug\AndroidStudioProjects\V6\app\build\intermediates\exploded-aar\com.android.support\support-media-compat\25.1.0\jars\classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.2"
+        sha1="f02263e35e52668dd17b73bf961437e3d562b35f">
+        <dex dex="C:\Users\hmaug\AndroidStudioProjects\V6\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.android.support-support-media-compat-25.1.0_2894e665bf5ae9c4a27eea1b835edf45b513c9c6\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\hmaug\AndroidStudioProjects\V6\app\build\intermediates\exploded-aar\com.android.support\animated-vector-drawable\25.1.0\jars\classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.2"
+        sha1="6fb6ac3e8d3b9013819920d9ea11f3803c4c0033">
+        <dex dex="C:\Users\hmaug\AndroidStudioProjects\V6\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.android.support-animated-vector-drawable-25.1.0_fc356fb6a0a1ace1a6c49557170e51c613740dd4\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\hmaug\AndroidStudioProjects\V6\app\build\intermediates\incremental-classes\debug\instant-run-bootstrap.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.2"
+        sha1="79b5205e916577f04f63982b2b32ff8c06c2bd77">
+        <dex dex="C:\Users\hmaug\AndroidStudioProjects\V6\app\build\intermediates\transforms\dex\debug\folders\1000\10\instant-run-bootstrap_5cd8bc89461772191fb084219e1fa2e3b55bd263\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\hmaug\AndroidStudioProjects\V6\app\build\intermediates\exploded-aar\com.android.support\support-vector-drawable\25.1.0\jars\classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.2"
+        sha1="e79aa3d9a16f8c9f16377c0608de70a8f31e5d80">
+        <dex dex="C:\Users\hmaug\AndroidStudioProjects\V6\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.android.support-support-vector-drawable-25.1.0_a78207eea1ad32f4d5dc0f1578a656db72bb5abc\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\hmaug\AndroidStudioProjects\V6\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-basement\8.4.0\jars\classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.2"
+        sha1="8e673cdfadd8f2d98fdb2fda2285c30f6e449782">
+        <dex dex="C:\Users\hmaug\AndroidStudioProjects\V6\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.google.android.gms-play-services-basement-8.4.0_ec7573916c8f7d68eae7baa6d8b716b417c91873\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\hmaug\AndroidStudioProjects\V6\app\build\intermediates\exploded-aar\com.android.support\support-v4\25.1.0\jars\classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.2"
+        sha1="d7c42c80f6509b9ea4db28ca7859ffae08ec5741">
+        <dex dex="C:\Users\hmaug\AndroidStudioProjects\V6\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.android.support-support-v4-25.1.0_b4ab0edee781cba6d77c0c4d21e388b9db23d2d0\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\hmaug\AndroidStudioProjects\V6\app\build\intermediates\incremental-runtime-classes\debug\instant-run.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.2"
+        sha1="d683c651d345030a0c62947b768e51fe732db6f7">
+        <dex dex="C:\Users\hmaug\AndroidStudioProjects\V6\app\build\intermediates\transforms\dex\debug\folders\1000\10\instant-run_774449d98e7484c5461c1a3eb8b7499c3ad40534\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\hmaug\AndroidStudioProjects\V6\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-base\8.4.0\jars\classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.2"
+        sha1="fef2b3e4b6b1b0e5fe7b69fa137a5fa55a3182ab">
+        <dex dex="C:\Users\hmaug\AndroidStudioProjects\V6\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.google.android.gms-play-services-base-8.4.0_cf100ce7ac3ef1a2ee528413830433361679207c\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\hmaug\AndroidStudioProjects\V6\app\build\intermediates\exploded-aar\com.android.support\support-compat\25.1.0\jars\classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.2"
+        sha1="ca3c7aa31e2726a400a6e552b93cb9f63c9a1e6d">
+        <dex dex="C:\Users\hmaug\AndroidStudioProjects\V6\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.android.support-support-compat-25.1.0_000828445f60668c455e8d1f4a1b48bba9828e0a\classes.dex" />
+    </item>
+
+</items>
