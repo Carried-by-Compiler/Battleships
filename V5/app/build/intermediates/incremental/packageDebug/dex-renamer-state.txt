@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 #Fri Apr 28 19:13:58 BST 2017
 base.0=C\:\\Users\\hmaug\\AndroidStudioProjects\\V5\\app\\build\\intermediates\\transforms\\dex\\debug\\folders\\1000\\10\\instant-run_bccb374b937c6e612f2a0384833ec6f7d0d831ab
 renamed.1=classes.dex
@@ -5,3 +6,12 @@ renamed.0=classes2.dex
 file.1=C\:\\Users\\hmaug\\AndroidStudioProjects\\V5\\app\\build\\intermediates\\transforms\\dex\\debug\\folders\\1000\\10\\instant-run-bootstrap_88497a7f9f8be04ff2862f6683b411bcdbe554d3\\classes.dex
 base.1=C\:\\Users\\hmaug\\AndroidStudioProjects\\V5\\app\\build\\intermediates\\transforms\\dex\\debug\\folders\\1000\\10\\instant-run-bootstrap_88497a7f9f8be04ff2862f6683b411bcdbe554d3
 file.0=C\:\\Users\\hmaug\\AndroidStudioProjects\\V5\\app\\build\\intermediates\\transforms\\dex\\debug\\folders\\1000\\10\\instant-run_bccb374b937c6e612f2a0384833ec6f7d0d831ab\\classes.dex
+=======
+#Sat Apr 29 11:54:20 BST 2017
+base.0=C\:\\Users\\johnr\\OneDrive\\Documents\\Coding\\Mobile-App-Project\\V5\\app\\build\\intermediates\\transforms\\dex\\debug\\folders\\1000\\10\\instant-run_3026ae164f970f08a92ff3542df2bbb48acc66f6
+renamed.1=classes2.dex
+renamed.0=classes.dex
+file.1=C\:\\Users\\johnr\\OneDrive\\Documents\\Coding\\Mobile-App-Project\\V5\\app\\build\\intermediates\\transforms\\dex\\debug\\folders\\1000\\10\\instant-run-bootstrap_d41b48cdc9e0c2edbf5d46bead367aaac7b66222\\classes.dex
+base.1=C\:\\Users\\johnr\\OneDrive\\Documents\\Coding\\Mobile-App-Project\\V5\\app\\build\\intermediates\\transforms\\dex\\debug\\folders\\1000\\10\\instant-run-bootstrap_d41b48cdc9e0c2edbf5d46bead367aaac7b66222
+file.0=C\:\\Users\\johnr\\OneDrive\\Documents\\Coding\\Mobile-App-Project\\V5\\app\\build\\intermediates\\transforms\\dex\\debug\\folders\\1000\\10\\instant-run_3026ae164f970f08a92ff3542df2bbb48acc66f6\\classes.dex
+>>>>>>> origin/master

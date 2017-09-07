@@ -1,7 +1,10 @@
 package com.example.battleships;
 
 import android.content.Intent;
+<<<<<<< HEAD
 import android.media.MediaPlayer;
+=======
+>>>>>>> origin/master
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -16,7 +19,10 @@ public class winScreen extends AppCompatActivity {
     DatabaseHelper mDatabaseHelper;
     private Button btnAdd;
     private EditText editName;
+<<<<<<< HEAD
     private MediaPlayer mp;
+=======
+>>>>>>> origin/master
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -26,19 +32,27 @@ public class winScreen extends AppCompatActivity {
         editName = (EditText) findViewById(R.id.editName);
         mDatabaseHelper = new DatabaseHelper(this);
 
+<<<<<<< HEAD
         mp = MediaPlayer.create(this, R.raw.background_music);
         mp.setLooping(true);
         mp.start();
 
         TextView v = (TextView)findViewById(R.id.scoreValue);
         final int totalScore = getIntent().getIntExtra("TOTAL_SCORE", deployMenu.game.getScore());
+=======
+        TextView v = (TextView)findViewById(R.id.scoreValue);
+        final int totalScore = getIntent().getIntExtra("TOTAL_SCORE", 0);
+>>>>>>> origin/master
         v.setText(String.valueOf(totalScore));
         button = (Button) findViewById(R.id.returnButtonW); // links the button to the end turn button.
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(winScreen.this, menu.class); // initialises the intent.
+<<<<<<< HEAD
                 mp.stop();
+=======
+>>>>>>> origin/master
                 finish(); // ends the activity.
                 startActivity(intent); // starts the intent.
             }

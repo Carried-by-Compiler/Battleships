@@ -25,14 +25,22 @@ public class DatabaseHelper  extends SQLiteOpenHelper{
 
     @Override
     public void onCreate(SQLiteDatabase db){
+<<<<<<< HEAD
         String createTable = "CREATE TABLE " + TABLE_NAME + "Score INTERGER PRIMARY KEY AUTOINCRIMENT, " + " name TEXT) " ;
+=======
+        String createTable = "CREATE TABLE " + TABLE_NAME + "(Score INTEGER, " + " name TEXT) " ;
+>>>>>>> origin/master
         db.execSQL(createTable);
         db.execSQL("INSERT INTO " + TABLE_NAME + "(Score) VALUE(1000)");
 
     }
 
     @Override
+<<<<<<< HEAD
     public void onUpgrade(SQLiteDatabase db, int i, int i1){
+=======
+    public void onUpgrade(SQLiteDatabase db, int i, int i1) {
+>>>>>>> origin/master
         db.execSQL("DROP IF TABLE EXISTS" + TABLE_NAME);
         onCreate(db);
     }

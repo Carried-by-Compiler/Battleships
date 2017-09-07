@@ -37,7 +37,12 @@
         android:layout_below="@+id/gameMsg"
         android:layout_alignParentStart="true"
         android:textColor="@color/colorAccent"
+<<<<<<< HEAD
         android:layout_toStartOf="@+id/gameMsg" />
+=======
+        android:layout_toStartOf="@+id/gameMsg"
+        android:background="@drawable/button" />
+>>>>>>> origin/master
 
     <Button
         android:text="Return to Main Menu"
@@ -48,6 +53,7 @@
         android:textStyle="normal|bold"
         android:textColor="@color/colorAccent"
         android:background="@drawable/button"
+<<<<<<< HEAD
         android:layout_alignEnd="@+id/scoreValue"
         android:layout_alignParentStart="true" />
 
@@ -60,6 +66,10 @@
         android:layout_above="@+id/returnButtonW"
         android:layout_alignStart="@+id/gameMsg"
         android:textStyle="normal|bold" />
+=======
+        android:layout_alignParentStart="true"
+        android:layout_alignParentEnd="true" />
+>>>>>>> origin/master
 
     <EditText
         android:layout_width="wrap_content"
@@ -79,6 +89,12 @@
         android:textStyle="normal|bold"
         android:textAllCaps="true"
         android:layout_above="@+id/scoreMsg"
+<<<<<<< HEAD
+=======
+        android:background="@drawable/button"
+        android:layout_alignTop="@+id/nameMsg"
+        android:layout_alignParentEnd="true"
+>>>>>>> origin/master
         android:layout_toEndOf="@+id/nameMsg" />
 
     <TextView
@@ -93,7 +109,12 @@
         android:layout_below="@+id/nameMsg"
         android:layout_alignParentStart="true"
         android:layout_toStartOf="@+id/editName"
+<<<<<<< HEAD
         android:textAlignment="center" />
+=======
+        android:textAlignment="center"
+        android:background="@drawable/button" />
+>>>>>>> origin/master
 
     <TextView
         android:layout_width="wrap_content"
@@ -106,6 +127,22 @@
         android:textSize="18sp"
         android:layout_below="@+id/editName"
         android:layout_alignEnd="@+id/editName"
+<<<<<<< HEAD
         android:layout_toEndOf="@+id/nameMsg" />
+=======
+        android:layout_toEndOf="@+id/nameMsg"
+        android:background="@drawable/button"
+        android:layout_alignBottom="@+id/scoreMsg" />
+
+    <Button
+        android:text="ADD SCORE"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/btnAdd"
+        android:background="@drawable/button"
+        android:textStyle="normal|bold"
+        android:layout_above="@+id/returnButtonW"
+        android:layout_centerHorizontal="true" />
+>>>>>>> origin/master
 
 </RelativeLayout>

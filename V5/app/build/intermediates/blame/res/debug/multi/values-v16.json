@@ -1,6 +1,10 @@
 [
     {
+<<<<<<< HEAD
         "outputFile": "C:\\Users\\hmaug\\AndroidStudioProjects\\V5\\app\\build\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values-v16\\values-v16.xml",
+=======
+        "outputFile": "C:\\Users\\johnr\\OneDrive\\Documents\\Coding\\Mobile-App-Project\\V5\\app\\build\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values-v16\\values-v16.xml",
+>>>>>>> origin/master
         "map": [
             {
                 "to": {
@@ -11,7 +15,11 @@
                     "endOffset": 116
                 },
                 "from": {
+<<<<<<< HEAD
                     "file": "C:\\Users\\hmaug\\AndroidStudioProjects\\V5\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\25.1.0\\res\\values-v16\\values-v16.xml",
+=======
+                    "file": "C:\\Users\\johnr\\OneDrive\\Documents\\Coding\\Mobile-App-Project\\V5\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\25.1.0\\res\\values-v16\\values-v16.xml",
+>>>>>>> origin/master
                     "position": {
                         "startLine": 2,
                         "startColumn": 4,

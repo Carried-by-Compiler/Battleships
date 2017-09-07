@@ -5,7 +5,10 @@ import android.bluetooth.BluetoothAdapter;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+<<<<<<< HEAD
 import android.media.MediaPlayer;
+=======
+>>>>>>> origin/master
 import android.os.AsyncTask;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
@@ -36,10 +39,13 @@ public class playerTurn extends AppCompatActivity {
     private String chosenPoint;
     private ArrayList<Point> hitHistory;
     public static Activity playerAct;
+<<<<<<< HEAD
     private MediaPlayer hitSound;
     private MediaPlayer missSound;
     private MediaPlayer mp;
 
+=======
+>>>>>>> origin/master
     private Game g;
 
     @Override
@@ -48,6 +54,7 @@ public class playerTurn extends AppCompatActivity {
         setContentView(R.layout.player_turn);
         playerAct = this;
         this.posField = (TextView) findViewById(R.id.posField); // links the textView to the posField button.
+<<<<<<< HEAD
         hitSound = MediaPlayer.create(this,R.raw.hit_sound);
         missSound = MediaPlayer.create(this,R.raw.miss_sound);
         Button viewBoats = (Button) findViewById(R.id.view_boats);
@@ -57,6 +64,11 @@ public class playerTurn extends AppCompatActivity {
         mp.setLooping(true);
         mp.start();
 
+=======
+        Button viewBoats = (Button) findViewById(R.id.view_boats);
+        viewBoats.setVisibility(View.INVISIBLE);
+
+>>>>>>> origin/master
         setButtonOnClickListener(); // initialises the listeners to the buttons.
         hitHistory = new ArrayList<Point>();
 
@@ -115,7 +127,10 @@ public class playerTurn extends AppCompatActivity {
     private void endTurn() {
         Intent intent = new Intent(playerTurn.this, aiTurn.class); // initialises the intent.
         intent.addFlags(Intent.FLAG_ACTIVITY_BROUGHT_TO_FRONT);
+<<<<<<< HEAD
         mp.stop();
+=======
+>>>>>>> origin/master
         startActivity(intent); // starts the intent.
     }
 
@@ -131,7 +146,10 @@ public class playerTurn extends AppCompatActivity {
                 Intent intent = new Intent(playerTurn.this, menu.class); // initialises the intent.
                 BluetoothAdapter mAdapter = BluetoothAdapter.getDefaultAdapter();
                 mAdapter.disable();
+<<<<<<< HEAD
                 mp.stop();
+=======
+>>>>>>> origin/master
                 finish(); // ends the activity.
                 startActivity(intent); // starts the intent.
             }
@@ -151,7 +169,10 @@ public class playerTurn extends AppCompatActivity {
         finalScore = deployMenu.game.getScore();
         Intent intent = new Intent(playerTurn.this, winScreen.class); // initialises the intent.
         intent.putExtra("FINAL_SCORE", finalScore);
+<<<<<<< HEAD
         mp.stop();
+=======
+>>>>>>> origin/master
         finish();
         aiTurn.aiAct.finish();
         startActivity(intent);
@@ -176,10 +197,18 @@ public class playerTurn extends AppCompatActivity {
                 scoreNow = scoreNow * deployMenu.game.getCounter();
                 deployMenu.game.setScore(scoreNow);
                 deployMenu.game.incrementCounter();
+<<<<<<< HEAD
                 publishProgress(params[0].getCoordinate());
                 hitHistory.add(params[0]);
             } else {
                 deployMenu.game.resetCounter();
+=======
+                publishProgress(params[0].getCoordinate(), "");
+                hitHistory.add(params[0]);
+            } else {
+                deployMenu.game.resetCounter();
+                publishProgress(params[0].getCoordinate(), "FLAG");
+>>>>>>> origin/master
             }
 
             return hitArray;
@@ -193,6 +222,7 @@ public class playerTurn extends AppCompatActivity {
 
             if (hitShip)
                 Toast.makeText(playerTurn.this, "You've hit a battleship!", Toast.LENGTH_SHORT).show();
+<<<<<<< HEAD
                 hitSound.start();
             if (sunkShip)
                 Toast.makeText(playerTurn.this, "You have sunk a battleship!", Toast.LENGTH_SHORT).show();
@@ -206,6 +236,19 @@ public class playerTurn extends AppCompatActivity {
             if (!hitShip)
                 Toast.makeText(playerTurn.this, "You missed!", Toast.LENGTH_SHORT).show();
                 missSound.start();
+=======
+            if (sunkShip)
+                Toast.makeText(playerTurn.this, "You have sunk a battleship!", Toast.LENGTH_SHORT).show();
+            if (defeatedAi) {
+                Toast.makeText(playerTurn.this, "You won!", Toast.LENGTH_SHORT).show();
+                endGame();
+            }
+
+            if (!hitShip) {
+                Toast.makeText(playerTurn.this, "You missed!", Toast.LENGTH_SHORT).show();
+            }
+
+>>>>>>> origin/master
         }
 
         @Override
@@ -214,7 +257,15 @@ public class playerTurn extends AppCompatActivity {
             Button button;
             int identifier = getStringIdentifier(playerTurn.this, values[0]);
             button = (Button)findViewById(identifier);
+<<<<<<< HEAD
             button.setBackgroundResource(R.drawable.ship_hit);
+=======
+
+            if (values[1].equals("FLAG"))
+                button.setBackgroundResource(R.drawable.ship_miss);
+            else
+                button.setBackgroundResource(R.drawable.ship_hit);
+>>>>>>> origin/master
         }
 
         private int getStringIdentifier(Context pContext, String pString) {

@@ -3,7 +3,10 @@ package com.example.battleships;
 import android.bluetooth.BluetoothAdapter;
 import android.content.DialogInterface;
 import android.content.Intent;
+<<<<<<< HEAD
 import android.media.MediaPlayer;
+=======
+>>>>>>> origin/master
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -18,17 +21,23 @@ public class menu extends AppCompatActivity {
     DatabaseHelper mDatabaseHelper;
     private Button  highscoresButton;
     private boolean MusicRunning = false;
+<<<<<<< HEAD
     private MediaPlayer mp;
+=======
+>>>>>>> origin/master
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.menu);
 
+<<<<<<< HEAD
         mp = MediaPlayer.create(this, R.raw.background_music);
         mp.setLooping(true);
         mp.start();
 
+=======
+>>>>>>> origin/master
         highscoresButton = (Button) findViewById((R.id.highscoresButton));
         mDatabaseHelper = new DatabaseHelper(this);
 
@@ -37,7 +46,10 @@ public class menu extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(menu.this, ListDataActivity.class);
+<<<<<<< HEAD
                 mp.stop();
+=======
+>>>>>>> origin/master
                 startActivity(intent);
             }
         });
@@ -63,7 +75,10 @@ public class menu extends AppCompatActivity {
                         Intent intent = new Intent(menu.this, deployMenu.class);
                         intent.putExtra("DEPLOY_MESSAGE", 1);
                         intent.putExtra("MULTIPLAYER", 0);
+<<<<<<< HEAD
                         mp.stop();
+=======
+>>>>>>> origin/master
                         finish();
                         startActivity(intent);
                     }
@@ -73,7 +88,10 @@ public class menu extends AppCompatActivity {
                     public void onClick(DialogInterface dialog, int id) {
                         Intent intent = new Intent(menu.this, deployMenu.class);
                         intent.putExtra("DEPLOY_MESSAGE", 0);
+<<<<<<< HEAD
                         mp.stop();
+=======
+>>>>>>> origin/master
                         finish(); // Ends activity.
                         startActivity(intent); // starts intent.
                     }
@@ -89,7 +107,10 @@ public class menu extends AppCompatActivity {
             public void onClick(View v) {
                 Button button = (Button) v;
                 Intent intent = new Intent(menu.this, pvpMenu.class); // initialises intent.
+<<<<<<< HEAD
                 mp.stop();
+=======
+>>>>>>> origin/master
                 finish(); // Ends activity.
                 startActivity(intent); // starts intent.
             }
@@ -100,8 +121,12 @@ public class menu extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Button button = (Button) v;
+<<<<<<< HEAD
                 Intent intent = new Intent(menu.this, leaderBoard.class); // initialises intent.
                 mp.stop();
+=======
+                Intent intent = new Intent(menu.this, ListDataActivity.class); // initialises intent.
+>>>>>>> origin/master
                 finish(); // ends activity.
                 startActivity(intent); // starts intent.
             }
@@ -120,7 +145,10 @@ public class menu extends AppCompatActivity {
             public void onClick(DialogInterface dialog, int id) {
                 BluetoothAdapter b = BluetoothAdapter.getDefaultAdapter();
                 b.disable();
+<<<<<<< HEAD
                 mp.stop();
+=======
+>>>>>>> origin/master
                 finishAffinity(); // Ends application
             }
         });

@@ -66,7 +66,13 @@
         android:id="@+id/bluetooth_listview"
         android:layout_above="@+id/returnButton"
         android:layout_alignParentStart="true"
+<<<<<<< HEAD
         android:background="@drawable/button" />
+=======
+        android:background="@drawable/button_2"
+        android:divider="@color/colorAccent"
+        android:dividerHeight="3sp" />
+>>>>>>> origin/master
 
     <TextView
         android:text="Welcome to the battleships multiplayer."

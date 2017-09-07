@@ -29,10 +29,13 @@ import java.lang.reflect.Method;
 import java.util.ArrayList;
 import java.util.Set;
 
+<<<<<<< HEAD
 /**
  * Created by johnr on 12/04/2017.
  */
 
+=======
+>>>>>>> origin/master
 public class PVP extends AppCompatActivity {
 
     private int[] gridButtons = {R.id.A1, R.id.A2, R.id.A3, R.id.A4, R.id.A5, R.id.A6, R.id.A7, R.id.A8, R.id.A9, R.id.A10,
@@ -72,10 +75,13 @@ public class PVP extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.player_turn);
 
+<<<<<<< HEAD
         mp = MediaPlayer.create(this, R.raw.background_music);
         mp.setLooping(true);
         mp.start();
 
+=======
+>>>>>>> origin/master
         // initialize stuff
         viewYourBoat = (Button)findViewById(R.id.view_boats);
         viewYourBoat.setVisibility(View.INVISIBLE);
@@ -128,7 +134,11 @@ public class PVP extends AppCompatActivity {
                         BluetoothAdapter bA = BluetoothAdapter.getDefaultAdapter();
                         bA.disable();
                         Intent intent = new Intent(PVP.this, menu.class);
+<<<<<<< HEAD
                         mp.stop();
+=======
+                        /*mp.stop();*/
+>>>>>>> origin/master
                         startActivity(intent);
                         finish();
                     }
@@ -163,10 +173,21 @@ public class PVP extends AppCompatActivity {
         }
     }
 
+<<<<<<< HEAD
     private void displayHitBoat(String stringId) {
         int identifier = getStringIdentifier(PVP.this, stringId);
         Button button = (Button)findViewById(identifier);
         button.setBackgroundResource(R.drawable.ship_hit);
+=======
+    private void displayHitBoat(String stringId, boolean miss) {
+        int identifier = getStringIdentifier(PVP.this, stringId);
+        Button button = (Button)findViewById(identifier);
+
+        if (!miss)
+            button.setBackgroundResource(R.drawable.ship_hit);
+        else
+            button.setBackgroundResource(R.drawable.ship_miss);
+>>>>>>> origin/master
     }
 
     /*
@@ -197,7 +218,11 @@ public class PVP extends AppCompatActivity {
                 Point newPoint;
                 Point p;
                 // if fire button pressed to confirm user is ready
+<<<<<<< HEAD
                 if (!READY) {
+=======
+                if (!READY && buttonForBoatPlacementPressed) {
+>>>>>>> origin/master
 
                     // let opponent know that you are ready.
                     READY = true;
@@ -224,6 +249,12 @@ public class PVP extends AppCompatActivity {
 
                 }
 
+<<<<<<< HEAD
+=======
+                if (!buttonForBoatPlacementPressed)
+                    Toast.makeText(PVP.this, "Please choose a boat placement method", Toast.LENGTH_SHORT).show();
+
+>>>>>>> origin/master
                 // checks if a coordinate has been selected.
                 if(enteredCoord && Connector.TURN) {
                     boolean found = false;
@@ -338,7 +369,11 @@ public class PVP extends AppCompatActivity {
 
                             case HIT:
                                 resultField.setText("You've hit a ship at: " + chosenPoint);
+<<<<<<< HEAD
                                 displayHitBoat(chosenPoint);
+=======
+                                displayHitBoat(chosenPoint, false);
+>>>>>>> origin/master
                                 currentScore = currentScore * game.getCounter();
                                 game.setScore(currentScore);
                                 game.incrementCounter();
@@ -346,6 +381,10 @@ public class PVP extends AppCompatActivity {
 
                             case MISS:
                                 resultField.setText("You missed a ship at: " + chosenPoint);
+<<<<<<< HEAD
+=======
+                                displayHitBoat(chosenPoint, true);
+>>>>>>> origin/master
                                 game.resetCounter();
                                 currentScore = currentScore * game.getCounter();
                                 game.setScore(currentScore);
@@ -353,7 +392,11 @@ public class PVP extends AppCompatActivity {
 
                             case SUNKSHIP:
                                 resultField.setText("You've sunk a ship at: " + chosenPoint);
+<<<<<<< HEAD
                                 displayHitBoat(chosenPoint);
+=======
+                                displayHitBoat(chosenPoint, false);
+>>>>>>> origin/master
                                 currentScore = currentScore * game.getCounter();
                                 game.setScore(currentScore);
                                 game.incrementCounter();
@@ -385,7 +428,11 @@ public class PVP extends AppCompatActivity {
                                 public void onClick(DialogInterface dialog, int id) {
                                     //do things
                                     Intent intent = new Intent(PVP.this, winScreen.class);
+<<<<<<< HEAD
                                     intent.putExtra("TOTAL_SCORE", game.getScore());
+=======
+                                    intent.putExtra("TOTAL_SCORE", PVP.game.getScore());
+>>>>>>> origin/master
                                     startActivity(intent);
                                     finish();
                                 }
@@ -408,7 +455,11 @@ public class PVP extends AppCompatActivity {
 
         Button b1 = (Button)findViewById(R.id.manual);
         Button b2 = (Button)findViewById(R.id.automate);
+<<<<<<< HEAD
         tv1.setText("Boat Placement");
+=======
+        tv1.setText("Place Boats");
+>>>>>>> origin/master
         b1.setVisibility(View.VISIBLE);
         b2.setVisibility(View.VISIBLE);
 
@@ -519,7 +570,11 @@ public class PVP extends AppCompatActivity {
         protected void onProgressUpdate(Integer... values) {
             super.onProgressUpdate(values);
             Button button = (Button)findViewById(values[0]);
+<<<<<<< HEAD
             button.setBackgroundResource(R.drawable.ship_miss);
+=======
+            button.setBackgroundResource(R.drawable.outline);
+>>>>>>> origin/master
         }
     }
 

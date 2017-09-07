@@ -3,7 +3,10 @@ package com.example.battleships;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+<<<<<<< HEAD
 import android.media.MediaPlayer;
+=======
+>>>>>>> origin/master
 import android.os.AsyncTask;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
@@ -38,7 +41,10 @@ public class deployMenu extends AppCompatActivity {
     private Point p2;
     private boolean pvpEnabled;
 
+<<<<<<< HEAD
     private MediaPlayer mp;
+=======
+>>>>>>> origin/master
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -236,7 +242,10 @@ public class deployMenu extends AppCompatActivity {
                     deployMenu.this.finish();
                 } else {
                     Intent intent = new Intent(deployMenu.this, menu.class); // initialises the intent.
+<<<<<<< HEAD
                     mp.stop();
+=======
+>>>>>>> origin/master
                     finish(); // end activity.
                     startActivity(intent); // start activity.
                 }

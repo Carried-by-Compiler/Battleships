@@ -6,7 +6,10 @@ import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
+<<<<<<< HEAD
 import android.media.MediaPlayer;
+=======
+>>>>>>> origin/master
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -34,17 +37,23 @@ public class pvpMenu extends AppCompatActivity {
     public static final UUID MY_UUID = UUID.fromString("02fdabb6-3100-43a9-96d6-05c46fd1b7c7");
     public static final int BLUETOOTH_SWITCH = 1;
 
+<<<<<<< HEAD
     private MediaPlayer mp;
+=======
+>>>>>>> origin/master
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.pvp_menu);
+<<<<<<< HEAD
 
         mp = MediaPlayer.create(this, R.raw.background_music);
         mp.setLooping(true);
         mp.start();
 
+=======
+>>>>>>> origin/master
         init();
         startBluetooth(); // turn on bluetooth
     }
@@ -160,7 +169,10 @@ public class pvpMenu extends AppCompatActivity {
     public void onBackPressed() {
         mBluetoothAdapter.disable(); // turn off bluetooth
         Intent intent = new Intent(pvpMenu.this, menu.class); // initialises intent.
+<<<<<<< HEAD
         mp.stop();
+=======
+>>>>>>> origin/master
         finish(); // ends activity.
         startActivity(intent); // starts intent.
     }
@@ -191,7 +203,10 @@ public class pvpMenu extends AppCompatActivity {
                 case R.id.returnButton:
                     mBluetoothAdapter.disable(); // turn off bluetooth
                     Intent intent = new Intent(pvpMenu.this, menu.class); // initialises intent.
+<<<<<<< HEAD
                     mp.stop();
+=======
+>>>>>>> origin/master
                     finish(); // ends activity.
                     startActivity(intent); // starts intent.
                     break;
@@ -234,7 +249,10 @@ public class pvpMenu extends AppCompatActivity {
             Intent startGameIntent = new Intent(pvpMenu.this, PVP.class);
             startGameIntent.putExtra("ROLE", 1); // 1 as client
             startGameIntent.putExtra("ADDRESS", address); // send address to next activity
+<<<<<<< HEAD
             mp.stop();
+=======
+>>>>>>> origin/master
             startActivity(startGameIntent);
             pvpMenu.this.finish();
         }

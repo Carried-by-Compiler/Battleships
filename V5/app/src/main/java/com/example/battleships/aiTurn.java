@@ -4,7 +4,10 @@ import android.app.Activity;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+<<<<<<< HEAD
 import android.media.MediaPlayer;
+=======
+>>>>>>> origin/master
 import android.os.AsyncTask;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
@@ -36,8 +39,11 @@ public class aiTurn extends AppCompatActivity {
     ArrayList<String> hitHistory;
     public static Activity aiAct;
 
+<<<<<<< HEAD
     private MediaPlayer mp;
 
+=======
+>>>>>>> origin/master
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -47,10 +53,13 @@ public class aiTurn extends AppCompatActivity {
         this.posField = (TextView) findViewById(R.id.posField); // links the textfied
         hitHistory = new ArrayList<String>();
 
+<<<<<<< HEAD
         mp = MediaPlayer.create(this, R.raw.background_music);
         mp.setLooping(true);
         mp.start();
 
+=======
+>>>>>>> origin/master
         button = (Button) findViewById(R.id.turnButton); // links the button to the end turn button.
         button.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -86,7 +95,10 @@ public class aiTurn extends AppCompatActivity {
             @Override
             public void onClick(DialogInterface dialog, int id) {
                 Intent intent = new Intent(aiTurn.this, menu.class); // initialises the intent.
+<<<<<<< HEAD
                 mp.stop();
+=======
+>>>>>>> origin/master
                 finish(); // ends the activity.
                 startActivity(intent); // starts the intent.
             }
@@ -146,7 +158,11 @@ public class aiTurn extends AppCompatActivity {
 
 
 
+<<<<<<< HEAD
     private class AiMakesGuess extends AsyncTask <Void, Point, Object[]> {
+=======
+    private class AiMakesGuess extends AsyncTask <Void, String, Object[]> {
+>>>>>>> origin/master
 
         @Override
         protected Object[] doInBackground(Void... params) {
@@ -164,9 +180,17 @@ public class aiTurn extends AppCompatActivity {
                 hitArray[i] = hits[i];
 
             if ((boolean)hitArray[1]) {
+<<<<<<< HEAD
                 publishProgress(aiGuess);
                 hitHistory.add(aiGuess.getCoordinate());
                 Log.d("AI", "" + hitHistory);
+=======
+                publishProgress(aiGuess.getCoordinate(), "");
+                hitHistory.add(aiGuess.getCoordinate());
+                Log.d("AI", "" + hitHistory);
+            } else {
+                publishProgress(aiGuess.getCoordinate(), "FLAG");
+>>>>>>> origin/master
             }
 
             hitArray[3] = aiGuess;
@@ -175,12 +199,25 @@ public class aiTurn extends AppCompatActivity {
         }
 
         @Override
+<<<<<<< HEAD
         protected void onProgressUpdate(Point... values) {
             super.onProgressUpdate(values);
             Button button;
             int identifier = getStringIdentifier(aiTurn.this, values[0].getCoordinate());
             button = (Button)findViewById(identifier);
             button.setBackgroundResource(R.drawable.ship_hit);
+=======
+        protected void onProgressUpdate(String... values) {
+            super.onProgressUpdate(values);
+            Button button;
+            int identifier = getStringIdentifier(aiTurn.this, values[0]);
+            button = (Button)findViewById(identifier);
+
+            if (values[1].equals("FLAG"))
+                button.setBackgroundResource(R.drawable.ship_miss);
+            else
+                button.setBackgroundResource(R.drawable.ship_hit);
+>>>>>>> origin/master
         }
 
         @Override
